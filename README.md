@@ -1,1 +1,2 @@
-# swordfish_client_strategy_plugin
+# 箭鱼客户端策略插件
+swordfish_api文件夹需要放到客户端目录下
