@@ -22,10 +22,6 @@ class Engine(object):
 def init(handle_td, handle_md):
     Engine.handle_td = handle_td
     Engine.handle_md = handle_md
-    if len(sys.argv) != 8:
-        print("./api_test <trdStream> <mktStream> <reqStream> <strategyName> "
-              "<clEnvId> <strategyId> <maxStrategyOrdId>")
-        return -1
     Engine.trd_stream = sys.argv[1]
     Engine.mkt_stream = sys.argv[2]
     Engine.req_stream = sys.argv[3]
