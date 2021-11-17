@@ -45,6 +45,10 @@ def handle_trd(msg_head, msg_item, callback_params):
 
 
 def main():
+    if len(sys.argv) != 8:
+        print("参数数量不符合预期,参数应为: <trdStream> <mktStream> <reqStream> <strategyName> "
+              "<clEnvId> <strategyId> <maxStrategyOrdId>")
+        return -1
     strategy_engine.init(handle_trd, handle_md)
     strategy_engine.do()
 
