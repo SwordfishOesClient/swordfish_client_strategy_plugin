@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
+import platform
 import threading
 from ctypes import cast
 from .client_api import *
@@ -8,7 +9,12 @@ from .client_api import *
 class Engine(object):
     handle_td = None
     handle_md = None
-    client_api = ClientAPI('./swordfish_api/client_api.0.17.4.1.3.dll')
+    if platform.system() == 'Windows':
+        client_api = ClientAPI('./swordfish_api/client_api.dll')
+    elif platform.system() == 'Darwin':
+        client_api = ClientAPI('./swordfish_api/libclient_api.dylib')
+    else:
+        raise Exception(f"不支持的操作系统{platform.system()}")
     is_quit = False
     trd_stream = ""
     mkt_stream = ""
