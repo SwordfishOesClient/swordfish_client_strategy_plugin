@@ -2644,10 +2644,10 @@ class OesOrdRejectT(PrintableStructure):
         ('ordTime', c_int32),
         # 订单拒绝原因
         ('ordRejReason', c_int32),
-        # 业务类型 @see eOesBusinessTypeT */ \
-        # uint8               businessType; \
-        # /** 按64位对齐的填充域 */ \
-        # uint8               __filler[3];
+        # 业务类型 @see eOesBusinessTypeT
+        ('businessType', c_uint8),
+        # 按64位对齐的填充域
+        ('__filler', c_uint8 * 3),
     ]
 
 

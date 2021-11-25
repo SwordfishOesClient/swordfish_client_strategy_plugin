@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
+from enum import Enum
 from ctypes import CDLL, CFUNCTYPE, POINTER, byref, Structure, Union
-from ctypes import c_char, c_char_p, c_uint8, c_int32, c_uint32, c_int64, c_void_p
+from ctypes import c_bool, c_char, c_char_p, c_uint8, c_int32, c_uint32, c_int64, c_void_p
 from .oes_struct import OES_INV_ACCT_ID_MAX_LEN, OES_SECURITY_ID_MAX_LEN, OesRptMsgT
 from .mds_struct import MdsMktDataSnapshotT, MdsL2TradeT, MdsL2OrderT
 
@@ -20,17 +21,42 @@ CLIENT_API_NOTIFY_LEVEL_GENERAL = 2    # 一般
 CLIENT_API_NOTIFY_LEVEL_IMPORTANT = 3  # 重要
 CLIENT_API_NOTIFY_LEVEL_URGENT = 4     # 紧急
 
+
 # 通信消息的消息类型定义
-CLIENT_API_MSG_STRATEGY_EXE_LIVING = 81925  # 策略心跳
-CLIENT_API_MSG_STRATEGY_EXE_SHUTDOWN = 81926  # 策略被动退出
-CLIENT_API_MSG_STRATEGY_EXE_QUITTED = 81927  # 策略主动退出
-CLIENT_API_MSG_CLIENT_QUIT = 81928  # 客户端退出
-CLIENT_API_MSG_STRATEGY_NOTIFY = 81929  # 策略通知
-CLIENT_API_MSG_STRATEGY_ORDER = 81930  # 策略委托
-CLIENT_API_MSG_QRY_ASSET = 81931
-CLIENT_API_MSG_QRY_HOLD = 81932
-CLIENT_API_MSG_QRY_ORD = 81933
-CLIENT_API_MSG_QRY_TRD = 81934
+class ClientApiMsgTypeT(Enum):
+    CLIENTMSG_MIN = 0
+    CLIENT_API_MSG_BASE_COUNTER_START = 0x00010000
+    CLIENT_API_MSG_BASE_COUNTER_END = CLIENT_API_MSG_BASE_COUNTER_START + 0x1000
+    CLIENT_API_MSG_BASE_MDS_START = CLIENT_API_MSG_BASE_COUNTER_END + 1
+    CLIENT_API_MSG_BASE_MDS_END = CLIENT_API_MSG_BASE_MDS_START + 0x1000
+    CLIENT_API_MSG_BASE_COUNTER_FINISHED_START = CLIENT_API_MSG_BASE_MDS_END + 1
+    CLIENT_API_MSG_BASE_COUNTER_FINISHED_END = CLIENT_API_MSG_BASE_COUNTER_FINISHED_START + 0x1000
+
+    CLIENT_API_MSG_BASE_MDS_FINISHED_START = CLIENT_API_MSG_BASE_COUNTER_FINISHED_END + 1
+    CLIENT_API_MSG_BASE_MDS_FINISHED_END = CLIENT_API_MSG_BASE_MDS_FINISHED_START + 0x1000
+
+    CLIENT_API_MSG_MERGE_MAX = CLIENT_API_MSG_BASE_MDS_FINISHED_END + 1
+    # 策略心跳
+    CLIENT_API_MSG_STRATEGY_EXE_LIVING = CLIENT_API_MSG_MERGE_MAX + 1
+    # 策略被动退出
+    CLIENT_API_MSG_STRATEGY_EXE_SHUTDOWN = CLIENT_API_MSG_STRATEGY_EXE_LIVING + 1
+    # 策略主动退出
+    CLIENT_API_MSG_STRATEGY_EXE_QUITTED = CLIENT_API_MSG_STRATEGY_EXE_SHUTDOWN + 1
+    # 客户端退出
+    CLIENT_API_MSG_CLIENT_QUIT = CLIENT_API_MSG_STRATEGY_EXE_QUITTED + 1
+
+    # 策略通知
+    CLIENT_API_MSG_STRATEGY_NOTIFY = CLIENT_API_MSG_CLIENT_QUIT + 1
+    # 策略委托
+    CLIENT_API_MSG_STRATEGY_ORDER = CLIENT_API_MSG_STRATEGY_NOTIFY + 1
+
+    CLIENT_API_MSG_QRY_ASSET = CLIENT_API_MSG_STRATEGY_ORDER + 1
+    CLIENT_API_MSG_QRY_HOLD = CLIENT_API_MSG_QRY_ASSET + 1
+    CLIENT_API_MSG_QRY_ORD = CLIENT_API_MSG_QRY_HOLD + 1
+    CLIENT_API_MSG_QRY_TRD = CLIENT_API_MSG_QRY_ORD + 1
+
+    CLIENT_API_MSG_MAX = CLIENT_API_MSG_QRY_TRD + 1
+
 
 CLIENT_STRATEGY_INFO_NAME_MAX_LEN = 64
 CLIENT_STRATEGY_INFO_PATH_MAX_LEN = 1024
@@ -145,10 +171,10 @@ class ClientAPI(object):
         self._ClientAsyncApi_Init = self.dll.ClientAsyncApi_Init
         self._ClientAsyncApi_Init.restype = c_void_p
         self._ClientAsyncApi_Init.argtypes = [c_char_p, c_char_p, c_char_p, c_char_p,
-                                              c_int32, c_int32, c_int32, c_int32,
+                                              c_int32, c_int32, c_int32, c_int32, c_int32,
                                               self._F_CLIENTAPI_ON_STREAM_MSG_T,
                                               self._F_CLIENTAPI_ON_STREAM_MSG_T,
-                                              c_uint8]
+                                              c_void_p, c_void_p, c_uint8]
 
         self._ClientAsyncApi_Run = self.dll.ClientAsyncApi_RunWithOutCallBack
         self._ClientAsyncApi_Run.restype = c_int32
@@ -160,24 +186,24 @@ class ClientAPI(object):
 
         self._ClientAsyncApi_SendOrderReq = self.dll.ClientAsyncApi_SendOrderReq
         self._ClientAsyncApi_SendOrderReq.restype = c_int32
-        self._ClientAsyncApi_SendOrderReq.argtypes = [c_void_p, c_char_p, c_char_p, c_uint8, c_uint8,
-                                                      c_int32, c_int32, c_int32, c_int32]
+        self._ClientAsyncApi_SendOrderReq.argtypes = [c_void_p, c_char_p, c_uint8, c_uint8,
+                                                      c_int32, c_int32, c_int32]
 
         self._ClientAsyncApi_SendNotifyMsg = self.dll.ClientAsyncApi_SendNotifyMsg
         self._ClientAsyncApi_SendNotifyMsg.restype = c_int32
-        self._ClientAsyncApi_SendNotifyMsg.argtypes = [c_void_p, c_char_p, c_char_p, c_uint8]
+        self._ClientAsyncApi_SendNotifyMsg.argtypes = [c_void_p, c_char_p, c_uint8]
 
         self._ClientAsyncApi_SendQuitedMsg = self.dll.ClientAsyncApi_SendQuitedMsg
         self._ClientAsyncApi_SendQuitedMsg.restype = c_int32
-        self._ClientAsyncApi_SendQuitedMsg.argtypes = [c_void_p, c_char_p]
+        self._ClientAsyncApi_SendQuitedMsg.argtypes = [c_void_p]
 
         self._ClientAsyncApi_WaitTrdMsg = self.dll.ClientAsyncApi_WaitTrdMsg
-        self._ClientAsyncApi_WaitTrdMsg.restype = c_int32
-        self._ClientAsyncApi_WaitTrdMsg.argtypes = [self._F_CLIENTAPI_ON_STREAM_MSG_T, c_int32, c_void_p]
+        self._ClientAsyncApi_WaitTrdMsg.restype = c_bool
+        self._ClientAsyncApi_WaitTrdMsg.argtypes = [POINTER(ClientApiStreamMsgT), c_int32]
 
         self._ClientAsyncApi_WaitMdMsg = self.dll.ClientAsyncApi_WaitMdMsg
-        self._ClientAsyncApi_WaitMdMsg.restype = c_int32
-        self._ClientAsyncApi_WaitMdMsg.argtypes = [self._F_CLIENTAPI_ON_STREAM_MSG_T, c_int32, c_void_p]
+        self._ClientAsyncApi_WaitMdMsg.restype = c_bool
+        self._ClientAsyncApi_WaitMdMsg.argtypes = [POINTER(ClientApiStreamMsgT), c_int32]
 
     def client_async_api_init(self, trd_stream, mkt_stream, req_stream, strategy_name, strategy_id, strategy_ord_id,
                               timeout_ms, heart_bt_int, level=CLIENT_API_LOG_LEVEL_DEBUG):
@@ -188,9 +214,12 @@ class ClientAPI(object):
                                                    c_int32(strategy_id),
                                                    c_int32(strategy_ord_id),
                                                    c_int32(timeout_ms),
+                                                   c_int32(0),
                                                    c_int32(heart_bt_int),
                                                    self._F_CLIENTAPI_ON_STREAM_MSG_T(0),
                                                    self._F_CLIENTAPI_ON_STREAM_MSG_T(0),
+                                                   c_void_p(0),
+                                                   c_void_p(0),
                                                    c_uint8(level))
         return self.async_ctx
 
@@ -200,25 +229,23 @@ class ClientAPI(object):
     def client_async_api_destory(self):
         return self._ClientAsyncApi_Destory(self.async_ctx)
 
-    def client_async_api_send_order_req(self, strategy_name, security_id, mkt_id, bs_type, strategy_id,
+    def client_async_api_send_order_req(self, security_id, mkt_id, bs_type,
                                         strategy_ord_id, ord_qty, ord_price):
-        return self._ClientAsyncApi_SendOrderReq(self.async_ctx, c_char_p(strategy_name.encode()),
-                                                 c_char_p(security_id.encode()), c_uint8(mkt_id), c_uint8(bs_type),
-                                                 c_int32(strategy_id), c_int32(strategy_ord_id), c_int32(ord_qty),
+        return self._ClientAsyncApi_SendOrderReq(self.async_ctx, c_char_p(security_id.encode()),
+                                                 c_uint8(mkt_id), c_uint8(bs_type),
+                                                 c_int32(strategy_ord_id), c_int32(ord_qty),
                                                  c_int32(ord_price))
 
-    def client_async_api_send_notify_msg(self, strategy_name, msg, msg_level):
-        return self._ClientAsyncApi_SendNotifyMsg(self.async_ctx, c_char_p(strategy_name.encode()),
+    def client_async_api_send_notify_msg(self, msg, msg_level):
+        return self._ClientAsyncApi_SendNotifyMsg(self.async_ctx,
                                                   c_char_p(msg.encode()), c_uint8(msg_level))
 
-    def client_async_api_send_quited_msg(self, strategy_name):
-        return self._ClientAsyncApi_SendQuitedMsg(self.async_ctx, c_char_p(strategy_name.encode()))
+    def client_async_api_send_quited_msg(self):
+        return self._ClientAsyncApi_SendQuitedMsg(self.async_ctx)
 
-    def client_async_api_wait_trd_msg(self, fn_on_trd_msg_callback, timeout_ms, callback_params):
-        return self._ClientAsyncApi_WaitTrdMsg(self._F_CLIENTAPI_ON_STREAM_MSG_T(fn_on_trd_msg_callback),
-                                               c_int32(timeout_ms), byref(c_int32(0)))
+    def client_async_api_wait_trd_msg(self, msg, timeout_ms):
+        return self._ClientAsyncApi_WaitTrdMsg(byref(msg), c_int32(timeout_ms))
 
-    def client_async_api_wait_md_msg(self, fn_on_md_msg_callback, timeout_ms, callback_params):
-        return self._ClientAsyncApi_WaitMdMsg(self._F_CLIENTAPI_ON_STREAM_MSG_T(fn_on_md_msg_callback),
-                                              c_int32(timeout_ms), byref(c_int32(0)))
+    def client_async_api_wait_md_msg(self, msg, timeout_ms):
+        return self._ClientAsyncApi_WaitMdMsg(byref(msg), c_int32(timeout_ms))
 
