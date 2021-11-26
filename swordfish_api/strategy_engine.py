@@ -115,7 +115,7 @@ def send_order(security_id, mkt_id, bs_type, ord_qty, ord_price):
     Engine.strategy_ord_id += 1
     return Engine.client_api.client_async_api_send_order_req(security_id, mkt_id, bs_type,
                                                              Engine.strategy_ord_id, ord_qty,
-                                                             ord_price)
+                                                             ord_price, 1)
 
 
 def send_notify_msg(msg, msg_level):

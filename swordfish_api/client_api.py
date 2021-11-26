@@ -187,7 +187,7 @@ class ClientAPI(object):
         self._ClientAsyncApi_SendOrderReq = self.dll.ClientAsyncApi_SendOrderReq
         self._ClientAsyncApi_SendOrderReq.restype = c_int32
         self._ClientAsyncApi_SendOrderReq.argtypes = [c_void_p, c_char_p, c_uint8, c_uint8,
-                                                      c_int32, c_int32, c_int32]
+                                                      c_int32, c_int32, c_int32, c_uint8]
 
         self._ClientAsyncApi_SendNotifyMsg = self.dll.ClientAsyncApi_SendNotifyMsg
         self._ClientAsyncApi_SendNotifyMsg.restype = c_int32
@@ -230,11 +230,11 @@ class ClientAPI(object):
         return self._ClientAsyncApi_Destory(self.async_ctx)
 
     def client_async_api_send_order_req(self, security_id, mkt_id, bs_type,
-                                        strategy_ord_id, ord_qty, ord_price):
+                                        strategy_ord_id, ord_qty, ord_price, is_auto_send):
         return self._ClientAsyncApi_SendOrderReq(self.async_ctx, c_char_p(security_id.encode()),
                                                  c_uint8(mkt_id), c_uint8(bs_type),
                                                  c_int32(strategy_ord_id), c_int32(ord_qty),
-                                                 c_int32(ord_price))
+                                                 c_int32(ord_price), c_uint8(is_auto_send))
 
     def client_async_api_send_notify_msg(self, msg, msg_level):
         return self._ClientAsyncApi_SendNotifyMsg(self.async_ctx,
