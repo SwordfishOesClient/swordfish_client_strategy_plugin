@@ -1,0 +1,4 @@
+macos 需要安装包
+    brew install libsodium
+编译命令
+c++ strategy_sample.cpp -I./ -I./extras/swf_oes/include -Wl,-rpath,./libs -L./libs -lclient_api.0.17.4.3.1 -o ../strategy_sample
