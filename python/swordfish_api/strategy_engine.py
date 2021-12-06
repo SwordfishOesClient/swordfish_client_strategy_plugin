@@ -34,6 +34,12 @@ def init(handle):
     Engine.cl_env_id = int(sys.argv[5])
     Engine.strategy_id = int(sys.argv[6])
     Engine.strategy_ord_id = int(sys.argv[7]) + 1
+    Engine.client_api.client_async_api_init(Engine.trd_stream, Engine.mkt_stream, Engine.req_stream,
+                                            Engine.strategy_name, Engine.strategy_id, Engine.strategy_ord_id,
+                                            1000, 1000, CLIENT_API_LOG_LEVEL_DEBUG)
+    if Engine.client_api.async_ctx is None:
+        print("ClientAsyncApi Init失败")
+        return -1
     return 0
 
 
@@ -55,7 +61,7 @@ def process_msg():
     while not Engine.is_quit:
         try:
             msg = Engine.msg_queue.get(timeout=1)
-            print(f"接收到交易消息 msg_id: {msg.msg_head.msg_id}")
+            # print(f"接收到交易消息 msg_id: {msg.msg_head.msg_id}")
             msg_id = msg.msg_head.msg_id
             if msg_id == ClientApiMsgTypeT.CLIENT_API_MSG_CLIENT_QUIT.value:
                 Engine.is_quit = True
@@ -75,13 +81,6 @@ def process_msg():
 
 
 def do():
-    Engine.client_api.client_async_api_init(Engine.trd_stream, Engine.mkt_stream, Engine.req_stream,
-                                            Engine.strategy_name, Engine.strategy_id, Engine.strategy_ord_id,
-                                            1000, 1000, CLIENT_API_LOG_LEVEL_DEBUG)
-    if Engine.client_api.async_ctx is None:
-        print("ClientAsyncApi Init失败")
-        return -1
-
     wait_trd_msg = threading.Thread(target=on_msg_callback_read_trd_stream)
     wait_md_msg = threading.Thread(target=on_msg_callback_read_md_stream)
     process_msg_thread = threading.Thread(target=process_msg)
@@ -103,6 +102,7 @@ def do():
     wait_trd_msg.join()
     wait_md_msg.join()
     process_msg_thread.join()
+    return 0
 
 
 def quit():
@@ -111,13 +111,19 @@ def quit():
     return rc
 
 
-def send_order(security_id, mkt_id, bs_type, ord_qty, ord_price):
+def send_order(security_id, mkt_id, bs_type, ord_type, ord_qty, ord_price):
     Engine.strategy_ord_id += 1
-    return Engine.client_api.client_async_api_send_order_req(security_id, mkt_id, bs_type,
-                                                             Engine.strategy_ord_id, ord_qty,
-                                                             ord_price, 1)
+    Engine.client_api.client_async_api_send_order_req(security_id, mkt_id, bs_type, ord_type,
+                                                     Engine.strategy_ord_id, ord_qty,
+                                                     ord_price, 1)
+    return Engine.strategy_ord_id
 
 
 def send_notify_msg(msg, msg_level):
     return Engine.client_api.client_async_api_send_notify_msg(msg, msg_level)
+
+
+def is_owned_by_myself(user_info):
+    return Engine.client_api.client_is_owned_by_strategy(user_info, Engine.strategy_id)
+
 

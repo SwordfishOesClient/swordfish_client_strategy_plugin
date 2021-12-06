@@ -6,7 +6,7 @@ if '.' not in sys.path:
 from swordfish_api import strategy_engine
 from swordfish_api.client_api import CLIENT_API_NOTIFY_LEVEL_GENERAL, ClientApiMsgTypeT
 from swordfish_api.mds_struct import eMdsMsgTypeT, eMdsExchangeIdT
-from swordfish_api.oes_struct import eOesMarketIdT, eOesBuySellTypeT, eOesMsgTypeT
+from swordfish_api.oes_struct import eOesMarketIdT, eOesBuySellTypeT, eOesMsgTypeT, eOesOrdTypeT
 
 
 MSG_TYPE_L1_SNAPSHOT = ClientApiMsgTypeT.CLIENT_API_MSG_BASE_MDS_START.value + \
@@ -36,7 +36,8 @@ def handle(msg):
             else:
                 mkt_id = eOesMarketIdT.OES_MKT_SZ_ASHARE.value
             rc = strategy_engine.send_order(data.union.stock.SecurityID.decode(), mkt_id,
-                                            eOesBuySellTypeT.OES_BS_TYPE_BUY.value, 100,
+                                            eOesBuySellTypeT.OES_BS_TYPE_BUY.value,
+                                            eOesOrdTypeT.OES_ORD_TYPE_LMT.value, 100,
                                             data.union.stock.TradePx)
             print(f"发送委托信息 rc: {rc}")
     elif msg_id == MSG_TYPE_ORDER_INSERT:
@@ -45,8 +46,8 @@ def handle(msg):
 
 
 def main():
-    strategy_engine.init(handle)
-    strategy_engine.do()
+    if strategy_engine.init(handle) == 0:
+        strategy_engine.do()
 
 
 if __name__ == '__main__':

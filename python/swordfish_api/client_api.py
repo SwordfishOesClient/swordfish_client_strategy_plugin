@@ -186,7 +186,7 @@ class ClientAPI(object):
 
         self._ClientAsyncApi_SendOrderReq = self.dll.ClientAsyncApi_SendOrderReq
         self._ClientAsyncApi_SendOrderReq.restype = c_int32
-        self._ClientAsyncApi_SendOrderReq.argtypes = [c_void_p, c_char_p, c_uint8, c_uint8,
+        self._ClientAsyncApi_SendOrderReq.argtypes = [c_void_p, c_char_p, c_uint8, c_uint8, c_uint8,
                                                       c_int32, c_int32, c_int32, c_uint8]
 
         self._ClientAsyncApi_SendNotifyMsg = self.dll.ClientAsyncApi_SendNotifyMsg
@@ -204,6 +204,10 @@ class ClientAPI(object):
         self._ClientAsyncApi_WaitMdMsg = self.dll.ClientAsyncApi_WaitMdMsg
         self._ClientAsyncApi_WaitMdMsg.restype = c_bool
         self._ClientAsyncApi_WaitMdMsg.argtypes = [POINTER(ClientApiStreamMsgT), c_int32]
+
+        self._ClientAsyncApi_IsOwnedByStrategy = self.dll.ClientAsyncApi_IsOwnedByStrategy
+        self._ClientAsyncApi_IsOwnedByStrategy.restype = c_bool
+        self._ClientAsyncApi_IsOwnedByStrategy.argtypes = [c_int64, c_int32]
 
     def client_async_api_init(self, trd_stream, mkt_stream, req_stream, strategy_name, strategy_id, strategy_ord_id,
                               timeout_ms, heart_bt_int, level=CLIENT_API_LOG_LEVEL_DEBUG):
@@ -229,10 +233,10 @@ class ClientAPI(object):
     def client_async_api_destory(self):
         return self._ClientAsyncApi_Destory(self.async_ctx)
 
-    def client_async_api_send_order_req(self, security_id, mkt_id, bs_type,
+    def client_async_api_send_order_req(self, security_id, mkt_id, bs_type, ord_type,
                                         strategy_ord_id, ord_qty, ord_price, is_auto_send):
         return self._ClientAsyncApi_SendOrderReq(self.async_ctx, c_char_p(security_id.encode()),
-                                                 c_uint8(mkt_id), c_uint8(bs_type),
+                                                 c_uint8(mkt_id), c_uint8(bs_type), c_uint8(ord_type),
                                                  c_int32(strategy_ord_id), c_int32(ord_qty),
                                                  c_int32(ord_price), c_uint8(is_auto_send))
 
@@ -248,4 +252,7 @@ class ClientAPI(object):
 
     def client_async_api_wait_md_msg(self, msg, timeout_ms):
         return self._ClientAsyncApi_WaitMdMsg(byref(msg), c_int32(timeout_ms))
+
+    def client_is_owned_by_strategy(self, user_info, strategy_id):
+        return self._ClientAsyncApi_IsOwnedByStrategy(c_int64(user_info), c_int32(strategy_id))
 
