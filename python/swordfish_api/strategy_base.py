@@ -63,42 +63,42 @@ def parse_l2_order(msg):
 
 
 def parse_business_reject(msg):
-    tmp = msg.trd_rpt
+    tmp = msg.msg_body.trd_rpt
     head = tmp.rptHead
     body = tmp.rptBody.ordRejectRsp
     return head, body
 
 
 def parse_order_insert(msg):
-    tmp = msg.trd_rpt
+    tmp = msg.msg_body.trd_rpt
     head = tmp.rptHead
     body = tmp.rptBody.ordInsertRsp
     return head, body
 
 
 def parse_order_report(msg):
-    tmp = msg.trd_rpt
+    tmp = msg.msg_body.trd_rpt
     head = tmp.rptHead
     body = tmp.rptBody.ordCnfm
     return head, body
 
 
 def parse_trade_report(msg):
-    tmp = msg.trd_rpt
+    tmp = msg.msg_body.trd_rpt
     head = tmp.rptHead
     body = tmp.rptBody.trdCnfm
     return head, body
 
 
 def parse_cash_asset_variation(msg):
-    tmp = msg.trd_rpt
+    tmp = msg.msg_body.trd_rpt
     head = tmp.rptHead
     body = tmp.rptBody.cashAssetRpt
     return head, body
 
 
 def parse_stock_holding_variation(msg):
-    tmp = msg.trd_rpt
+    tmp = msg.msg_body.trd_rpt
     head = tmp.rptHead
     body = tmp.rptBody.cashAssetRpt
     return head, body
