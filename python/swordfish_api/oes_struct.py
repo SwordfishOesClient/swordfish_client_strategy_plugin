@@ -165,13 +165,13 @@ class eOesExchangeIdT(Enum):
     OES_EXCH_UNDEFINE = 0  # 未定义的交易所代码
     OES_EXCH_SSE = 1  # 上海证券交易所
     OES_EXCH_SZSE = 2  # 深圳证券交易所
-    __MAX_OES_EXCH = 3
+    _MAX_OES_EXCH = 3
     # 上海证券交易所 @deprecated 已过时, 请使用 OES_EXCH_SSE
     OES_EXCHANGE_TYPE_SSE = OES_EXCH_SSE
     # 深圳证券交易所 @deprecated 已过时, 请使用 OES_EXCH_SZSE
     OES_EXCHANGE_TYPE_SZSE = OES_EXCH_SZSE
-    __OES_EXCH_ID_MAX_ALIGNED4 = 4  # 交易所代码最大值 (按4字节对齐的大小)
-    __OES_EXCH_ID_MAX_ALIGNED8 = 8  # 交易所代码最大值 (按8字节对齐的大小)
+    _OES_EXCH_ID_MAX_ALIGNED4 = 4  # 交易所代码最大值 (按4字节对齐的大小)
+    _OES_EXCH_ID_MAX_ALIGNED8 = 8  # 交易所代码最大值 (按8字节对齐的大小)
 
 
 # 市场类型定义
@@ -181,11 +181,11 @@ class eOesMarketIdT(Enum):
     OES_MKT_SZ_ASHARE = 2  # 深圳A股
     OES_MKT_SH_OPTION = 3  # 上海期权
     OES_MKT_SZ_OPTION = 4  # 深圳期权
-    __OES_MKT_ID_MAX = 5  # 市场类型最大值
-    __OES_MKT_ID_MAX_ALIGNED8 = 8  # 市场类型最大值 (按8字节对齐的大小)
+    _OES_MKT_ID_MAX = 5  # 市场类型最大值
+    _OES_MKT_ID_MAX_ALIGNED8 = 8  # 市场类型最大值 (按8字节对齐的大小)
     # 扩展的外部市场定义 (仅用于查询)
     OES_MKT_EXT_HK = 11  # 港股, 仅用于跨沪深港ETF的成分股查询
-    __OES_MKT_EXT_MAX = 12  # 扩展市场类型的最大值
+    _OES_MKT_EXT_MAX = 12  # 扩展市场类型的最大值
     # 未定义的市场类型 @deprecated 已过时, 请使用 OES_MKT_UNDEFINE
     OES_MKT_ID_UNDEFINE = OES_MKT_UNDEFINE
     # 上海A股 @deprecated 已过时, 请使用 OES_MKT_SH_ASHARE
@@ -205,8 +205,8 @@ class eOesPlatformIdT(Enum):
     OES_PLATFORM_DERIVATIVE_AUCTION = 4  # 衍生品集中竞价交易平台
     OES_PLATFORM_INTERNATIONAL_MARKET = 5  # 国际市场互联平台 (暂未对接)
     OES_PLATFORM_BOND_TRADING = 6  # 新债券交易平台
-    __OES_PLATFORM_ID_MAX = 7  # 平台号的最大值
-    __OES_PLATFORM_ID_MAX_ALIGNED8 = 8  # 平台号的最大值 (按8字节对齐的大小)
+    _OES_PLATFORM_ID_MAX = 7  # 平台号的最大值
+    _OES_PLATFORM_ID_MAX_ALIGNED8 = 8  # 平台号的最大值 (按8字节对齐的大小)
 
 
 # 市场状态定义
@@ -217,7 +217,7 @@ class eOesMarketStateT(Enum):
     OES_MKT_STATE_OPEN = 3  # 开放 (Open)
     OES_MKT_STATE_HALT = 4  # 暂停开放 (Halt)
     OES_MKT_STATE_CLOSE = 5  # 关闭 (Close)
-    __OES_MKT_STATE_MAX = 6  # 市场状态最大值
+    _OES_MKT_STATE_MAX = 6  # 市场状态最大值
 
 
 # OES 竞价时段定义
@@ -225,7 +225,7 @@ class eOesTrdSessTypeT(Enum):
     OES_TRD_SESS_TYPE_O = 0  # 开盘集合竞价时段
     OES_TRD_SESS_TYPE_T = 1  # 连续竞价时段
     OES_TRD_SESS_TYPE_C = 2  # 收盘集合竞价
-    __OES_TRD_SESS_TYPE_MAX = 3  # 时段类型最大值 (时段类型数量)
+    _OES_TRD_SESS_TYPE_MAX = 3  # 时段类型最大值 (时段类型数量)
 
 
 # 产品类型 (high-level category)
@@ -236,7 +236,7 @@ class eOesProductTypeT(Enum):
     OES_PRODUCT_TYPE_IPO = 3  # 新股认购
     OES_PRODUCT_TYPE_ALLOTMENT = 4  # 配股认购
     OES_PRODUCT_TYPE_OPTION = 5  # 期权
-    __OES_PRODUCT_TYPE_MAX = 6  # 产品类型最大值
+    _OES_PRODUCT_TYPE_MAX = 6  # 产品类型最大值
 
 
 # 证券类别
@@ -248,15 +248,15 @@ class eOesSecurityTypeT(Enum):
     OES_SECURITY_TYPE_FUND = 4  # 基金
     OES_SECURITY_TYPE_OPTION = 5  # 期权
     OES_SECURITY_TYPE_MGR = 9  # 管理类
-    __OES_SECURITY_TYPE_MAX = 10  # 证券类型最大值
-    __OES_SECURITY_TYPE_NOT_SUPPORT = 100  # 不支持的证券类别
-    __OES_SECURITY_TYPE_VIRTUAL = 101  # 虚拟证券的证券类别
+    _OES_SECURITY_TYPE_MAX = 10  # 证券类型最大值
+    _OES_SECURITY_TYPE_NOT_SUPPORT = 100  # 不支持的证券类别
+    _OES_SECURITY_TYPE_VIRTUAL = 101  # 虚拟证券的证券类别
 
 
 # 证券子类别
 class eOesSubSecurityTypeT(Enum):
     OES_SUB_SECURITY_TYPE_UNDEFINE = 0  # 未定义的证券子类型
-    __OES_SUB_SECURITY_TYPE_STOCK_MIN = 10  # 股票类证券子类型最小值
+    _OES_SUB_SECURITY_TYPE_STOCK_MIN = 10  # 股票类证券子类型最小值
     OES_SUB_SECURITY_TYPE_STOCK_ASH = 11  # A股股票, A Share
     OES_SUB_SECURITY_TYPE_STOCK_SME = 12  # 中小板股票, Small & Medium Enterprise (SME) Board
     OES_SUB_SECURITY_TYPE_STOCK_GEM = 13  # 创业板股票, Growth Enterprise Market (GEM)
@@ -265,8 +265,8 @@ class eOesSubSecurityTypeT(Enum):
     OES_SUB_SECURITY_TYPE_STOCK_CDR = 16  # 存托凭证, Chinese Depository Receipt (CDR)
     OES_SUB_SECURITY_TYPE_STOCK_HLTCDR = 17  # 沪伦通CDR本地交易业务产品
     OES_SUB_SECURITY_TYPE_STOCK_GEMCDR = 18  # 创业板存托凭证
-    __OES_SUB_SECURITY_TYPE_STOCK_MAX = 19  # 股票类证券子类型最大值
-    __OES_SUB_SECURITY_TYPE_BOND_MIN = 20  # 债券类证券子类型最小值
+    _OES_SUB_SECURITY_TYPE_STOCK_MAX = 19  # 股票类证券子类型最大值
+    _OES_SUB_SECURITY_TYPE_BOND_MIN = 20  # 债券类证券子类型最小值
     OES_SUB_SECURITY_TYPE_BOND_GBF = 21  # 国债 (国债/地方债/政策性金融债/上交所政府支持债)
     OES_SUB_SECURITY_TYPE_BOND_CBF = 22  # 企业债 (深交所企业债/上交所存量企业债)
     OES_SUB_SECURITY_TYPE_BOND_CPF = 23  # 公司债 (公司债/上交所企业债/上交所存量政府支持债)
@@ -275,8 +275,8 @@ class eOesSubSecurityTypeT(Enum):
     OES_SUB_SECURITY_TYPE_BOND_PRP = 26  # 通用质押式回购
     OES_SUB_SECURITY_TYPE_BOND_STD = 27  # 债券标准券
     OES_SUB_SECURITY_TYPE_BOND_EXG = 28  # 可交换债券
-    __OES_SUB_SECURITY_TYPE_BOND_MAX = 29  # 债券类证券子类型最大值
-    __OES_SUB_SECURITY_TYPE_ETF_MIN = 30  # ETF类证券子类型最小值
+    _OES_SUB_SECURITY_TYPE_BOND_MAX = 29  # 债券类证券子类型最大值
+    _OES_SUB_SECURITY_TYPE_ETF_MIN = 30  # ETF类证券子类型最小值
     OES_SUB_SECURITY_TYPE_ETF_SINGLE_MKT = 31  # 单市场股票ETF
     OES_SUB_SECURITY_TYPE_ETF_CROSS_MKT = 32  # 跨市场股票ETF
     OES_SUB_SECURITY_TYPE_ETF_BOND = 33  # 实物债券ETF
@@ -284,27 +284,27 @@ class eOesSubSecurityTypeT(Enum):
     OES_SUB_SECURITY_TYPE_ETF_CROSS_BORDER = 35  # 跨境ETF
     OES_SUB_SECURITY_TYPE_ETF_GOLD = 36  # 黄金ETF
     OES_SUB_SECURITY_TYPE_ETF_COMMODITY_FUTURES = 37  # 商品期货ETF
-    __OES_SUB_SECURITY_TYPE_ETF_MAX = 38  # ETF类证券子类型最大值
-    __OES_SUB_SECURITY_TYPE_FUND_MIN = 40  # 基金类证券子类型最小值
+    _OES_SUB_SECURITY_TYPE_ETF_MAX = 38  # ETF类证券子类型最大值
+    _OES_SUB_SECURITY_TYPE_FUND_MIN = 40  # 基金类证券子类型最小值
     OES_SUB_SECURITY_TYPE_FUND_LOF = 41  # LOF基金
     OES_SUB_SECURITY_TYPE_FUND_CEF = 42  # 封闭式基金, Close-end Fund
     OES_SUB_SECURITY_TYPE_FUND_OEF = 43  # 开放式基金, Open-end Fund
     OES_SUB_SECURITY_TYPE_FUND_GRADED = 44  # 分级子基金
     OES_SUB_SECURITY_TYPE_FUND_REITS = 45  # 基础设施基金
-    __OES_SUB_SECURITY_TYPE_FUND_MAX = 46  # 基金类证券子类型最大值
-    __OES_SUB_SECURITY_TYPE_OPTION_MIN = 50  # 期权类证券子类型最小值
+    _OES_SUB_SECURITY_TYPE_FUND_MAX = 46  # 基金类证券子类型最大值
+    _OES_SUB_SECURITY_TYPE_OPTION_MIN = 50  # 期权类证券子类型最小值
     OES_SUB_SECURITY_TYPE_OPTION_ETF = 51  # ETF期权
     OES_SUB_SECURITY_TYPE_OPTION_STOCK = 52  # 个股期权
-    __OES_SUB_SECURITY_TYPE_OPTION_MAX = 53  # 期权类证券子类型最大值
-    __OES_SUB_SECURITY_TYPE_MGR_MIN = 90  # 管理类证券子类型最小值
+    _OES_SUB_SECURITY_TYPE_OPTION_MAX = 53  # 期权类证券子类型最大值
+    _OES_SUB_SECURITY_TYPE_MGR_MIN = 90  # 管理类证券子类型最小值
     OES_SUB_SECURITY_TYPE_MGR_SSE_DESIGNATION = 91  # 指定登记
     OES_SUB_SECURITY_TYPE_MGR_SSE_RECALL_DESIGNATION = 92  # 指定撤消
     OES_SUB_SECURITY_TYPE_MGR_SZSE_DESIGNATION = 93  # 托管注册
     OES_SUB_SECURITY_TYPE_MGR_SZSE_CANCEL_DESIGNATION = 94  # 托管撤消
     OES_SUB_SECURITY_TYPE_MGR_OPT_EXERCISE_TRANSFER = 95  # 期权转处置
     OES_SUB_SECURITY_TYPE_MGR_CRD_COLLATERAL_TRANSFER = 96  # 信用担保证券划转
-    __OES_SUB_SECURITY_TYPE_MGR_MAX = 97  # 管理类证券子类型最大值
-    __OES_SUB_SECURITY_TYPE_MAX = __OES_SUB_SECURITY_TYPE_MGR_MAX
+    _OES_SUB_SECURITY_TYPE_MGR_MAX = 97  # 管理类证券子类型最大值
+    _OES_SUB_SECURITY_TYPE_MAX = _OES_SUB_SECURITY_TYPE_MGR_MAX
 
 
 # 证券级别
@@ -317,7 +317,7 @@ class eOesSecurityLevelT(Enum):
     OES_SECURITY_LEVEL_T = 5  # 退市转让证券
     OES_SECURITY_LEVEL_U = 6  # 优先股
     OES_SECURITY_LEVEL_B = 7  # B级基金
-    __OES_SECURITY_LEVEL_MAX = 8
+    _OES_SECURITY_LEVEL_MAX = 8
 
 
 # 证券风险等级
@@ -329,7 +329,7 @@ class eOesSecurityRiskLevelT(Enum):
     OES_RISK_LEVEL_MEDIUM_HIGH = 4  # 中高风险
     OES_RISK_LEVEL_HIGH = 5  # 高风险
     OES_RISK_LEVEL_VERY_HIGH = 6  # 极高风险
-    __OES_RISK_LEVEL_MAX = 7
+    _OES_RISK_LEVEL_MAX = 7
 
 
 # 证券禁止交易标识
@@ -338,7 +338,7 @@ class eOesSecuritySuspFlagT(Enum):
     OES_SUSPFLAG_EXCHANGE = 0x1  # 因证券连续停牌而禁止交易
     OES_SUSPFLAG_BROKER = 0x2  # 因券商设置而禁止交易
     OES_SUSPFLAG_MARKET_CLOSE = 0x4  # 因闭市而禁止交易
-    __OES_SUSPFLAG_OTHER = 5
+    _OES_SUSPFLAG_OTHER = 5
 
 
 # 证券状态的枚举值定义
@@ -384,7 +384,7 @@ class eOesLotTypeT(Enum):
     OES_LOT_TYPE_FAILED = 1  # 配号失败记录
     OES_LOT_TYPE_ASSIGNMENT = 2  # 配号成功记录
     OES_LOT_TYPE_LOTTERY = 3  # 中签记录
-    __OES_LOT_TYPE_MAX = 4  # 中签、配号记录类型最大值
+    _OES_LOT_TYPE_MAX = 4  # 中签、配号记录类型最大值
 
 
 # OES配号失败原因
@@ -417,23 +417,23 @@ class eOesOrdStatusT(Enum):
     OES_ORD_STATUS_NEW = 1  # 新订单 (风控通过)
     OES_ORD_STATUS_DECLARED = 2  # 已确认
     OES_ORD_STATUS_PARTIALLY_FILLED = 3  # 部分成交
-    __OES_ORD_STATUS_FINAL_MIN = 4  # 订单终结状态判断标志
+    _OES_ORD_STATUS_FINAL_MIN = 4  # 订单终结状态判断标志
     OES_ORD_STATUS_CANCEL_DONE = 5  # 撤单指令已执行 (适用于撤单请求, 并做为撤单请求的终结状态)
     OES_ORD_STATUS_PARTIALLY_CANCELED = 6  # 部分撤单 (部分成交, 剩余撤单)
     OES_ORD_STATUS_CANCELED = 7  # 已撤单
     OES_ORD_STATUS_FILLED = 8  # 已成交 (全部成交)
-    __OES_ORD_STATUS_VALID_MAX = 9
-    __OES_ORD_STATUS_INVALID_MIN = 10  # 废单判断标志 (委托状态大于该值的全部为废单)
+    _OES_ORD_STATUS_VALID_MAX = 9
+    _OES_ORD_STATUS_INVALID_MIN = 10  # 废单判断标志 (委托状态大于该值的全部为废单)
     OES_ORD_STATUS_INVALID_OES = 11  # OES内部废单
     OES_ORD_STATUS_INVALID_EXCHANGE = 12  # 交易所后台废单
     OES_ORD_STATUS_INVALID_TGW_REJECT = 13  # 交易所前台废单 (因订单不合法而被交易网关拒绝)
     OES_ORD_STATUS_INVALID_TGW_COMM = 14  # 交易所通信故障 (仅适用于上交所)
     OES_ORD_STATUS_INVALID_TGW_TRY_AGAIN = 18  # 因平台尚未开放(非交易时段)而被交易网关拒绝 (@note 前端需要关注该状态, 可以根据需要尝试重新发送委托请求)
-    __OES_ORD_STATUS_INVALID_MAX = 19
+    _OES_ORD_STATUS_INVALID_MAX = 19
     # 以下订单状态定义已废弃, 只是为了兼容之前的版本而暂时保留
     OES_ORD_STATUS_NORMAL = OES_ORD_STATUS_NEW
     OES_ORD_STATUS_DECLARING = OES_ORD_STATUS_NEW
-    __OES_ORD_STATUS_INVALID_OES = OES_ORD_STATUS_INVALID_OES
+    _OES_ORD_STATUS_INVALID_OES = OES_ORD_STATUS_INVALID_OES
     # 上证后台判断该订单为废单 @deprecated 已废弃
     OES_ORD_STATUS_INVALID_SH_F = OES_ORD_STATUS_INVALID_EXCHANGE
     # 上证前台判断该订单为废单 @deprecated 已废弃
@@ -491,19 +491,19 @@ class eOesOrdStatusT(Enum):
 class eOesOrdTypeT(Enum):
     OES_ORD_TYPE_LMT = 0  # 限价委托
     OES_ORD_TYPE_LMT_FOK = 1  # 限价全部成交或全部撤销委托
-    __OES_ORD_TYPE_LMT_MAX = 2
+    _OES_ORD_TYPE_LMT_MAX = 2
     OES_ORD_TYPE_MTL_BEST_5 = 10  # 最优五档即时成交剩余转限价委托
     OES_ORD_TYPE_MTL_BEST = 11  # 对手方最优价格委托
     OES_ORD_TYPE_MTL_SAMEPARTY_BEST = 12  # 本方最优价格委托
     OES_ORD_TYPE_MTL = 13  # 市价剩余转限价委托
-    __OES_ORD_TYPE_MTL_MAX = 14
+    _OES_ORD_TYPE_MTL_MAX = 14
     OES_ORD_TYPE_FAK_BEST_5 = 20  # 最优五档即时成交剩余撤销委托
     OES_ORD_TYPE_FAK = 21  # 即时成交剩余撤销委托
-    __OES_ORD_TYPE_FAK_MAX = 22
+    _OES_ORD_TYPE_FAK_MAX = 22
     OES_ORD_TYPE_FOK = 30  # 市价全部成交或全部撤销委托
-    __OES_ORD_TYPE_FOK_MAX = 31
-    __OES_ORD_TYPE_MAX = 32
-    __OES_ORD_TYPE_MAX_ALIGNED = 32  # 委托类型最大值 (按8字节对齐的大小)
+    _OES_ORD_TYPE_FOK_MAX = 31
+    _OES_ORD_TYPE_MAX = 32
+    _OES_ORD_TYPE_MAX_ALIGNED = 32  # 委托类型最大值 (按8字节对齐的大小)
 
 
 # 上证委托类型
@@ -583,9 +583,9 @@ class eOesBuySellTypeT(Enum):
     OES_BS_TYPE_REVERSE_REPO = 6  # 质押式逆回购
     OES_BS_TYPE_SUBSCRIPTION = 7  # 新股/可转债/可交换债认购
     OES_BS_TYPE_ALLOTMENT = 8  # 配股/配债认购
-    __OES_BS_TYPE_MAX_SPOT = 9  # 现货交易的买卖类型最大值
+    _OES_BS_TYPE_MAX_SPOT = 9  # 现货交易的买卖类型最大值
     # -------------------------
-    __OES_BS_TYPE_MIN_OPTION = 10  # 期权交易的买卖类型最小值
+    _OES_BS_TYPE_MIN_OPTION = 10  # 期权交易的买卖类型最小值
     OES_BS_TYPE_BUY_OPEN = 11  # 期权买入开仓
     OES_BS_TYPE_SELL_CLOSE = 12  # 期权卖出平仓
     OES_BS_TYPE_SELL_OPEN = 13  # 期权卖出开仓
@@ -595,11 +595,11 @@ class eOesBuySellTypeT(Enum):
     OES_BS_TYPE_OPTION_EXERCISE = 17  # 期权行权
     OES_BS_TYPE_UNDERLYING_FREEZE = 18  # 期权标的锁定
     OES_BS_TYPE_UNDERLYING_UNFREEZE = 19  # 期权标的解锁
-    __OES_BS_TYPE_MAX_OPTION = 20  # 期权交易的买卖类型最大值
+    _OES_BS_TYPE_MAX_OPTION = 20  # 期权交易的买卖类型最大值
     # -------------------------
     OES_BS_TYPE_CANCEL = 30  # 撤单
     # -------------------------
-    __OES_BS_TYPE_MIN_CREDIT = 30  # 信用交易特有的买卖类型最小值
+    _OES_BS_TYPE_MIN_CREDIT = 30  # 信用交易特有的买卖类型最小值
     # 信用担保品买入
     OES_BS_TYPE_COLLATERAL_BUY = OES_BS_TYPE_BUY
     # 信用担保品卖出
@@ -611,9 +611,9 @@ class eOesBuySellTypeT(Enum):
     OES_BS_TYPE_SHORT_SELL = 35  # 信用融券卖出
     OES_BS_TYPE_REPAY_STOCK_BY_BUY = 36  # 信用买券还券
     OES_BS_TYPE_REPAY_STOCK_DIRECT = 37  # 信用直接还券
-    __OES_BS_TYPE_MAX_CREDIT = 38  # 信用交易特有的买卖类型最大值
-    __OES_BS_TYPE_MAX_TRADING = 39  # 对外开放的交易类业务的买卖类型最大值
-    __OES_BS_TYPE_MAX_TRADING_ALIGNED8 = 40  # 对外开放的交易类业务的买卖类型最大值 (按8字节对齐的大小)
+    _OES_BS_TYPE_MAX_CREDIT = 38  # 信用交易特有的买卖类型最大值
+    _OES_BS_TYPE_MAX_TRADING = 39  # 对外开放的交易类业务的买卖类型最大值
+    _OES_BS_TYPE_MAX_TRADING_ALIGNED8 = 40  # 对外开放的交易类业务的买卖类型最大值 (按8字节对齐的大小)
     # -------------------------
     # 仅用于兼容之前版本的质押式逆回购, 不可用于‘信用融券卖出’交易
     OES_BS_TYPE_CREDIT_SELL = OES_BS_TYPE_REVERSE_REPO
@@ -637,17 +637,17 @@ class eOesBuySellTypeT(Enum):
 class eOesOrdDirT(Enum):
     OES_ORD_DIR_BUY = 0  # 买
     OES_ORD_DIR_SELL = 1  # 卖
-    __OES_ORD_DIR_MAX = 2  # 买卖方向最大值
+    _OES_ORD_DIR_MAX = 2  # 买卖方向最大值
 
 
 # 委托强制标志
 class eOesOrdMandatoryFlagT(Enum):
     OES_ORD_MANDATORY_FLAG_NONE = 0  # 无强制标志
     OES_ORD_MANDATORY_FLAG_DELEGATE = 1  # 代客下单标志
-    __OES_ORD_MANDATORY_FLAG_MEMBER_MIN = 10  # 会员管理委托的最小值
+    _OES_ORD_MANDATORY_FLAG_MEMBER_MIN = 10  # 会员管理委托的最小值
     OES_ORD_MANDATORY_FLAG_LIQUDATION = 11  # 强制平仓标志
     OES_ORD_MANDATORY_FLAG_MANAGEMENT = 12  # 管理指令标志
-    __OES_ORD_MANDATORY_FLAG_MAX = 13  # 委托强制标志的最大值
+    _OES_ORD_MANDATORY_FLAG_MAX = 13  # 委托强制标志的最大值
 
 
 # 成交回报记录的成交类型
@@ -665,18 +665,18 @@ class eOesTrdCnfmTypeT(Enum):
     OES_TRDCNFM_TYPE_ETF_CMPOENT = 2  # ETF 成份股记录
     OES_TRDCNFM_TYPE_ETF_CASH = 3  # ETF 资金记录
     OES_TRDCNFM_TYPE_ETF_LAST = 4  # ETF 一级市场记录
-    __OES_TRDCNFM_TYPE_ETF_MAX = 5
+    _OES_TRDCNFM_TYPE_ETF_MAX = 5
     OES_TRDCNFM_TYPE_OPT_QP1 = 11  # OPT 交易所保证金强制平仓
     OES_TRDCNFM_TYPE_OPT_CV1 = 12  # OPT 交易所备兑强制平仓
-    __OES_TRDCNFM_TYPE_OPT_MAX = 13
-    __OES_TRDCNFM_TYPE_MAX = __OES_TRDCNFM_TYPE_OPT_MAX
+    _OES_TRDCNFM_TYPE_OPT_MAX = 13
+    _OES_TRDCNFM_TYPE_MAX = _OES_TRDCNFM_TYPE_OPT_MAX
     # 以下成交类型定义即将被废弃
     OES_ETF_TRDCNFM_TYPE_NONE = OES_TRDCNFM_TYPE_NORMAL
     OES_ETF_TRDCNFM_TYPE_ETF_FIRST = OES_TRDCNFM_TYPE_ETF_FIRST
     OES_ETF_TRDCNFM_TYPE_CMPOENT = OES_TRDCNFM_TYPE_ETF_CMPOENT
     OES_ETF_TRDCNFM_TYPE_CASH = OES_TRDCNFM_TYPE_ETF_CASH
     OES_ETF_TRDCNFM_TYPE_ETF_LAST = OES_TRDCNFM_TYPE_ETF_LAST
-    __OES_ETF_TRDCNFM_TYPE_MAX = __OES_TRDCNFM_TYPE_ETF_MAX
+    _OES_ETF_TRDCNFM_TYPE_MAX = _OES_TRDCNFM_TYPE_ETF_MAX
 
 
 # ETF成份证券现金替代标志
@@ -702,7 +702,7 @@ class eOesExecTypeT(Enum):
     OES_EXECTYPE_REJECT = 5  # 拒绝 (OES拒绝/交易所废单/出入金主柜台拒绝)
     OES_EXECTYPE_TRADE = 6  # 成交 (成交回报)
     OES_EXECTYPE_REPAY = 7  # 归还 (融资融券业务的合约归还回报)
-    __OES_EXECTYPE_MAX = 8  # 执行类型最大值
+    _OES_EXECTYPE_MAX = 8  # 执行类型最大值
 
 
 # 货币类型
@@ -710,12 +710,12 @@ class eOesCurrTypeT(Enum):
     OES_CURR_TYPE_RMB = 0  # 人民币
     OES_CURR_TYPE_HKD = 1  # 港币
     OES_CURR_TYPE_USD = 2  # 美元
-    __OES_CURR_TYPE_MAX = 3  # 货币种类最大值
+    _OES_CURR_TYPE_MAX = 3  # 货币种类最大值
 
 
 # 费用类型标识符
 class eOesFeeTypeT(Enum):
-    __OES_FEE_TYPE_UNDEFINE = 0  # 未定义的费用类型
+    _OES_FEE_TYPE_UNDEFINE = 0  # 未定义的费用类型
     OES_FEE_TYPE_EXCHANGE_STAMP = 0x1  # 交易所固定费用-印花税
     OES_FEE_TYPE_EXCHANGE_TRANSFER = 0x2  # 交易所固定费用-过户费
     OES_FEE_TYPE_EXCHANGE_SETTLEMENT = 0x3  # 交易所固定费用-结算费
@@ -723,7 +723,7 @@ class eOesFeeTypeT(Enum):
     OES_FEE_TYPE_EXCHANGE_EXCHANGE = 0x5  # 交易所固定费用-经手费
     OES_FEE_TYPE_EXCHANGE_ADMINFER = 0x6  # 交易所固定费用-证管费
     OES_FEE_TYPE_EXCHANGE_OTHER = 0x7  # 交易所固定费用-其他费
-    __OES_FEE_TYPE_EXCHANGE_MAX = 8  # 交易所固定费用最大值
+    _OES_FEE_TYPE_EXCHANGE_MAX = 8  # 交易所固定费用最大值
     OES_FEE_TYPE_BROKER_BACK_END = 0x11  # 券商佣金-后台费用
     OES_FEE_TYPE_BROKER_CREDIT_INTEREST = 0x21  # 券商息费-融资融券息费
 
@@ -747,7 +747,7 @@ class eOesFundTrsfTypeT(Enum):
     OES_FUND_TRSF_TYPE_OES_COUNTER = 1  # OES和主柜之间划拨资金
     OES_FUND_TRSF_TYPE_COUNTER_BANK = 2  # 主柜和银行之间转账
     OES_FUND_TRSF_TYPE_OES_TO_OES = 3  # 沪深OES之间的内部资金划拨
-    __OES_FUND_TRSF_TYPE_MAX = 4  # 出入金转账类型最大值
+    _OES_FUND_TRSF_TYPE_MAX = 4  # 出入金转账类型最大值
 
 
 # 出入金委托状态
@@ -756,10 +756,10 @@ class eOesFundTrsfStatusT(Enum):
     OES_FUND_TRSF_STS_DECLARED = 1  # 已上报
     OES_FUND_TRSF_STS_WAIT_DONE = 2  # 主柜处理完成, 等待事务结束
     OES_FUND_TRSF_STS_DONE = 3  # 出入金处理完成
-    __OES_FUND_TRSF_STS_ROLLBACK_MIN = 5  # 废单判断标志
+    _OES_FUND_TRSF_STS_ROLLBACK_MIN = 5  # 废单判断标志
     OES_FUND_TRSF_STS_UNDECLARED_ROLLBACK = 6  # 待回滚(未上报前)
     OES_FUND_TRSF_STS_DECLARED_ROLLBACK = 7  # 待回滚(已上报后)
-    __OES_FUND_TRSF_STS_INVALID_MIN = 10  # 废单判断标志
+    _OES_FUND_TRSF_STS_INVALID_MIN = 10  # 废单判断标志
     OES_FUND_TRSF_STS_INVALID_OES = 11  # OES内部判断为废单
     OES_FUND_TRSF_STS_INVALID_COUNTER = 12  # 主柜判断为废单
     OES_FUND_TRSF_STS_SUSPENDED = 13  # 挂起状态 (主柜的出入金执行状态未知, 待人工干预处理)
@@ -771,7 +771,7 @@ class eOesFundTrsfSourceTypeT(Enum):
     OES_FUND_TRSF_SOURCE_CUST = 1  # 客户发起
     OES_FUND_TRSF_SOURCE_TIMER = 2  # 系统内部定时任务发起
     OES_FUND_TRSF_SOURCE_COLO_PEER = 3  # 两地交易的对端结点发起
-    __OES_FUND_TRSF_SOURCE_MAX = 4
+    _OES_FUND_TRSF_SOURCE_MAX = 4
 
 
 # 业务类型定义
@@ -804,9 +804,9 @@ class eOesAcctTypeT(Enum):
     OES_ACCT_TYPE_NORMAL = 0  # 普通账户
     OES_ACCT_TYPE_CREDIT = 1  # 信用账户
     OES_ACCT_TYPE_OPTION = 2  # 衍生品账户
-    __OES_ACCT_TYPE_MAX = 3  # 账户类别最大值
-    __OES_ACCT_TYPE_MAX_ALIGNED4 = 4  # 账户类别最大值 (按4字节对齐的大小)
-    __OES_ACCT_TYPE_MAX_ALIGNED8 = 8  # 账户类别最大值 (按8字节对齐的大小)
+    _OES_ACCT_TYPE_MAX = 3  # 账户类别最大值
+    _OES_ACCT_TYPE_MAX_ALIGNED4 = 4  # 账户类别最大值 (按4字节对齐的大小)
+    _OES_ACCT_TYPE_MAX_ALIGNED8 = 8  # 账户类别最大值 (按8字节对齐的大小)
 
 
 # 资金类型定义
@@ -819,11 +819,11 @@ class eOesCashTypeT(Enum):
     # 衍生品账户资金/期权保证金
     OES_CASH_TYPE_OPTION = eOesAcctTypeT.OES_ACCT_TYPE_OPTION.value
     # 资金类型最大值
-    __OES_CASH_TYPE_MAX = eOesAcctTypeT._eOesAcctTypeT__OES_ACCT_TYPE_MAX.value
+    _OES_CASH_TYPE_MAX = eOesAcctTypeT._OES_ACCT_TYPE_MAX.value
     # 资金类型最大值 (按4字节对齐的大小)
-    __OES_CASH_TYPE_MAX_ALIGNED4 = eOesAcctTypeT._eOesAcctTypeT__OES_ACCT_TYPE_MAX_ALIGNED4.value
+    _OES_CASH_TYPE_MAX_ALIGNED4 = eOesAcctTypeT._OES_ACCT_TYPE_MAX_ALIGNED4.value
     # 资金类型最大值 (按8字节对齐的大小)
-    __OES_CASH_TYPE_MAX_ALIGNED8 = eOesAcctTypeT._eOesAcctTypeT__OES_ACCT_TYPE_MAX_ALIGNED8.value
+    _OES_CASH_TYPE_MAX_ALIGNED8 = eOesAcctTypeT._OES_ACCT_TYPE_MAX_ALIGNED8.value
     # 兼容性定义, 即将废弃
     OES_CASH_TYPE_CRE = eOesAcctTypeT.OES_ACCT_TYPE_CREDIT.value
     OES_CASH_TYPE_OPT = eOesAcctTypeT.OES_ACCT_TYPE_OPTION.value
@@ -862,7 +862,7 @@ class eOesTradingPermissionT(Enum):
     OES_PERMIS_GEM_INNOVATION = 1 << 23  # 创业板创新企业股票
     OES_PERMIS_CONVERTIBLE_BOND = 1 << 24  # 可转换公司债券
     OES_PERMIS_REITS = 1 << 25  # 基础设施基金
-    __OES_PERMIS_ALL = 0xFFFFFFFFFFFFFFFF  # 全部权限
+    _OES_PERMIS_ALL = 0xFFFFFFFFFFFFFFFF  # 全部权限
     # 以下定义已废弃, 只是为了兼容之前的版本而暂时保留
     OES_PERMIS_GEM = OES_PERMIS_GEM_UNREGISTRATION
 
@@ -887,7 +887,7 @@ class eOesInvestorClassT(Enum):
     OES_INVESTOR_CLASS_PROFESSIONAL_A = 1  # A类专业投资者
     OES_INVESTOR_CLASS_PROFESSIONAL_B = 2  # B类专业投资者
     OES_INVESTOR_CLASS_PROFESSIONAL_C = 3  # C类专业投资者
-    __OES_INVESTOR_CLASS_MAX = 4  # 投资者分类的最大值
+    _OES_INVESTOR_CLASS_MAX = 4  # 投资者分类的最大值
 
 
 # 客户类型定义
@@ -898,7 +898,7 @@ class eOesCustTypeT(Enum):
     OES_CUST_TYPE_PRODUCT = 3  # 产品
     OES_CUST_TYPE_MKT_MAKER = 4  # 做市商
     OES_CUST_TYPE_OTHERS = 5  # 其他
-    __OES_CUST_TYPE_MAX = 6  # 客户类型的最大值
+    _OES_CUST_TYPE_MAX = 6  # 客户类型的最大值
 
 
 # 所有者类型 (内部使用)
@@ -911,7 +911,7 @@ class eOesOwnerTypeT(Enum):
     OES_OWNER_TYPE_PROPRIETARY = 104  # 自营
     OES_OWNER_TYPE_MKT_MAKER = 105  # 做市商
     OES_OWNER_TYPE_SETTLEMENT = 106  # 结算机构
-    __OES_OWNER_TYPE_MAX = 107  # 所有者类型的最大值
+    _OES_OWNER_TYPE_MAX = 107  # 所有者类型的最大值
 
 
 # 客户端类型定义 (内部使用)
@@ -938,7 +938,7 @@ class eOesNotifySourceT(Enum):
     OES_NOTIFY_SOURCE_BROKER = 3  # BROKER 期权经营机构发起
     OES_NOTIFY_SOURCE_EXCHANGE = 4  # EXCHANGE 交易所发起
     OES_NOTIFY_SOURCE_CSDC = 5  # CSDC 中国结算发起
-    __OES_NOTIFY_SOURCE_MAX = 6  # 通知消息来源分类最大值
+    _OES_NOTIFY_SOURCE_MAX = 6  # 通知消息来源分类最大值
 
 
 # 通知消息类型
@@ -965,7 +965,7 @@ class eOesNotifyTypeT(Enum):
     OES_NOTIFY_TYPE_CRD_LINE_OF_CERDIT_UPDATE = 66  # 融资融券授信额度更新
     # -------------------------
     OES_NOTIFY_TYPE_OTHERS = 100  # 其它
-    __OES_NOTIFY_TYPE_MAX = 101  # 通知消息类型最大值
+    _OES_NOTIFY_TYPE_MAX = 101  # 通知消息类型最大值
 
 
 # 通知消息等级
@@ -975,7 +975,7 @@ class eOesNotifyLevelT(Enum):
     OES_NOTIFY_LEVEL_GENERAL = 2  # 一般
     OES_NOTIFY_LEVEL_IMPORTANT = 3  # 重要
     OES_NOTIFY_LEVEL_URGENT = 4  # 紧急
-    __OES_NOTIFY_LEVEL_MAX = 5  # 通知消息等级最大值
+    _OES_NOTIFY_LEVEL_MAX = 5  # 通知消息等级最大值
 
 
 # 消息通知范围
@@ -983,7 +983,7 @@ class eOesNotifyScopeT(Enum):
     OES_NOTIFY_SCOPE_UNDEFINE = 0  # 未定义
     OES_NOTIFY_SCOPE_CUST = 1  # 通知指定客户
     OES_NOTIFY_SCOPE_ALL = 2  # 通知所有投资者
-    __OES_NOTIFY_SCOPE_MAX = 3  # 通知消息范围最大值
+    _OES_NOTIFY_SCOPE_MAX = 3  # 通知消息范围最大值
 
 
 # 期权合约类型 (认购/认沽)
@@ -991,7 +991,7 @@ class eOesOptContractTypeT(Enum):
     OES_OPT_CONTRACT_TYPE_UNDEFINE = 0  # 未定义
     OES_OPT_CONTRACT_TYPE_CALL = 1  # 认购
     OES_OPT_CONTRACT_TYPE_PUT = 2  # 认沽
-    __OES_OPT_CONTRACT_TYPE_MAX = 3  # 合约类型最大值
+    _OES_OPT_CONTRACT_TYPE_MAX = 3  # 合约类型最大值
 
 
 # 限制开仓标志
@@ -1005,7 +1005,7 @@ class eOesOptExerciseTypeT(Enum):
     OES_OPT_EXERCISE_TYPE_E = 0  # 欧式
     OES_OPT_EXERCISE_TYPE_A = 1  # 美式
     OES_OPT_EXERCISE_TYPE_B = 2  # 百慕大式
-    __OES_OPT_EXERCISE_TYPE_MAX = 3  # 行权方式最大值
+    _OES_OPT_EXERCISE_TYPE_MAX = 3  # 行权方式最大值
 
 
 # 期权交割方式 (证券结算/现金结算, 适用于深交所)
@@ -1013,7 +1013,7 @@ class eOesOptDeliveryTypeT(Enum):
     OES_OPT_DELIVERY_TYPE_UNDEFINE = 0  # 未定义
     OES_OPT_DELIVERY_TYPE_SECURITY = 1  # 证券结算
     OES_OPT_DELIVERY_TYPE_CASH = 2  # 现金结算
-    __OES_OPT_DELIVERY_TYPE_MAX = 3  # 交割方式最大值
+    _OES_OPT_DELIVERY_TYPE_MAX = 3  # 交割方式最大值
 
 
 # 期权持仓类型
@@ -1022,7 +1022,7 @@ class eOesOptPositionTypeT(Enum):
     OES_OPT_POSITION_TYPE_LONG = 1  # 权利方
     OES_OPT_POSITION_TYPE_SHORT = 2  # 义务方
     OES_OPT_POSITION_TYPE_COVERED = 3  # 备兑方
-    __OES_OPT_POSITION_TYPE_MAX = 4  # 期权持仓类型最大值
+    _OES_OPT_POSITION_TYPE_MAX = 4  # 期权持仓类型最大值
 
 
 # 投资者期权等级
@@ -1031,7 +1031,7 @@ class eOesOptInvLevelT(Enum):
     OES_OPT_INV_LEVEL_1 = 1  # 个人投资者-一级交易权限
     OES_OPT_INV_LEVEL_2 = 2  # 个人投资者-二级交易权限
     OES_OPT_INV_LEVEL_3 = 3  # 个人投资者-三级交易权限
-    __OES_OPT_INV_LEVEL_MAX = 4  # 期权投资人级别最大值
+    _OES_OPT_INV_LEVEL_MAX = 4  # 期权投资人级别最大值
 
 
 # 仓位影响 (平仓标识)
@@ -1039,7 +1039,7 @@ class eOesPositionEffectT(Enum):
     OES_POSITION_EFFECT_UNDEFINE = 0  # 未定义
     OES_POSITION_EFFECT_OPEN = 1  # 开仓
     OES_POSITION_EFFECT_CLOSE = 2  # 平仓
-    __OES_POSITION_EFFECT_MAX = 3  # 仓位影响最大值
+    _OES_POSITION_EFFECT_MAX = 3  # 仓位影响最大值
 
 
 # 融资融券负债类型
@@ -1048,7 +1048,7 @@ class eOesCrdDebtTypeT(Enum):
     OES_CRD_DEBT_TYPE_MARGIN_BUY = 1  # 融资负债
     OES_CRD_DEBT_TYPE_SHORT_SELL = 2  # 融券负债
     OES_CRD_DEBT_TYPE_OTHER_DEBT = 3  # 其它负债
-    __OES_CRD_DEBT_TYPE_MAX = 4
+    _OES_CRD_DEBT_TYPE_MAX = 4
 
 
 # 头寸性质
@@ -1056,7 +1056,7 @@ class eOesCrdCashGroupPropertyT(Enum):
     OES_CRD_CASH_GROUP_PROP_UNDEFINE = 0  # 未定义的头寸性质
     OES_CRD_CASH_GROUP_PROP_PUBLIC = 1  # 公共头寸
     OES_CRD_CASH_GROUP_PROP_SPECIAL = 2  # 专项头寸
-    __OES_CRD_CASH_GROUP_PROP_MAX = 3
+    _OES_CRD_CASH_GROUP_PROP_MAX = 3
 
 
 # 融资融券负债状态
@@ -1069,7 +1069,7 @@ class eOesCrdDebtStatusT(Enum):
     OES_CRD_DEBT_STATUS_REPAID = 5  # 客户自行了结
     OES_CRD_DEBT_STATUS_MANNUAL_REPAID = 6  # 手工了结
     OES_CRD_DEBT_STATUS_NOT_DEBT = 7  # 未形成负债
-    __OES_CRD_DEBT_STATUS_MAX = 8
+    _OES_CRD_DEBT_STATUS_MAX = 8
 
 
 # 融资融券负债展期状态
@@ -1080,7 +1080,7 @@ class eOesCrdDebtPostponeStatusT(Enum):
     OES_CRD_DEBT_POSTPONE_STATUS_APPROVED = 3  # 审批通过
     OES_CRD_DEBT_POSTPONE_STATUS_UNAPPROVED = 4  # 审批不通过
     OES_CRD_DEBT_POSTPONE_STATUS_UNAPPLICABLE = 5  # 不可申请
-    __OES_CRD_DEBT_POSTPONE_STATUS_MAX = 6
+    _OES_CRD_DEBT_POSTPONE_STATUS_MAX = 6
 
 
 # 融资融券合同约定的负债归还模式
@@ -1089,16 +1089,16 @@ class eOesCrdDebtRepayModeT(Enum):
     OES_CRD_DEBT_REPAY_MODE_MATCHING_PRINCIPAL = 1  # 按比例归还 (利随本清)
     OES_CRD_DEBT_REPAY_MODE_INTEREST_FIRST = 2  # 优先归还息费 (先息后本)
     OES_CRD_DEBT_REPAY_MODE_PRINCIPAL_FIRST = 3  # 优先归还本金 (先本后息)
-    __OES_CRD_DEBT_REPAY_MODE_MAX_COMPACT = 4  # 融资融券合同约定的负债归还模式的最大值
-    __OES_CRD_DEBT_REPAY_MODE_INTEREST_ONLY = 10  # 仅归还息费 (仅适用于API接口 @see OES_CRD_ASSIGNABLE_REPAY_MODE_INTEREST_ONLY)
-    __OES_CRD_DEBT_REPAY_MODE_MAX = 11
+    _OES_CRD_DEBT_REPAY_MODE_MAX_COMPACT = 4  # 融资融券合同约定的负债归还模式的最大值
+    _OES_CRD_DEBT_REPAY_MODE_INTEREST_ONLY = 10  # 仅归还息费 (仅适用于API接口 @see OES_CRD_ASSIGNABLE_REPAY_MODE_INTEREST_ONLY)
+    _OES_CRD_DEBT_REPAY_MODE_MAX = 11
 
 
 # 可以由API接口指定的融资融券负债归还模式
 class eOesCrdAssignableRepayModeT(Enum):
     OES_CRD_ASSIGNABLE_REPAY_MODE_DEFAULT = 0  # 默认的负债归还模式 (使用融资融券合同约定的负债归还模式)
     OES_CRD_ASSIGNABLE_REPAY_MODE_INTEREST_ONLY = 10  # 仅归还息费
-    __OES_CRD_ASSIGNABLE_REPAY_MODE_MAX = 11
+    _OES_CRD_ASSIGNABLE_REPAY_MODE_MAX = 11
 
 
 # 融资融券负债流水类型
@@ -1113,7 +1113,7 @@ class eOesCrdDebtJournalTypeT(Enum):
     OES_CRD_DEBT_JOURNAL_TYPE_REPAY_MARGIN_BY_OUTSIDE = 7  # 场外了结融资负债
     OES_CRD_DEBT_JOURNAL_TYPE_CONTRACT_POST_PONE = 8  # 合约展期(审批)
     OES_CRD_DEBT_JOURNAL_TYPE_OTHER = 9  # 其它类型
-    __OES_CRD_DEBT_JOURNAL_TYPE_MAX = 10
+    _OES_CRD_DEBT_JOURNAL_TYPE_MAX = 10
 
 
 # 信用客户警戒状态
@@ -1121,7 +1121,7 @@ class eOesCrdCustGuardStatusT(Enum):
     OES_CRD_CUST_GUARD_STATUS_NORMAL = 0  # 正常
     OES_CRD_CUST_GUARD_STATUS_ALERT = 1  # 警惕
     OES_CRD_CUST_GUARD_STATUS_BLOCKLIST = 2  # 黑名单
-    __OES_CRD_CUST_GUARD_STATUS_MAX = 3
+    _OES_CRD_CUST_GUARD_STATUS_MAX = 3
 
 
 # 通信消息的消息类型定义
@@ -1132,15 +1132,15 @@ class eOesMsgTypeT(Enum):
     OESMSG_ORD_BATCH_ORDERS = 0x03  # 0x03/03  批量委托消息
     OESMSG_ORD_CREDIT_REPAY = 0x04  # 0x04/04  融资融券负债归还请求消息
     OESMSG_ORD_CREDIT_CASH_REPAY = 0x05  # 0x05/05  融资融券直接还款请求消息
-    __OESMSG_ORD_MAX = 6  # 最大的委托消息类型
+    _OESMSG_ORD_MAX = 6  # 最大的委托消息类型
     # 非交易类消息
-    __OESMSG_NONTRD_MIN = 0xC0  # 0xC0/192 最小的非交易消息类型
+    _OESMSG_NONTRD_MIN = 0xC0  # 0xC0/192 最小的非交易消息类型
     OESMSG_NONTRD_FUND_TRSF_REQ = 0xC1  # 0xC1/193 出入金委托
     OESMSG_NONTRD_CHANGE_PASSWORD = 0xC2  # 0xC2/194 修改客户端登录密码
     OESMSG_NONTRD_OPT_CONFIRM_SETTLEMENT = 0xC3  # 0xC3/195 期权账户结算单确认
-    __OESMSG_NONTRD_MAX = 196  # 最大的非交易消息类型
+    _OESMSG_NONTRD_MAX = 196  # 最大的非交易消息类型
     # 执行报告类消息
-    __OESMSG_RPT_MIN = 0x0A  # 0x0A/10  最小的执行报告消息类型
+    _OESMSG_RPT_MIN = 0x0A  # 0x0A/10  最小的执行报告消息类型
     OESMSG_RPT_SERVICE_STATE = 0x0E  # 0x0E/15  OES服务状态信息 (暂不支持订阅推送)
     OESMSG_RPT_MARKET_STATE = 0x10  # 0x10/16  市场状态信息
     OESMSG_RPT_REPORT_SYNCHRONIZATION = 0x11  # 0x11/17  回报同步的应答消息
@@ -1159,9 +1159,9 @@ class eOesMsgTypeT(Enum):
     OESMSG_RPT_CREDIT_CASH_REPAY_REPORT = 0x20  # 0x20/32  融资融券直接还款委托执行报告
     OESMSG_RPT_CREDIT_DEBT_CONTRACT_VARIATION = 0x21  # 0x21/33  融资融券合约变动信息
     OESMSG_RPT_CREDIT_DEBT_JOURNAL = 0x22  # 0x22/34  融资融券合约流水信息
-    __OESMSG_RPT_MAX = 35  # 最大的回报消息类型
+    _OESMSG_RPT_MAX = 35  # 最大的回报消息类型
     # 查询类消息
-    __OESMSG_QRYMSG_MIN = 0x2F  # 0x2F/47  最小的查询消息类型
+    _OESMSG_QRYMSG_MIN = 0x2F  # 0x2F/47  最小的查询消息类型
     OESMSG_QRYMSG_OPT_HLD = 0x35  # 0x35/53  查询期权持仓信息
     OESMSG_QRYMSG_CUST = 0x36  # 0x36/54  查询客户信息
     OESMSG_QRYMSG_COMMISSION_RATE = 0x38  # 0x38/56  查询客户佣金信息
@@ -1200,7 +1200,7 @@ class eOesMsgTypeT(Enum):
     OESMSG_QRYMSG_CRD_UNDERLYING_INFO = 0x89  # 0x89/137 查询融资融券可充抵保证金证券及融资融券标的信息
     OESMSG_QRYMSG_CRD_DRAWABLE_BALANCE = 0x90  # 0x90/138 查询融资融券业务可取资金
     OESMSG_QRYMSG_CRD_COLLATERAL_TRANSFER_OUT_MAX_QTY = 0x91  # 0x91/139 查询融资融券担保品可转出的最大数量
-    __OESMSG_QRYMSG_MAX = 146  # 最大的查询消息类型
+    _OESMSG_QRYMSG_MAX = 146  # 最大的查询消息类型
     # 公共的会话类消息
     OESMSG_SESS_HEARTBEAT = 0xFA  # 0xFA/250 心跳消息
     OESMSG_SESS_TEST_REQUEST = 0xFB  # 0xFB/251 测试请求消息
@@ -1257,7 +1257,7 @@ class eOesSubscribeReportTypeT(Enum):
     OES_SUB_RPT_TYPE_CREDIT_DEBT_JOURNAL = 0x1000
     # 所有回报
     OES_SUB_RPT_TYPE_ALL = 0xFFFF
-    __MAX_OES_SUB_RPT_TYPE = 0x7FFFFFFF
+    _MAX_OES_SUB_RPT_TYPE = 0x7FFFFFFF
 
 
 class PrintableStructure(Structure):
@@ -1325,7 +1325,7 @@ class OesCrdCreditAssetBaseInfoT(PrintableStructure):
         # 资金帐户状态(冗余自资金账户) @see eOesAcctStatusT
         ('cashAcctStatus', c_uint8),
         # 按64位对齐的填充域
-        ('__filler1', c_uint8 * 5),
+        ('_filler1', c_uint8 * 5),
         # 总资产 (包含其它担保资产价值; 单位精确到元后四位, 即1元=10000)
         # - 公式: 总资产 = 现金余额(包含冻结资金在内的资金余额) + 担保证券市值(不包含买入在途,包含卖出在途和转出在途) + 其它担保资产价值
         ('totalAssetValue', c_int64),
@@ -1335,7 +1335,7 @@ class OesCrdCreditAssetBaseInfoT(PrintableStructure):
         # 维持担保比例 (千分比)
         ('maintenaceRatio', c_int32),
         # 按64位对齐的填充域
-        ('__filler2', c_int32),
+        ('_filler2', c_int32),
         # 保证金可用余额 (单位精确到元后四位, 即1元=10000)
         ('marginAvailableBal', c_int64),
         # 现金余额 (包含融券卖出所得资金和冻结资金在内的总现金资产; 单位精确到元后四位, 即1元=10000)
@@ -1441,7 +1441,7 @@ class OesCrdCreditAssetBaseInfoT(PrintableStructure):
         # 其它担保资产价值 (已包含在 '总资产' 中; 单位精确到元后四位, 即1元=10000)
         ('otherBackedAssetValue', c_int64),
         # 保留字段
-        ('__reserve', c_char * 32),
+        ('_reserve', c_char * 32),
     ]
 
 
@@ -1473,7 +1473,7 @@ class OesCrdUnderlyingBaseInfoT(PrintableStructure):
         # 是否已为个人设置融资融券标的参数
         ('isIndividualUnderlying', c_uint8),
         # 按64位对齐的填充域
-        ('__filler1', c_uint8 * 6),
+        ('_filler1', c_uint8 * 6),
         # 可充抵保证金折算率 (单位:万分比)
         ('collateralRatio', c_int32),
         # 融资买入保证金比例 (单位:万分比)
@@ -1481,7 +1481,7 @@ class OesCrdUnderlyingBaseInfoT(PrintableStructure):
         # 融券卖出保证金比例 (单位:万分比)
         ('shortSellRatio', c_int32),
         # 按64位对齐的填充域
-        ('__filler2', c_int32 * 3),
+        ('_filler2', c_int32 * 3),
     ]
 
 
@@ -1497,7 +1497,7 @@ class OesCrdCashPositionBaseInfoT(PrintableStructure):
         # 币种 @see eOesCurrTypeT
         ('currType', c_uint8),
         # 按64位对齐的填充域
-        ('__CRD_CASH_POSITION_BASE_filler', c_uint8 * 2),
+        ('_CRD_CASH_POSITION_BASE_filler', c_uint8 * 2),
         # 资金头寸金额 (含已用)
         ('positionAmt', c_int64),
         # 日间已归还金额
@@ -1513,7 +1513,7 @@ class OesCrdCashPositionBaseInfoT(PrintableStructure):
         # 期初已用金额 (期初待归还负债金额; 单位精确到元后四位, 即1元=10000)
         ('originalUsed', c_int64),
         # 预留的备用字段
-        ('__CRD_CASH_POSITION_BASE_reserve', c_char * 32),
+        ('_CRD_CASH_POSITION_BASE_reserve', c_char * 32),
     ]
 
 
@@ -1529,7 +1529,7 @@ class OesCrdSecurityPositionBaseInfoT(PrintableStructure):
         # 头寸性质 @see eOesCrdCashGroupPropertyT
         ('cashGroupProperty', c_uint8),
         # 按64位对齐的填充域
-        ('__SECURITY_POSITION_BASE_filler', c_uint8 * 2),
+        ('_SECURITY_POSITION_BASE_filler', c_uint8 * 2),
         # 头寸编号
         ('cashGroupNo', c_int32),
         # 证券头寸数量 (含已用)
@@ -1547,7 +1547,7 @@ class OesCrdSecurityPositionBaseInfoT(PrintableStructure):
         # 期初已用数量 (期初待归还负债数量)
         ('originalUsedQty', c_int64),
         # 预留的备用字段
-        ('__SECURITY_POSITION_BASE_reserve', c_char * 32),
+        ('_SECURITY_POSITION_BASE_reserve', c_char * 32),
     ]
 
 
@@ -1621,7 +1621,7 @@ class OesCrdDebtContractBaseInfoT(PrintableStructure):
         # - 对于融资，是归还的融资金额/归还时该证券最新价格
         ('totalRepaidQty', c_int32),
         # 按64位对齐的填充域
-        ('__CRD_DEBT_CONTRACT_BASE_filler2', c_int32),
+        ('_CRD_DEBT_CONTRACT_BASE_filler2', c_int32),
         # 期初待归还金额 (单位精确到元后四位, 即1元=10000)
         ('originalDebtAmt', c_int64),
         # 期初待归还手续费 (单位精确到元后四位, 即1元=10000)
@@ -1655,9 +1655,9 @@ class OesCrdDebtContractBaseInfoT(PrintableStructure):
         # 展期状态 @see eOesCrdDebtPostponeStatusT
         ('postponeStatus', c_uint8),
         # 按64位对齐的填充域
-        ('__CRD_DEBT_CONTRACT_BASE_filler3', c_uint8 * 3),
+        ('_CRD_DEBT_CONTRACT_BASE_filler3', c_uint8 * 3),
         # 预留的备用字段
-        ('__CREDIT_DEBT_BASE_reserve', c_char * 32),
+        ('_CREDIT_DEBT_BASE_reserve', c_char * 32),
     ]
 
 
@@ -1731,7 +1731,7 @@ class OesCrdDebtContractReportT(PrintableStructure):
         # - 对于融资，是归还的融资金额/归还时该证券最新价格
         ('totalRepaidQty', c_int32),
         # 按64位对齐的填充域
-        ('__CRD_DEBT_CONTRACT_BASE_filler2', c_int32),
+        ('_CRD_DEBT_CONTRACT_BASE_filler2', c_int32),
         # 期初待归还金额 (单位精确到元后四位, 即1元=10000)
         ('originalDebtAmt', c_int64),
         # 期初待归还手续费 (单位精确到元后四位, 即1元=10000)
@@ -1765,9 +1765,9 @@ class OesCrdDebtContractReportT(PrintableStructure):
         # 展期状态 @see eOesCrdDebtPostponeStatusT
         ('postponeStatus', c_uint8),
         # 按64位对齐的填充域
-        ('__CRD_DEBT_CONTRACT_BASE_filler3', c_uint8 * 3),
+        ('_CRD_DEBT_CONTRACT_BASE_filler3', c_uint8 * 3),
         # 预留的备用字段
-        ('__CREDIT_DEBT_BASE_reserve', c_char * 32),
+        ('_CREDIT_DEBT_BASE_reserve', c_char * 32),
         # 同一证券所有融券合约的合计可归还负债数量
         # - 公式: 同一证券合计可归还负债数量 = 日初融券负债数量 - 当日已归还融券数量 - 在途归还融券数量
         ('securityRepayableDebtQty', c_int64),
@@ -1776,9 +1776,9 @@ class OesCrdDebtContractReportT(PrintableStructure):
         # - @note 实际允许归还的负债数量, 为该融券合约可归还负债数量与对应证券可归还负债数量的较小者
         ('contractRepayableDebtQty', c_int32),
         # 按64位对齐的填充域
-        ('__filler', c_int32),
+        ('_filler', c_int32),
         # 保留字段
-        ('__reserve', c_char * 32),
+        ('_reserve', c_char * 32),
     ]
 
 
@@ -1830,7 +1830,7 @@ class OesCrdDebtJournalBaseInfoT(PrintableStructure):
         # 委托时间 (格式为 HHMMSSsss, 形如 141205000)
         ('ordTime', c_int32),
         # 预留的备用字段
-        ('__CRD_DEBT_JOURNAL_BASE_reserve', c_char * 32),
+        ('_CRD_DEBT_JOURNAL_BASE_reserve', c_char * 32),
     ]
 
 
@@ -1882,7 +1882,7 @@ class OesCrdDebtJournalReportT(PrintableStructure):
         # 委托时间 (格式为 HHMMSSsss, 形如 141205000)
         ('ordTime', c_int32),
         # 预留的备用字段
-        ('__CRD_DEBT_JOURNAL_BASE_reserve', c_char * 32),
+        ('_CRD_DEBT_JOURNAL_BASE_reserve', c_char * 32),
     ]
 
 
@@ -2016,7 +2016,7 @@ class OesCrdSecurityDebtStatsBaseInfoT(PrintableStructure):
         # '其它负债'利息 (包括罚息, 不包括已还; 单位精确到元后四位, 即1元=10000)
         ('otherDebtInterest', c_int64),
         # 保留字段
-        ('__reserve', c_char * 32),
+        ('_reserve', c_char * 32),
     ]
 
 
@@ -2032,7 +2032,7 @@ class OesCrdExcessStockBaseInfoT(PrintableStructure):
         # 市场代码  @see eOesMarketIdT
         ('mktId', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 7),
+        ('_filler', c_uint8 * 7),
         # 日初余券数量
         ('originExcessStockQty', c_int64),
         # 余券数量 (日初余券数量 + 日中余券数量)
@@ -2042,7 +2042,7 @@ class OesCrdExcessStockBaseInfoT(PrintableStructure):
         # 余券可划转数量
         ('excessStockTrsfAbleQty', c_int64),
         # 保留字段
-        ('__reserve', c_char * 32),
+        ('_reserve', c_char * 32),
     ]
 
 
@@ -2074,7 +2074,7 @@ class OesOptionBaseInfoT(PrintableStructure):
         # 临时停牌标识 (0 未停牌, 1 已停牌)
         ('temporarySuspFlag', c_uint8),
         # 按64位对齐的填充域
-        ('__OPTION_BASE_filler1', c_uint8 * 5),
+        ('_OPTION_BASE_filler1', c_uint8 * 5),
         # 合约单位 (经过除权除息调整后的单位)
         ('contractUnit', c_int32),
         # 期权行权价 (经过除权除息调整后的价格, 单位精确到元后四位, 即1元 = 10000)
@@ -2156,9 +2156,9 @@ class OesOptionBaseInfoT(PrintableStructure):
         # 标的证券类型 @see eOesSecurityTypeT
         ('underlyingSecurityType', c_uint8),
         # 按64位对齐的填充域
-        ('__OPTION_BASE_filler3', c_uint8 * 6),
+        ('_OPTION_BASE_filler3', c_uint8 * 6),
         # 预留的备用字段
-        ('__OPTION_BASE_reserve', c_char * 32),
+        ('_OPTION_BASE_reserve', c_char * 32),
     ]
 
 
@@ -2184,7 +2184,7 @@ class OesOptHoldingBaseInfoT(PrintableStructure):
         # 套保标志 (0 非套保, 1 套保)
         ('hedgeFlag', c_uint8),
         # 按64位对齐的填充域
-        ('__HOLD_BASE_filler', c_uint8),
+        ('_HOLD_BASE_filler', c_uint8),
         # 日初总持仓张数
         ('originalQty', c_int64),
         # 日初可用持仓
@@ -2216,7 +2216,7 @@ class OesOptHoldingBaseInfoT(PrintableStructure):
         # 义务仓占用保证金
         ('positionMargin', c_int64),
         # 预留的备用字段
-        ('__OPT_HOLDING_BASE_reserve', c_char * 32),
+        ('_OPT_HOLDING_BASE_reserve', c_char * 32),
     ]
 
 
@@ -2242,7 +2242,7 @@ class OesOptHoldingReportT(PrintableStructure):
         # 套保标志 (0 非套保, 1 套保)
         ('hedgeFlag', c_uint8),
         # 按64位对齐的填充域
-        ('__HOLD_BASE_filler', c_uint8),
+        ('_HOLD_BASE_filler', c_uint8),
         # 日初总持仓张数
         ('originalQty', c_int64),
         # 日初可用持仓
@@ -2274,7 +2274,7 @@ class OesOptHoldingReportT(PrintableStructure):
         # 义务仓占用保证金
         ('positionMargin', c_int64),
         # 预留的备用字段
-        ('__OPT_HOLDING_BASE_reserve', c_char * 32),
+        ('_OPT_HOLDING_BASE_reserve', c_char * 32),
         # 可平仓张数 (单位: 张)
         ('closeAvlQty', c_int64),
         # 可行权张数 (单位: 张)
@@ -2295,9 +2295,9 @@ class OesOptHoldingReportT(PrintableStructure):
         # 可用的单日买入开仓限额
         ('availableDailyBuyOpenLimit', c_int32),
         # 按64位对齐的填充域
-        ('__OPT_HOLDING_EXT_filler2', c_int32),
+        ('_OPT_HOLDING_EXT_filler2', c_int32),
         # 预留的备用字段
-        ('__OPT_HOLDING_EXT_reserve', c_char * 32),
+        ('_OPT_HOLDING_EXT_reserve', c_char * 32),
     ]
 
 
@@ -2317,7 +2317,7 @@ class OesOptUnderlyingHoldingBaseInfoT(PrintableStructure):
         # 标的证券子类型 @see eOesSubSecurityTypeT
         ('underlyingSubSecurityType', c_uint8),
         # 按64位对齐的填充域
-        ('__OPT_UNDERLYING_HOLD_BASE_filler', c_uint8 * 4),
+        ('_OPT_UNDERLYING_HOLD_BASE_filler', c_uint8 * 4),
         # 日初标的证券的总持仓数量 (单位: 股)
         ('originalHld', c_int64),
         # 日初标的证券的可用持仓数量 (单位: 股)
@@ -2359,7 +2359,7 @@ class OesOptUnderlyingHoldingReportT(PrintableStructure):
         # 标的证券子类型 @see eOesSubSecurityTypeT
         ('underlyingSubSecurityType', c_uint8),
         # 按64位对齐的填充域
-        ('__OPT_UNDERLYING_HOLD_BASE_filler', c_uint8 * 4),
+        ('_OPT_UNDERLYING_HOLD_BASE_filler', c_uint8 * 4),
         # 日初标的证券的总持仓数量 (单位: 股)
         ('originalHld', c_int64),
         # 日初标的证券的可用持仓数量 (单位: 股)
@@ -2401,7 +2401,7 @@ class OesOptionPositionLimitBaseInfoT(PrintableStructure):
         # 标的证券子类型 @see eOesSubSecurityTypeT
         ('underlyingSubSecurityType', c_uint8),
         # 按64位对齐的填充域
-        ('__POSITION_LIMIT_BASE_filler1', c_uint8 * 4),
+        ('_POSITION_LIMIT_BASE_filler1', c_uint8 * 4),
         # 限仓额度信息
         # 权利仓限额
         ('longPositionLimit', c_int32),
@@ -2410,7 +2410,7 @@ class OesOptionPositionLimitBaseInfoT(PrintableStructure):
         # 单日买入开仓限额
         ('dailyBuyOpenLimit', c_int32),
         # 按64位对齐的填充域
-        ('__POSITION_LIMIT_BASE_filler2', c_int32),
+        ('_POSITION_LIMIT_BASE_filler2', c_int32),
         # 合约品种维度的统计信息 (限仓相关)
         # 日初权利仓持仓数量 (单位: 张)
         ('originalLongQty', c_int32),
@@ -2461,7 +2461,7 @@ class OesOptionExerciseAssignBaseT(PrintableStructure):
         # 交割方式 @see eOesOptDeliveryTypeT
         ('deliveryType', c_uint8),
         # 按64位对齐的填充域
-        ('__OPTION_EXERCISE_ASSIGN_filler1', c_uint8),
+        ('_OPTION_EXERCISE_ASSIGN_filler1', c_uint8),
         # 行权价格 (单位精确到元后四位, 即1元 = 10000)
         ('exercisePrice', c_int32),
         # 行权张数
@@ -2489,11 +2489,11 @@ class OesOptionExerciseAssignBaseT(PrintableStructure):
         # 标的证券类型 @see eOesSecurityTypeT
         ('underlyingSecurityType', c_uint8),
         # 按64位对齐的填充域
-        ('__OPTION_EXERCISE_ASSIGN_filler3', c_uint8 * 6),
+        ('_OPTION_EXERCISE_ASSIGN_filler3', c_uint8 * 6),
         # 期权合约名称 (UTF-8 编码)
         ('securityName', c_char * OES_SECURITY_NAME_MAX_LEN),
         # 预留的备用字段
-        ('__OPTION_EXERCISE_ASSIGN_reserve', c_char * 16),
+        ('_OPTION_EXERCISE_ASSIGN_reserve', c_char * 16),
     ]
 
 
@@ -2509,7 +2509,7 @@ class OesOptSettlementConfirmBaseInfoT(PrintableStructure):
         # 登录客户端环境号
         ('clEnvId', c_int8),
         # 按64位对齐的填充域
-        ('__filler2', c_int8),
+        ('_filler2', c_int8),
         # 发生日期 (格式为 YYYYMMDD, 形如 20160830)
         ('transDate', c_int32),
         # 发生时间 (格式为 HHMMSSsss, 形如 141205000)
@@ -2517,7 +2517,7 @@ class OesOptSettlementConfirmBaseInfoT(PrintableStructure):
         # 拒绝原因
         ('rejReason', c_int32),
         # 预留的备用字段
-        ('__OPT_SETTLEMENT_CONFIRM_BASE_reserve', c_char * 24),
+        ('_OPT_SETTLEMENT_CONFIRM_BASE_reserve', c_char * 24),
     ]
 
 
@@ -2533,7 +2533,7 @@ class OesOptSettlementConfirmReportT(PrintableStructure):
         # 登录客户端环境号
         ('clEnvId', c_int8),
         # 按64位对齐的填充域
-        ('__filler2', c_int8),
+        ('_filler2', c_int8),
         # 发生日期 (格式为 YYYYMMDD, 形如 20160830)
         ('transDate', c_int32),
         # 发生时间 (格式为 HHMMSSsss, 形如 141205000)
@@ -2541,7 +2541,7 @@ class OesOptSettlementConfirmReportT(PrintableStructure):
         # 拒绝原因
         ('rejReason', c_int32),
         # 预留的备用字段
-        ('__OPT_SETTLEMENT_CONFIRM_BASE_reserve', c_char * 24),
+        ('_OPT_SETTLEMENT_CONFIRM_BASE_reserve', c_char * 24),
     ]
 
 
@@ -2557,7 +2557,7 @@ class OesOrdReqT(PrintableStructure):
         # 买卖类型 @see eOesBuySellTypeT
         ('bsType', c_uint8),
         # 按64位对齐的填充域
-        ('__ORD_BASE_INFO_filler', c_uint8),
+        ('_ORD_BASE_INFO_filler', c_uint8),
         # 证券账户 (可以为空, 为空则自动填充)
         ('invAcctId', c_char * OES_INV_ACCT_ID_MAX_LEN),
         # 证券代码 (撤单时被撤委托的证券代码可不填)
@@ -2571,7 +2571,7 @@ class OesOrdReqT(PrintableStructure):
         # 用户私有信息 (由客户端自定义填充, 并在回报数据中原样返回)
         ('userInfo', UserInfo),
         # 委托请求的客户端原始发送时间 (OES内部使用, 由API在发送时自动填充)
-        ('__ordReqOrigSendTime', STimespec32T),
+        ('_ordReqOrigSendTime', STimespec32T),
     ]
 
 
@@ -2583,7 +2583,7 @@ class OesOrdCancelReqT(PrintableStructure):
         # 市场代码 (必填) @see eOesMarketIdT
         ('mktId', c_uint8),
         # 按64位对齐的填充域
-        ('__ORD_CANCEL_BASE_INFO_filler1', c_uint8 * 3),
+        ('_ORD_CANCEL_BASE_INFO_filler1', c_uint8 * 3),
         # 证券账户 (选填, 若不为空则校验待撤订单是否匹配)
         ('invAcctId', c_char * OES_INV_ACCT_ID_MAX_LEN),
         # 证券代码 (选填, 若不为空则校验待撤订单是否匹配)
@@ -2593,13 +2593,13 @@ class OesOrdCancelReqT(PrintableStructure):
         # 原始订单(待撤销的订单)的客户端环境号 (小于等于0, 则使用当前会话的 clEnvId)
         ('origClEnvId', c_int8),
         # 按64位对齐的填充域
-        ('__ORD_CANCEL_BASE_INFO_filler2', c_uint8 * 3),
+        ('_ORD_CANCEL_BASE_INFO_filler2', c_uint8 * 3),
         # 原始订单(待撤销的订单)的客户订单编号 (若使用 origClSeqNo, 则不必填充该字段)
         ('origClOrdId', c_int64),
         # 用户私有信息 (由客户端自定义填充, 并在回报数据中原样返回)
         ('userInfo', UserInfo),
         # 委托请求的客户端原始发送时间 (OES内部使用, 由API在发送时自动填充)
-        ('__ordReqOrigSendTime', STimespec32T),
+        ('_ordReqOrigSendTime', STimespec32T),
     ]
 
 
@@ -2615,7 +2615,7 @@ class OesOrdRejectT(PrintableStructure):
         # 买卖类型 @see eOesBuySellTypeT
         ('bsType', c_uint8),
         # 按64位对齐的填充域
-        ('__ORD_BASE_INFO_filler', c_uint8),
+        ('_ORD_BASE_INFO_filler', c_uint8),
         # 证券账户 (可以为空, 为空则自动填充)
         ('invAcctId', c_char * OES_INV_ACCT_ID_MAX_LEN),
         # 证券代码 (撤单时被撤委托的证券代码可不填)
@@ -2629,7 +2629,7 @@ class OesOrdRejectT(PrintableStructure):
         # 用户私有信息 (由客户端自定义填充, 并在回报数据中原样返回)
         ('userInfo', UserInfo),
         # 委托请求的客户端原始发送时间 (OES内部使用, 由API在发送时自动填充)
-        ('__ordReqOrigSendTime', STimespec32T),
+        ('_ordReqOrigSendTime', STimespec32T),
         # 原始订单(待撤销的订单)的客户委托流水号 (仅适用于撤单请求)
         ('origClSeqNo', c_int32),
         # 原始订单(待撤销的订单)的客户端环境号 (仅适用于撤单请求)
@@ -2647,7 +2647,7 @@ class OesOrdRejectT(PrintableStructure):
         # 业务类型 @see eOesBusinessTypeT
         ('businessType', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 3),
+        ('_filler', c_uint8 * 3),
     ]
 
 
@@ -2663,7 +2663,7 @@ class OesOrdCnfmT(PrintableStructure):
         # 买卖类型 @see eOesBuySellTypeT
         ('bsType', c_uint8),
         # 按64位对齐的填充域
-        ('__ORD_BASE_INFO_filler', c_uint8),
+        ('_ORD_BASE_INFO_filler', c_uint8),
         # 证券账户 (可以为空, 为空则自动填充)
         ('invAcctId', c_char * OES_INV_ACCT_ID_MAX_LEN),
         # 证券代码 (撤单时被撤委托的证券代码可不填)
@@ -2677,7 +2677,7 @@ class OesOrdCnfmT(PrintableStructure):
         # 用户私有信息 (由客户端自定义填充, 并在回报数据中原样返回)
         ('userInfo', UserInfo),
         # 委托请求的客户端原始发送时间 (OES内部使用, 由API在发送时自动填充)
-        ('__ordReqOrigSendTime', STimespec32T),
+        ('_ordReqOrigSendTime', STimespec32T),
         # 客户订单编号 (在OES内具有唯一性的内部委托编号)
         ('clOrdId', c_int64),
         # 客户端编号
@@ -2703,19 +2703,19 @@ class OesOrdCnfmT(PrintableStructure):
         # 证券子类型 @see eOesSubSecurityTypeT
         ('subSecurityType', c_uint8),
         # 平台号 (OES内部使用) @see eOesPlatformIdT
-        ('__platformId', c_uint8),
+        ('_platformId', c_uint8),
         # 交易网关组序号 (OES内部使用)
-        ('__tgwGrpNo', c_uint8),
+        ('_tgwGrpNo', c_uint8),
         # 交易网关平台分区号 (OES内部使用)
-        ('__tgwPartitionNo', c_uint8),
+        ('_tgwPartitionNo', c_uint8),
         # 产品类型 @see eOesProductTypeT
         ('productType', c_uint8),
         # 交易所订单编号 (深交所的订单编号是16位的非数字字符串)
         ('exchOrdId', c_char * OES_EXCH_ORDER_ID_MAX_LEN),
         # 已报盘标志 (OES内部使用)
-        ('__declareFlag', c_uint8),
+        ('_declareFlag', c_uint8),
         # 重复回报标志 (OES内部使用)
-        ('__repeatFlag', c_uint8),
+        ('_repeatFlag', c_uint8),
         # 所有者类型 @see eOesOwnerTypeT
         ('ownerType', c_uint8),
         # 委托当前冻结的交易金额
@@ -2743,31 +2743,31 @@ class OesOrdCnfmT(PrintableStructure):
         # 营业部代码
         ('branchId', c_int32),
         # 回报记录号 (OES内部使用)
-        ('__rowNum', c_int32),
+        ('_rowNum', c_int32),
         # OIW委托编号 (OES内部使用)
-        ('__recNum', c_uint32),
+        ('_recNum', c_uint32),
         # 委托请求的初始接收时间
-        ('__ordReqOrigRecvTime', STimespec32T),
+        ('_ordReqOrigRecvTime', STimespec32T),
         # 委托请求的入队时间
-        ('__ordReqCollectedTime', STimespec32T),
+        ('_ordReqCollectedTime', STimespec32T),
         # 委托请求的实际处理开始时间
-        ('__ordReqActualDealTime', STimespec32T),
+        ('_ordReqActualDealTime', STimespec32T),
         # 委托请求的处理完成时间
-        ('__ordReqProcessedTime', STimespec32T),
+        ('_ordReqProcessedTime', STimespec32T),
         # 委托确认的开始采集时间
-        ('__ordCnfmOrigRecvTime', STimespec32T),
+        ('_ordCnfmOrigRecvTime', STimespec32T),
         # 委托确认的采集完成时间
-        ('__ordCnfmCollectedTime', STimespec32T),
+        ('_ordCnfmCollectedTime', STimespec32T),
         # 委托确认的实际处理开始时间
-        ('__ordCnfmActualDealTime', STimespec32T),
+        ('_ordCnfmActualDealTime', STimespec32T),
         # 委托确认的处理完成时间
-        ('__ordCnfmProcessedTime', STimespec32T),
+        ('_ordCnfmProcessedTime', STimespec32T),
         # 初始报盘时间
-        ('__ordDeclareTime', STimespec32T),
+        ('_ordDeclareTime', STimespec32T),
         # 报盘完成时间
-        ('__ordDeclareDoneTime', STimespec32T),
+        ('_ordDeclareDoneTime', STimespec32T),
         # 消息推送时间 (写入推送缓存以后, 实际网络发送之前)
-        ('__pushingTime', STimespec32T),
+        ('_pushingTime', STimespec32T),
         # 委托当前冻结的保证金
         ('frzMargin', c_int64),
         # 委托累计已使用的保证金
@@ -2779,9 +2779,9 @@ class OesOrdCnfmT(PrintableStructure):
         # 归还模式 (仅适用于卖券还款委托) @see eOesCrdDebtRepayModeT
         ('repayMode', c_uint8),
         # 按64位对齐的填充域
-        ('__ORD_CNFM_EXT_filler', c_uint8 * 5),
+        ('_ORD_CNFM_EXT_filler', c_uint8 * 5),
         # 预留的备用字段
-        ('__ORD_CNFM_EXT_reserve', c_char * 16),
+        ('_ORD_CNFM_EXT_reserve', c_char * 16),
     ]
 
 
@@ -2793,7 +2793,7 @@ class OesCrdRepayReqT(PrintableStructure):
         # 归还模式 (仅适用于归还融资负债) @see eOesCrdAssignableRepayModeT
         ('repayMode', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 7),
+        ('_filler', c_uint8 * 7),
         # 指定归还的合约编号
         ('debtId', c_char * OES_CREDIT_DEBT_ID_MAX_LEN),
     ]
@@ -2809,7 +2809,7 @@ class OesCrdCashRepayReqT(PrintableStructure):
         # 归还指令类型 @see eOesCrdDebtJournalTypeT
         ('repayJournalType', c_uint8),
         # 按64位对齐的填充域
-        ('__CRD_CASH_REPAY_REQ_BASE_filler', c_uint8 * 2),
+        ('_CRD_CASH_REPAY_REQ_BASE_filler', c_uint8 * 2),
         # 归还金额 (单位精确到元后四位, 即1元=10000)
         ('repayAmt', c_int64),
         # 资金账户代码
@@ -2819,7 +2819,7 @@ class OesCrdCashRepayReqT(PrintableStructure):
         # 用户私有信息 (由客户端自定义填充, 并在回报数据中原样返回)
         ('userInfo', UserInfo),
         # 委托请求的客户端原始发送时间 (OES内部使用, 由API在发送时自动填充)
-        ('__ordReqOrigSendTime', STimespec32T),
+        ('_ordReqOrigSendTime', STimespec32T),
     ]
 
 
@@ -2833,7 +2833,7 @@ class OesCrdCashRepayReportT(PrintableStructure):
         # 归还指令类型 @see eOesCrdDebtJournalTypeT
         ('repayJournalType', c_uint8),
         # 按64位对齐的填充域
-        ('__CRD_CASH_REPAY_REQ_BASE_filler', c_uint8 * 2),
+        ('_CRD_CASH_REPAY_REQ_BASE_filler', c_uint8 * 2),
         # 归还金额 (单位精确到元后四位, 即1元=10000)
         ('repayAmt', c_int64),
         # 资金账户代码
@@ -2843,7 +2843,7 @@ class OesCrdCashRepayReportT(PrintableStructure):
         # 用户私有信息 (由客户端自定义填充, 并在回报数据中原样返回)
         ('userInfo', UserInfo),
         # 委托请求的客户端原始发送时间 (OES内部使用, 由API在发送时自动填充)
-        ('__ordReqOrigSendTime', STimespec32T),
+        ('_ordReqOrigSendTime', STimespec32T),
         # 证券账户 (仅适用于管理端现金了结/场外了结融券负债委托回报)
         ('invAcctId', c_char * OES_INV_ACCT_ID_MAX_LEN),
         # 证券代码 (仅适用于管理端现金了结/场外了结融券负债委托回报)
@@ -2851,7 +2851,7 @@ class OesCrdCashRepayReportT(PrintableStructure):
         # 市场代码 @see eOesMarketIdT
         ('mktId', c_uint8),
         # 按64位对齐的填充域
-        ('__filler1', c_uint8 * 7),
+        ('_filler1', c_uint8 * 7),
         # 委托价格 (公允价格, 仅适用于管理端现金了结/场外了结融券负债委托回报; 单位精确到元后四位, 即1元=10000)
         ('ordPrice', c_int32),
         # 归还数量 (仅适用于管理端现金了结/场外了结融券负债委托回报)
@@ -2873,7 +2873,7 @@ class OesCrdCashRepayReportT(PrintableStructure):
         # 所有者类型 (被拒绝的委托该字段为0) @see eOesOwnerTypeT
         ('ownerType', c_uint8),
         # 按64位对齐的填充域
-        ('__filler2', c_uint8 * 2),
+        ('_filler2', c_uint8 * 2),
         # 订单拒绝原因
         ('ordRejReason', c_int32),
         # 实际归还数量 (仅适用于管理端现金了结/场外了结融券负债委托回报)
@@ -2887,7 +2887,7 @@ class OesCrdCashRepayReportT(PrintableStructure):
         # 营业部编号 (被拒绝的委托该字段为0)
         ('branchId', c_int32),
         # 按64位对齐的填充域
-        ('__filler3', c_int32),
+        ('_filler3', c_int32),
     ]
 
 
@@ -2901,11 +2901,11 @@ class OesTrdBaseInfoT(PrintableStructure):
         # 买卖类型 (取值范围: 买/卖, 申购/赎回(仅深圳)) @see eOesBuySellTypeT
         ('trdSide', c_uint8),
         # 平台号 (OES内部使用) @see eOesPlatformIdT
-        ('__platformId', c_uint8),
+        ('_platformId', c_uint8),
         # 成交类型 (OES内部使用) @see eOesTrdCnfmTypeT
-        ('__trdCnfmType', c_uint8),
+        ('_trdCnfmType', c_uint8),
         # ETF成交回报顺序号 (OES内部使用), 为区分ETF成交记录而设置 (以订单为单位)
-        ('__etfTrdCnfmSeq', c_uint32),
+        ('_etfTrdCnfmSeq', c_uint32),
         # 股东账户代码
         ('invAcctId', c_char * OES_INV_ACCT_ID_MAX_LEN),
         # 证券代码
@@ -2925,13 +2925,13 @@ class OesTrdBaseInfoT(PrintableStructure):
         # 累计执行数量
         ('cumQty', c_int32),
         # 回报记录号 (OES内部使用)
-        ('__rowNum', c_int32),
+        ('_rowNum', c_int32),
         # 交易网关组序号 (OES内部使用)
-        ('__tgwGrpNo', c_uint8),
+        ('_tgwGrpNo', c_uint8),
         # ETF赎回得到的替代资金是否当日可用 (OES内部使用)
-        ('__isTrsfInCashAvailable', c_uint8),
+        ('_isTrsfInCashAvailable', c_uint8),
         # 交易网关平台分区号 (OES内部使用)
-        ('__tgwPartitionNo', c_uint8),
+        ('_tgwPartitionNo', c_uint8),
         # 产品类型 @see eOesProductTypeT
         ('productType', c_uint8),
         # 原始委托数量
@@ -2953,11 +2953,11 @@ class OesTrdCnfmT(PrintableStructure):
         # 买卖类型 (取值范围: 买/卖, 申购/赎回(仅深圳)) @see eOesBuySellTypeT
         ('trdSide', c_uint8),
         # 平台号 (OES内部使用) @see eOesPlatformIdT
-        ('__platformId', c_uint8),
+        ('_platformId', c_uint8),
         # 成交类型 (OES内部使用) @see eOesTrdCnfmTypeT
-        ('__trdCnfmType', c_uint8),
+        ('_trdCnfmType', c_uint8),
         # ETF成交回报顺序号 (OES内部使用), 为区分ETF成交记录而设置 (以订单为单位)
-        ('__etfTrdCnfmSeq', c_uint32),
+        ('_etfTrdCnfmSeq', c_uint32),
         # 股东账户代码
         ('invAcctId', c_char * OES_INV_ACCT_ID_MAX_LEN),
         # 证券代码
@@ -2977,13 +2977,13 @@ class OesTrdCnfmT(PrintableStructure):
         # 累计执行数量
         ('cumQty', c_int32),
         # 回报记录号 (OES内部使用)
-        ('__rowNum', c_int32),
+        ('_rowNum', c_int32),
         # 交易网关组序号 (OES内部使用)
-        ('__tgwGrpNo', c_uint8),
+        ('_tgwGrpNo', c_uint8),
         # ETF赎回得到的替代资金是否当日可用 (OES内部使用)
-        ('__isTrsfInCashAvailable', c_uint8),
+        ('_isTrsfInCashAvailable', c_uint8),
         # 交易网关平台分区号 (OES内部使用)
-        ('__tgwPartitionNo', c_uint8),
+        ('_tgwPartitionNo', c_uint8),
         # 产品类型 @see eOesProductTypeT
         ('productType', c_uint8),
         # 原始委托数量
@@ -3019,15 +3019,15 @@ class OesTrdCnfmT(PrintableStructure):
         # 用户私有信息 (由客户端自定义填充, 并在回报数据中原样返回)
         ('userInfo', UserInfo),
         # 成交确认的开始采集时间
-        ('__trdCnfmOrigRecvTime', STimespec32T),
+        ('_trdCnfmOrigRecvTime', STimespec32T),
         # 成交确认的采集完成时间
-        ('__trdCnfmCollectedTime', STimespec32T),
+        ('_trdCnfmCollectedTime', STimespec32T),
         # 成交确认的实际处理开始时间 (POC测试时会被复用于存储委托请求的原始发送时间)
-        ('__trdCnfmActualDealTime', STimespec32T),
+        ('_trdCnfmActualDealTime', STimespec32T),
         # 成交确认的处理完成时间
-        ('__trdCnfmProcessedTime', STimespec32T),
+        ('_trdCnfmProcessedTime', STimespec32T),
         # 消息推送时间 (写入推送缓存以后, 实际网络发送之前)
-        ('__pushingTime', STimespec32T),
+        ('_pushingTime', STimespec32T),
         # 债券利息
         ('trdInterest', c_int64),
         # 交易费用
@@ -3043,9 +3043,9 @@ class OesTrdCnfmT(PrintableStructure):
         # 所有者类型 @see eOesOwnerTypeT
         ('ownerType', c_uint8),
         # 按64位对齐的填充域
-        ('__TRD_CNFM_EXT_filler', c_uint8 * 5),
+        ('_TRD_CNFM_EXT_filler', c_uint8 * 5),
         # 预留的备用字段
-        ('__TRD_CNFM_EXT_reserve', c_char * 16),
+        ('_TRD_CNFM_EXT_reserve', c_char * 16),
     ]
 
 
@@ -3064,7 +3064,7 @@ class OesLotWinningBaseInfoT(PrintableStructure):
         # @see eOesLotRejReasonT
         ('rejReason', c_uint8),
         # 按64位对齐的填充域
-        ('__LOT_WINNING_BASE_INFO_filler', c_int8),
+        ('_LOT_WINNING_BASE_INFO_filler', c_int8),
         # 配号日期/中签日期 (格式为 YYYYMMDD, 形如 20160830)
         ('lotDate', c_int32),
         # 证券名称 (UTF-8 编码)
@@ -3090,7 +3090,7 @@ class OesFundTrsfBaseInfoT(PrintableStructure):
         # 出入金转账类型 @see eOesFundTrsfTypeT
         ('fundTrsfType', c_uint8),
         # 按64位对齐的填充域
-        ('__FUND_TRSF_BASE_filler', c_uint8 * 2),
+        ('_FUND_TRSF_BASE_filler', c_uint8 * 2),
         # 资金账户代码 (可以为空, 为空则自动填充)
         ('cashAcctId', c_char * OES_CASH_ACCT_ID_MAX_LEN),
         # 交易密码 (沪深OES之间内部资金划拨时无需填写该字段, 其它场景该字段必填)
@@ -3121,7 +3121,7 @@ class OesFundTrsfReqT(PrintableStructure):
         # 出入金转账类型 @see eOesFundTrsfTypeT
         ('fundTrsfType', c_uint8),
         # 按64位对齐的填充域
-        ('__FUND_TRSF_BASE_filler', c_uint8 * 2),
+        ('_FUND_TRSF_BASE_filler', c_uint8 * 2),
         # 资金账户代码 (可以为空, 为空则自动填充)
         ('cashAcctId', c_char * OES_CASH_ACCT_ID_MAX_LEN),
         # 交易密码 (沪深OES之间内部资金划拨时无需填写该字段, 其它场景该字段必填)
@@ -3152,7 +3152,7 @@ class OesFundTrsfRejectT(PrintableStructure):
         # 出入金转账类型 @see eOesFundTrsfTypeT
         ('fundTrsfType', c_uint8),
         # 按64位对齐的填充域
-        ('__FUND_TRSF_BASE_filler', c_uint8 * 2),
+        ('_FUND_TRSF_BASE_filler', c_uint8 * 2),
         # 资金账户代码 (可以为空, 为空则自动填充)
         ('cashAcctId', c_char * OES_CASH_ACCT_ID_MAX_LEN),
         # 交易密码 (沪深OES之间内部资金划拨时无需填写该字段, 其它场景该字段必填)
@@ -3179,7 +3179,7 @@ class OesFundTrsfRejectT(PrintableStructure):
         # 客户端环境号
         ('clEnvId', c_int8),
         # 64位对齐的填充域
-        ('__filler', c_int8),
+        ('_filler', c_int8),
         # 错误码
         ('rejReason', c_int32),
         # 错误信息
@@ -3224,7 +3224,7 @@ class OesFundTrsfReportT(PrintableStructure):
         # /** 出入金委托执行状态 @see eOesFundTrsfStatusT
         ('trsfStatus', c_uint8),
         # 是否有转账到主柜
-        ('__hasCounterTransfered', c_uint8),
+        ('_hasCounterTransfered', c_uint8),
         # 指令来源 @see eOesFundTrsfSourceTypeT
         ('fundTrsfSourceType', c_uint8),
         # 错误原因
@@ -3232,7 +3232,7 @@ class OesFundTrsfReportT(PrintableStructure):
         # 主柜错误码
         ('counterErrCode', c_int32),
         # 按64位对齐的填充域
-        ('__filler', c_uint32),
+        ('_filler', c_uint32),
         # 资金调拨流水号
         ('allotSerialNo', c_char * OES_MAX_ALLOT_SERIALNO_LEN),
         # 错误信息
@@ -3260,11 +3260,11 @@ class OesCustBaseInfoT(PrintableStructure):
         # 期权账户结算单确认标志 (0:未确认, 1:已确认)
         ('optSettlementCnfmFlag', c_uint8),
         # 按64位对齐的填充域
-        ('__CUST_BASE_filler1', c_uint8),
+        ('_CUST_BASE_filler1', c_uint8),
         # 营业部代码
         ('branchId', c_int32),
         # 按64位对齐的填充域
-        ('__CUST_BASE_filler2', c_uint32),
+        ('_CUST_BASE_filler2', c_uint32),
     ]
 
 
@@ -3286,7 +3286,7 @@ class OesInvAcctBaseInfoT(PrintableStructure):
         # 是否禁止交易 (仅供API查询使用)
         ('isTradeDisabled', c_uint8),
         # 按64位对齐的填充域
-        ('__INV_ACCT_BASE_filler', c_uint8 * 2),
+        ('_INV_ACCT_BASE_filler', c_uint8 * 2),
         # 证券账户权限限制 @see OES_LIMIT_xxx
         ('limits', c_uint64),
         # 股东权限/客户权限 @see eOesTradingPermissionT
@@ -3300,7 +3300,7 @@ class OesInvAcctBaseInfoT(PrintableStructure):
         # 科创板权益 (新股认购限额)
         ('kcSubscriptionQuota', c_int32),
         # 预留的备用字段
-        ('__INV_ACCT_BASE_reserve', c_char * 32),
+        ('_INV_ACCT_BASE_reserve', c_char * 32),
     ]
 
 
@@ -3386,7 +3386,7 @@ class OesStockBaseInfoT(PrintableStructure):
         # 计价方式 (仅适用于债券 @see eOesPricingMethodT)
         ('pricingMethod', c_uint8),
         # 按64位对齐的填充域
-        ('__STOCK_BASE_filler', c_uint8 * 3),
+        ('_STOCK_BASE_filler', c_uint8 * 3),
         # 限价参数表 (涨/跌停价格, 数组下标为当前时段标志 @see eOesTrdSessTypeT)
         ('priceLimit', OesPriceLimitT * 3),
         # 最小报价单位 (单位精确到元后四位, 即1元 = 10000)
@@ -3430,7 +3430,7 @@ class OesStockBaseInfoT(PrintableStructure):
         # 连续交易时段的有效竞价范围基准价类型 @see eOesAuctionReferPriceTypeT
         ('auctionReferPriceType', c_uint8),
         # 按64位对齐的填充域
-        ('__STOCK_BASE_filler1', c_uint8 * 2),
+        ('_STOCK_BASE_filler1', c_uint8 * 2),
         # 连续交易时段的有效竞价范围涨跌幅度 (百分比或绝对价格, 取决于'有效竞价范围限制类型')
         ('auctionUpDownRange', c_int32),
         # 上市日期
@@ -3448,11 +3448,11 @@ class OesStockBaseInfoT(PrintableStructure):
         # 证券名称 (UTF-8 编码)
         ('securityName', c_char * OES_SECURITY_NAME_MAX_LEN),
         # 预留的备用字段
-        ('__STOCK_BASE_reserve1', c_char * 80),
+        ('_STOCK_BASE_reserve1', c_char * 80),
         # 融资融券业务专用字段
         ('creditExt', _OesStockBaseInfoT_CreditExt),
         # 预留的备用字段
-        ('__STOCK_BASE_reserve2', c_char * 48),
+        ('_STOCK_BASE_reserve2', c_char * 48),
     ]
 
 
@@ -3488,7 +3488,7 @@ class OesIssueBaseInfoT(PrintableStructure):
         # 是否具有协议控制框架 (0 没有, 1 有 (仅适用于创业板产品))
         ('isVie', c_uint8),
         # 按64位对齐的填充域
-        ('__ISSUE_BASE_filler', c_uint8 * 8),
+        ('_ISSUE_BASE_filler', c_uint8 * 8),
         # 发行起始日
         ('startDate', c_int32),
         # 发行结束日
@@ -3516,9 +3516,9 @@ class OesIssueBaseInfoT(PrintableStructure):
         # 证券名称 (UTF-8 编码)
         ('securityName', c_char * OES_SECURITY_NAME_MAX_LEN),
         # 预留的备用字段
-        ('__ISSUE_BASE_reserve1', c_char * 56),
+        ('_ISSUE_BASE_reserve1', c_char * 56),
         # 预留的备用字段
-        ('__ISSUE_BASE_reserve2', c_char * 64),
+        ('_ISSUE_BASE_reserve2', c_char * 64),
     ]
 
 
@@ -3544,7 +3544,7 @@ class OesEtfBaseInfoT(PrintableStructure):
         # 券商管理端的禁止交易标志  1: 是; 0: 否
         ('isDisabled', c_uint8),
         # 按64位对齐的填充域
-        ('__ETF_BASE_filler', c_uint8),
+        ('_ETF_BASE_filler', c_uint8),
         # 成份证券数目
         ('componentCnt', c_int32),
         # 每个篮子 (最小申购、赎回单位) 对应的ETF份数, 即申购赎回单位
@@ -3602,7 +3602,7 @@ class OesEtfComponentBaseInfoT(PrintableStructure):
         # 的现金替代处理
         ('isTrdComponent', c_uint8),
         # 按64位对齐的填充域
-        ('__ETF_COMPONENT_BASE_filler', c_uint8 * 2),
+        ('_ETF_COMPONENT_BASE_filler', c_uint8 * 2),
         # 前收盘价格, 单位精确到元后四位, 即1元 = 10000
         ('prevClose', c_int32),
         # 成份证券数量
@@ -3634,7 +3634,7 @@ class OesCashAssetBaseInfoT(PrintableStructure):
         # 是否禁止出入金 (仅供API查询使用)
         ('isFundTrsfDisabled', c_uint8),
         # 按64位对齐的填充域
-        ('__CASH_ASSET_BASE_filler', c_uint8 * 4),
+        ('_CASH_ASSET_BASE_filler', c_uint8 * 4),
         # 期初余额, 单位精确到元后四位, 即1元 = 10000
         ('beginningBal', c_int64),
         # 期初可用余额, 单位精确到元后四位, 即1元 = 10000
@@ -3702,7 +3702,7 @@ class _OesCashAssetReportT_Union(PrintableUnion):
         # 期权业务专用字段 (@note 非期权业务不要使用这些字段)
         ('optionExt', _OesCashAssetReportT_OptionExt),
         # 预留的备用字段 (@note 不要直接使用该字段)
-        ('__CASH_ASSET_EXT_reserve', c_char * 512),
+        ('_CASH_ASSET_EXT_reserve', c_char * 512),
     ]
 
 
@@ -3730,7 +3730,7 @@ class OesCashAssetReportT(PrintableStructure):
         # 是否禁止出入金 (仅供API查询使用)
         ('isFundTrsfDisabled', c_uint8),
         # 按64位对齐的填充域
-        ('__CASH_ASSET_BASE_filler', c_uint8 * 4),
+        ('_CASH_ASSET_BASE_filler', c_uint8 * 4),
         # 期初余额, 单位精确到元后四位, 即1元 = 10000
         ('beginningBal', c_int64),
         # 期初可用余额, 单位精确到元后四位, 即1元 = 10000
@@ -3782,7 +3782,7 @@ class OesCashAssetReportT(PrintableStructure):
         # 日中沪深结点内部划拨的在途资金 (正数代表在途划入, 负数代表在途划出), 单位精确到元后四位, 即1元 = 10000
         ('internalAllotUncomeAmt', c_int64),
         # 预留的备用字段
-        ('__CASH_ASSET_RPT_reserve', c_char * 16),
+        ('_CASH_ASSET_RPT_reserve', c_char * 16),
         # 仅适用于融资融券业务和期权业务的扩展字段
         # @note 现货业务的资金回报中不会携带以下扩展字段, 不要读写和操作这些扩展字段
         ('union', _OesCashAssetReportT_Union),
@@ -3807,7 +3807,7 @@ class OesStkHoldingBaseInfoT(PrintableStructure):
         # 信用持仓标识 (0:不是信用持仓, 1:是信用持仓)
         ('isCreditHolding', c_uint8),
         # 按64位对齐的填充域
-        ('__HOLD_BASE_filler', c_uint8 * 3),
+        ('_HOLD_BASE_filler', c_uint8 * 3),
         # 日初持仓
         ('originalHld', c_int64),
         # 日初总持仓成本 (日初持仓成本价=日初总持仓成本/日初持仓)
@@ -3867,7 +3867,7 @@ class _OesStkHoldingReportT_Union(PrintableUnion):
         # 融资融券业务专用字段 (即: 客户单证券融资融券负债统计信息; @note 非两融业务不要使用这些字段)
         ('creditExt', OesCrdSecurityDebtStatsBaseInfoT),
         # 预留的备用字段
-        ('__STK_HOLDING_EXT_reserve', c_char * 432),
+        ('_STK_HOLDING_EXT_reserve', c_char * 432),
     ]
 
 
@@ -3897,7 +3897,7 @@ class OesStkHoldingReportT(PrintableStructure):
         # 信用持仓标识 (0:不是信用持仓, 1:是信用持仓)
         ('isCreditHolding', c_uint8),
         # 按64位对齐的填充域
-        ('__HOLD_BASE_filler', c_uint8 * 3),
+        ('_HOLD_BASE_filler', c_uint8 * 3),
         # 日初持仓
         ('originalHld', c_int64),
         # 日初总持仓成本 (日初持仓成本价=日初总持仓成本/日初持仓)
@@ -3966,7 +3966,7 @@ class OesStkHoldingReportT(PrintableStructure):
         # - 对于信用系统, 该字段固定为0
         ('lockAvlHld', c_int64),
         # 按64位对齐的填充域 (为兼容旧版本而保留)
-        ('__STK_HOLDING_RPT_filler', c_int64),
+        ('_STK_HOLDING_RPT_filler', c_int64),
         # 总持仓数量 (日初持仓数量+累计买入数量-累计卖出数量)
         # - 对于现货系统:
         # - 包含在途卖出冻结的持仓数量
@@ -3986,7 +3986,7 @@ class OesStkHoldingReportT(PrintableStructure):
         # 持仓成本价
         ('costPrice', c_int64),
         # 预留的备用字段
-        ('__STK_HOLDING_RPT_reserve', c_char * 32),
+        ('_STK_HOLDING_RPT_reserve', c_char * 32),
         # 仅适用于融资融券业务的扩展字段
         # @note 现货业务的持仓回报中不会携带以下扩展字段, 不要读写和操作这些扩展字段
         ('union', _OesStkHoldingReportT_Union),
@@ -4000,7 +4000,7 @@ class OesMarketStateInfoT(PrintableStructure):
         ('platformId', c_uint8),  # 交易平台类型 @see eOesPlatformIdT
         ('mktId', c_uint8),  # 市场代码 @see eOesMarketIdT
         ('mktState', c_uint8),  # 市场状态 @see eOesMarketStateT
-        ('__filler', c_uint8 * 4),  # 按64位对齐的填充域
+        ('_filler', c_uint8 * 4),  # 按64位对齐的填充域
     ]
 
 
@@ -4022,7 +4022,7 @@ class OesNotifyBaseInfoT(PrintableStructure):
         # 业务类型 @see eOesBusinessTypeT
         ('businessType', c_uint8),
         # 按64位对齐的填充域
-        ('__NOTIFY_INFO_filler1', c_uint8 * 3),
+        ('_NOTIFY_INFO_filler1', c_uint8 * 3),
         # 客户代码 (仅当消息通知范围为指定客户时有效)
         ('custId', c_char * OES_CUST_ID_MAX_LEN),
         # 证券代码 (仅当通知消息与特定证券相关时有效)
@@ -4030,7 +4030,7 @@ class OesNotifyBaseInfoT(PrintableStructure):
         # 市场代码 (仅用于修饰证券代码) @see eOesMarketIdT
         ('mktId', c_uint8),
         # 按64位对齐的填充域
-        ('__NOTIFY_INFO_filler2', c_uint8 * 3),
+        ('_NOTIFY_INFO_filler2', c_uint8 * 3),
         # 通知内容长度 (不包含'\0'结束符的有效字符长度)
         ('contentLen', c_int32),
         # 通知内容
@@ -4056,7 +4056,7 @@ class OesNotifyInfoReportT(PrintableStructure):
         # 业务类型 @see eOesBusinessTypeT
         ('businessType', c_uint8),
         # 按64位对齐的填充域
-        ('__NOTIFY_INFO_filler1', c_uint8 * 3),
+        ('_NOTIFY_INFO_filler1', c_uint8 * 3),
         # 客户代码 (仅当消息通知范围为指定客户时有效)
         ('custId', c_char * OES_CUST_ID_MAX_LEN),
         # 证券代码 (仅当通知消息与特定证券相关时有效)
@@ -4064,7 +4064,7 @@ class OesNotifyInfoReportT(PrintableStructure):
         # 市场代码 (仅用于修饰证券代码) @see eOesMarketIdT
         ('mktId', c_uint8),
         # 按64位对齐的填充域
-        ('__NOTIFY_INFO_filler2', c_uint8 * 3),
+        ('_NOTIFY_INFO_filler2', c_uint8 * 3),
         # 通知内容长度 (不包含'\0'结束符的有效字符长度)
         ('contentLen', c_int32),
         # 通知内容
@@ -4092,7 +4092,7 @@ class OesQryRspHeadT(PrintableStructure):
         # 是否是当前查询最后一个包
         ('isEnd', c_int8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 7),
+        ('_filler', c_uint8 * 7),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -4106,7 +4106,7 @@ class OesQryCursorT(PrintableStructure):
         # 是否是当前最后一个包
         ('isEnd', c_int8),
         # 按64位对齐的填充域
-        ('__filler', c_int8 * 3),
+        ('_filler', c_int8 * 3),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -4118,7 +4118,7 @@ class OesQryTradingDayRspT(PrintableStructure):
         # 交易日
         ('tradingDay', c_int32),
         # 按64位对齐的填充域
-        ('__filler', c_int32),
+        ('_filler', c_int32),
     ]
 
 
@@ -4136,20 +4136,20 @@ class OesInvAcctOverviewT(PrintableStructure):
         ('ownerType', c_uint8),  # 股东账户的所有者类型 @see eOesOwnerTypeT
         ('optInvLevel', c_uint8),  # 期权投资者级别 @see eOesOptInvLevelT
         ('isTradeDisabled', c_uint8),  # 是否禁止交易 (仅供API查询使用)
-        ('__filler1', c_uint8),  # 按64位对齐的填充域
+        ('_filler1', c_uint8),  # 按64位对齐的填充域
         ('limits', c_uint64),  # 证券账户权限限制 @see OES_LIMIT_xxx
         ('permissions', c_uint64),  # 股东权限/客户权限 @see eOesTradingPermissionT
         ('pbuId', c_int32),  # 席位号
         ('subscriptionQuota', c_int32),  # 主板权益 (新股/配股认购限额)
         ('kcSubscriptionQuota', c_int32),  # 科创板权益 (新股/配股认购限额)
-        ('__filler2', c_int32),  # 按64位对齐的填充域
+        ('_filler2', c_int32),  # 按64位对齐的填充域
         ('trdOrdCnt', c_int32),  # 当日累计有效交易类委托笔数统计
         ('nonTrdOrdCnt', c_int32),  # 当日累计有效非交易类委托笔数统计
         ('cancelOrdCnt', c_int32),  # 当日累计有效撤单笔数统计
         ('oesRejectOrdCnt', c_int32),  # 当日累计被OES拒绝的委托笔数统计
         ('exchRejectOrdCnt', c_int32),  # 当日累计被交易所拒绝的委托笔数统计
         ('trdCnt', c_int32),  # 当日累计成交笔数统计
-        ('__reserve', c_char * 64),  # 备用字段
+        ('_reserve', c_char * 64),  # 备用字段
     ]
 
 
@@ -4167,8 +4167,8 @@ class OesCashAcctOverviewT(PrintableStructure):
         ('cashAcctStatus', c_uint8),  # 资金账户状态 @see eOesAcctStatusT
         ('currType', c_uint8),  # 币种类型 @see eOesCurrTypeT
         ('isFundTrsfDisabled', c_uint8),  # 出入金是否禁止标识
-        ('__filler', c_uint8 * 3),  # 按64位对齐的填充域
-        ('__reserve', c_char * 64),  # 备用字段
+        ('_filler', c_uint8 * 3),  # 按64位对齐的填充域
+        ('_reserve', c_char * 64),  # 备用字段
     ]
 
 
@@ -4192,11 +4192,11 @@ class OesCustOverviewT(PrintableStructure):
         # 期权账户结算单确认标志 (0:未确认, 1:已确认)
         ('optSettlementCnfmFlag', c_uint8),
         # 按64位对齐的填充域
-        ('__CUST_BASE_filler1', c_uint8),
+        ('_CUST_BASE_filler1', c_uint8),
         # 营业部代码
         ('branchId', c_int32),
         # 按64位对齐的填充域
-        ('__CUST_BASE_filler2', c_uint32),
+        ('_CUST_BASE_filler2', c_uint32),
         # 资金账户信息
         ('cashAcct', OesCashAcctOverviewT),
         # 上海股东账户信息
@@ -4206,7 +4206,7 @@ class OesCustOverviewT(PrintableStructure):
         # 客户姓名
         ('custName', c_char * OES_CUST_NAME_MAX_LEN),
         # 备用字段
-        ('__reserve', c_char * 128),
+        ('_reserve', c_char * 128),
     ]
 
 
@@ -4228,11 +4228,11 @@ class OesClientOverviewT(PrintableStructure):
         ('sseStkPbuId', c_int32),  # 上海现货/信用账户对应的PBU代码
         ('sseOptPbuId', c_int32),  # 上海衍生品账户对应的PBU代码
         ('sseQualificationClass', c_uint8),  # 上海股东账户的投资者适当性管理分类 @see eOesQualificationClassT
-        ('__filler2', c_uint8 * 7),  # 按64位对齐的填充域
+        ('_filler2', c_uint8 * 7),  # 按64位对齐的填充域
         ('szseStkPbuId', c_int32),  # 深圳现货/信用账户对应的PBU代码
         ('szseOptPbuId', c_int32),  # 深圳衍生品账户对应的PBU代码
         ('szseQualificationClass', c_uint8),  # 深圳股东账户的投资者适当性管理分类 @see eOesQualificationClassT
-        ('__filler3', c_uint8 * 7),  # 按64位对齐的填充域
+        ('_filler3', c_uint8 * 7),  # 按64位对齐的填充域
         ('currOrdConnected', c_int32),  # 当前已连接的委托通道数量
         ('currRptConnected', c_int32),  # 当前已连接的回报通道数量
         ('currQryConnected', c_int32),  # 当前已连接的查询通道数量
@@ -4245,7 +4245,7 @@ class OesClientOverviewT(PrintableStructure):
         ('initialCashAssetRatio', c_uint8),  # 客户在本结点的初始资金资产占比(百分比)
         ('isSupportInternalAllot', c_uint8),  # 是否支持两地交易内部资金划拨
         ('isCheckStkConcentrate', c_uint8),  # 是否启用现货集中度控制
-        ('__reserve', c_char * 125),  # 备用字段
+        ('_reserve', c_char * 125),  # 备用字段
         ('associatedCustCnt', c_int32),  # 客户端关联的客户数量
         # 客户端关联的客户列表
         ('custItems', OesCustOverviewT * OES_MAX_CUST_PER_CLIENT),
@@ -4293,7 +4293,7 @@ class OesQryInvAcctFilterT(PrintableStructure):
         # @see eOesMarketIdT
         ('mktId', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 7),
+        ('_filler', c_uint8 * 7),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -4317,7 +4317,7 @@ class OesInvAcctItemT(PrintableStructure):
         # 是否禁止交易 (仅供API查询使用)
         ('isTradeDisabled', c_uint8),
         # 按64位对齐的填充域
-        ('__INV_ACCT_BASE_filler', c_uint8 * 2),
+        ('_INV_ACCT_BASE_filler', c_uint8 * 2),
         # 证券账户权限限制 @see OES_LIMIT_xxx
         ('limits', c_uint64),
         # 股东权限/客户权限 @see eOesTradingPermissionT
@@ -4331,7 +4331,7 @@ class OesInvAcctItemT(PrintableStructure):
         # 科创板权益 (新股认购限额)
         ('kcSubscriptionQuota', c_int32),
         # 预留的备用字段
-        ('__INV_ACCT_BASE_reserve', c_char * 32),
+        ('_INV_ACCT_BASE_reserve', c_char * 32),
         # 客户代码
         ('custId', c_char * OES_CUST_ID_MAX_LEN),
     ]
@@ -4376,7 +4376,7 @@ class OesQryStockFilterT(PrintableStructure):
         # 融券标的标识 (0:未指定, 1:是融券标的, 2:不是融券标的)
         ('crdShortSellUnderlyingFlag', c_int8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 2),
+        ('_filler', c_uint8 * 2),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -4424,7 +4424,7 @@ class OesQryIssueFilterT(PrintableStructure):
         # @see eOesProductTypeT
         ('productType', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 6),
+        ('_filler', c_uint8 * 6),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -4459,7 +4459,7 @@ class OesQryEtfFilterT(PrintableStructure):
         # @see eOesMarketIdT
         ('mktId', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 7),
+        ('_filler', c_uint8 * 7),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -4494,7 +4494,7 @@ class OesQryEtfComponentFilterT(PrintableStructure):
         # @see eOesMarketIdT
         ('fundMktId', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 7),
+        ('_filler', c_uint8 * 7),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -4526,7 +4526,7 @@ class OesEtfComponentItemT(PrintableStructure):
         # 的现金替代处理
         ('isTrdComponent', c_uint8),
         # 按64位对齐的填充域
-        ('__ETF_COMPONENT_BASE_filler', c_uint8 * 2),
+        ('_ETF_COMPONENT_BASE_filler', c_uint8 * 2),
         # 前收盘价格, 单位精确到元后四位, 即1元 = 10000
         ('prevClose', c_int32),
         # 成份证券数量
@@ -4542,7 +4542,7 @@ class OesEtfComponentItemT(PrintableStructure):
         # 成份证券名称
         ('securityName', c_char * OES_SECURITY_NAME_MAX_LEN),
         # 预留的备用字段
-        ('__reserve', c_char * 96),
+        ('_reserve', c_char * 96),
     ]
 
 
@@ -4629,11 +4629,11 @@ class OesCounterCashItemT(PrintableStructure):
         ('cashAcctStatus', c_uint8),  # 资金账户状态 @see eOesAcctStatusT
         ('currType', c_uint8),  # 币种类型 @see eOesCurrTypeT
         ('isFundTrsfDisabled', c_uint8),  # 是否禁止出入金
-        ('__filler', c_uint8 * 4),  # 按64位对齐的填充域
+        ('_filler', c_uint8 * 4),  # 按64位对齐的填充域
         ('counterAvailableBal', c_int64),  # 主柜可用资金余额，单位精确到元后四位，即1元 = 10000
         ('counterDrawableBal', c_int64),  # 主柜可取资金余额，单位精确到元后四位，即1元 = 10000
         ('counterCashUpdateTime', c_int64),  # 主柜资金更新时间 (seconds since the Epoch)
-        ('__reserve', c_char * 32),  # 保留字段
+        ('_reserve', c_char * 32),  # 保留字段
     ]
 
 
@@ -4669,7 +4669,7 @@ class OesQryStkHoldingFilterT(PrintableStructure):
         # 产品类型 @see eOesProductTypeT
         ('productType', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 5),
+        ('_filler', c_uint8 * 5),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -4709,7 +4709,7 @@ class OesQryLotWinningFilterT(PrintableStructure):
         # @see eOesLotTypeT
         ('lotType', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 6),
+        ('_filler', c_uint8 * 6),
         # 查询起始日期 (格式为 YYYYMMDD)
         ('startDate', c_int32),
         # 查询结束日期 (格式为 YYYYMMDD)
@@ -4758,7 +4758,7 @@ class OesQryOrdFilterT(PrintableStructure):
         # 买卖类型  @see eOesBuySellTypeT
         ('bsType', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 3),
+        ('_filler', c_uint8 * 3),
         # 客户委托编号, 可选项
         ('clOrdId', c_int64),
         # 客户委托流水号, 可选项
@@ -4809,7 +4809,7 @@ class OesQryTrdFilterT(PrintableStructure):
         # 买卖类型  @see eOesBuySellTypeT
         ('bsType', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint32),
+        ('_filler', c_uint32),
         # 内部委托编号, 可选项
         ('clOrdId', c_int64),
         # 客户委托流水号, 可选项
@@ -4855,7 +4855,7 @@ class OesQryFundTransferSerialFilterT(PrintableStructure):
         # 客户端环境号
         ('clEnvId', c_int8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 3),
+        ('_filler', c_uint8 * 3),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -4896,7 +4896,7 @@ class OesQryCommissionRateFilterT(PrintableStructure):
         # @see eOesBuySellTypeT
         ('bsType', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 5),
+        ('_filler', c_uint8 * 5),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -4924,7 +4924,7 @@ class OesCommissionRateItemT(PrintableStructure):
         # 计算模式 @see eOesCalcFeeModeT
         ('calcFeeMode', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8),
+        ('_filler', c_uint8),
         # 费率, 单位精确到千万分之一, 即费率0.02% = 2000
         ('feeRate', c_int64),
         # 最低费用, 大于0时有效 (单位：万分之一元)
@@ -4964,7 +4964,7 @@ class OesQryMarketStateFilterT(PrintableStructure):
         # @see eOesPlatformIdT
         ('platformId', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 6),
+        ('_filler', c_uint8 * 6),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -4998,7 +4998,7 @@ class OesQryNotifyInfoFilterT(PrintableStructure):
         # 通知消息等级 @see eOesNotifyLevelT
         ('notifyLevel', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 7),
+        ('_filler', c_uint8 * 7),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -5034,7 +5034,7 @@ class _OesBrokerParamsInfoT_CreditExt(PrintableStructure):
         ('liqudationLineRatio', c_int32),  # 维持担保比平仓线 (千分比)
         # 是否支持使用 '仅归还息费' 模式归还融资融券负债的息费
         ('isRepayInterestOnlyAble', c_uint8),
-        ('__filler', c_uint8 * 7),  # 按64位对齐的填充域
+        ('_filler', c_uint8 * 7),  # 按64位对齐的填充域
     ]
 
 
@@ -5051,7 +5051,7 @@ class _OesBrokerParamsInfoT_Union(PrintableUnion):
     _fields_ = [
         ('creditExt', _OesBrokerParamsInfoT_CreditExt),
         ('optionExt', _OesBrokerParamsInfoT_OptionExt),
-        ('__extInfo', c_char * 192),  # 占位用的扩展信息
+        ('_extInfo', c_char * 192),  # 占位用的扩展信息
     ]
 
 
@@ -5067,15 +5067,15 @@ class OesBrokerParamsInfoT(PrintableStructure):
         # 当前API协议版本号
         ('apiVersion', c_char * OES_VER_ID_MAX_LEN),
         # 为兼容协议而添加的填充域
-        ('__filler1', c_char * 8),
+        ('_filler1', c_char * 8),
         # API兼容的最低协议版本号
         ('apiMinVersion', c_char * OES_VER_ID_MAX_LEN),
         # 为兼容协议而添加的填充域
-        ('__filler2', c_char * 8),
+        ('_filler2', c_char * 8),
         # 客户端最新的版本号
         ('clientVersion', c_char * OES_VER_ID_MAX_LEN),
         # 为兼容协议而添加的填充域
-        ('__filler3', c_char * 8),
+        ('_filler3', c_char * 8),
         # 允许客户端修改密码的开始时间 (HHMMSSsss)
         ('changePwdLimitTime', c_int32),
         # 客户端密码允许的最小长度
@@ -5090,7 +5090,7 @@ class OesBrokerParamsInfoT(PrintableStructure):
         # 服务端是否支持两地交易内部资金划拨
         ('isSupportInternalAllot', c_uint8),
         # 按64位对齐的填充域
-        ('__filler4', c_uint8 * 6),
+        ('_filler4', c_uint8 * 6),
         # 客户代码
         ('custId', c_char * OES_CUST_ID_MAX_LEN),
         # 上证风险警示板证券单日买入数量限制
@@ -5098,7 +5098,7 @@ class OesBrokerParamsInfoT(PrintableStructure):
         # 深证风险警示板证券单日买入数量限制
         ('szseRiskWarningSecurityBuyQtyLimit', c_int64),
         # 预留的备用字段
-        ('__reserve', c_char * 24),
+        ('_reserve', c_char * 24),
         # 业务范围扩展信息
         ('union', _OesBrokerParamsInfoT_Union),
     ]
@@ -5125,7 +5125,7 @@ class OesApplUpgradeSourceT(PrintableStructure):
         # 登录密码的加密方法
         ('encryptMethod', c_int32),
         # 按64位对齐的填充域
-        ('__filler', c_int32),
+        ('_filler', c_int32),
         # 根目录地址
         ('homePath', c_char * SPK_MAX_PATH_LEN),
         # 文件名称
@@ -5235,7 +5235,7 @@ class OesQryCrdUnderlyingInfoFilterT(PrintableStructure):
         # 是否为融券标的 (0:未指定, 1:是融券标的, 2:不是融券标的)
         ('crdShortSellUnderlyingFlag', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 5),
+        ('_filler', c_uint8 * 5),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -5271,7 +5271,7 @@ class OesQryCrdCashPositionFilterT(PrintableStructure):
         # 头寸性质, 可选项 @see eOesCrdCashGroupPropertyT
         ('cashGroupProperty', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 7),
+        ('_filler', c_uint8 * 7),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -5289,7 +5289,7 @@ class OesCrdCashPositionItemT(PrintableStructure):
         # 币种 @see eOesCurrTypeT
         ('currType', c_uint8),
         # 按64位对齐的填充域
-        ('__CRD_CASH_POSITION_BASE_filler', c_uint8 * 2),
+        ('_CRD_CASH_POSITION_BASE_filler', c_uint8 * 2),
         # 资金头寸金额 (含已用)
         ('positionAmt', c_int64),
         # 日间已归还金额
@@ -5305,13 +5305,13 @@ class OesCrdCashPositionItemT(PrintableStructure):
         # 期初已用金额 (期初待归还负债金额; 单位精确到元后四位, 即1元=10000)
         ('originalUsed', c_int64),
         # 预留的备用字段
-        ('__CRD_CASH_POSITION_BASE_reserve', c_char * 32),
+        ('_CRD_CASH_POSITION_BASE_reserve', c_char * 32),
         # 资金头寸剩余可融资金额
         ('availableBalance', c_int64),
         # 客户代码
         ('custId', c_char * OES_CUST_ID_MAX_LEN),
         # 保留字段
-        ('__reserve', c_char * 16),
+        ('_reserve', c_char * 16),
     ]
 
 
@@ -5349,7 +5349,7 @@ class OesQryCrdSecurityPositionFilterT(PrintableStructure):
         # 头寸性质, 可选项 @see eOesCrdCashGroupPropertyT
         ('cashGroupProperty', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 6),
+        ('_filler', c_uint8 * 6),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -5367,7 +5367,7 @@ class OesCrdSecurityPositionItemT(PrintableStructure):
         # 头寸性质 @see eOesCrdCashGroupPropertyT
         ('cashGroupProperty', c_uint8),
         # 按64位对齐的填充域
-        ('__SECURITY_POSITION_BASE_filler', c_uint8 * 2),
+        ('_SECURITY_POSITION_BASE_filler', c_uint8 * 2),
         # 头寸编号
         ('cashGroupNo', c_int32),
         # 证券头寸数量 (含已用)
@@ -5385,13 +5385,13 @@ class OesCrdSecurityPositionItemT(PrintableStructure):
         # 期初已用数量 (期初待归还负债数量)
         ('originalUsedQty', c_int64),
         # 预留的备用字段
-        ('__SECURITY_POSITION_BASE_reserve', c_char * 32),
+        ('_SECURITY_POSITION_BASE_reserve', c_char * 32),
         # 当前可用头寸数量
         ('availablePositionQty', c_int64),
         # 客户代码
         ('custId', c_char * OES_CUST_ID_MAX_LEN),
         # 保留字段
-        ('__reserve', c_char * 32),
+        ('_reserve', c_char * 32),
     ]
 
 
@@ -5436,7 +5436,7 @@ class OesQryCrdDebtContractFilterT(PrintableStructure):
         # 历史合约标识 (0:未指定, 1:是历史合约, 2:不是历史合约)
         ('historyContractFlag', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 4),
+        ('_filler', c_uint8 * 4),
         # 查询融资融券合约的起始日期 (格式为 YYYYMMDD, 形如 20160830)
         ('startDate', c_int32),
         # 查询融资融券合约的结束日期 (格式为 YYYYMMDD, 形如 20160830))
@@ -5483,7 +5483,7 @@ class OesQryCrdDebtJournalFilterT(PrintableStructure):
         # 负债类型 @see eOesCrdDebtTypeT
         ('debtType', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 6),
+        ('_filler', c_uint8 * 6),
         # 查询融资融券合约流水的起始日期 (目前仅支持查询当日流水, 格式为 YYYYMMDD, 形如 20160830)
         ('startDate', c_int32),
         # 查询融资融券合约流水的结束日期 (格式为 YYYYMMDD, 形如 20160830))
@@ -5525,7 +5525,7 @@ class OesQryCrdCashRepayFilterT(PrintableStructure):
         # 客户端环境号
         ('clEnvId', c_int8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 3),
+        ('_filler', c_uint8 * 3),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -5565,7 +5565,7 @@ class OesQryCrdSecurityDebtStatsFilterT(PrintableStructure):
         # 是否有融资融券负债标识 (0:未指定, 1:有融资负债(含其他负债), 2:有融券负债, 3:有融资或融券负债)
         ('hasCreditDebtFlag', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 6),
+        ('_filler', c_uint8 * 6),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -5603,7 +5603,7 @@ class OesQryCrdExcessStockFilterT(PrintableStructure):
         # 市场代码, 可选项 @see eOesMarketIdT
         ('mktId', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 7),
+        ('_filler', c_uint8 * 7),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -5641,7 +5641,7 @@ class OesQryCrdInterestRateFilterT(PrintableStructure):
         # @see eOesBuySellTypeT
         ('bsType', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 6),
+        ('_filler', c_uint8 * 6),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -5707,7 +5707,7 @@ class OesCrdCollateralTransferOutMaxQtyItemT(PrintableStructure):
         # 市场代码 @see eOesMarketIdT
         ('mktId', c_uint8),
         # 按64位对齐填充域
-        ('__filler', c_uint8 * 7),
+        ('_filler', c_uint8 * 7),
         # 融资融券担保品可转出的最大数量
         ('collateralTransferOutMaxQty', c_int64),
     ]
@@ -5724,7 +5724,7 @@ class OesQryCrdCollateralTransferOutMaxQtyReqT(PrintableStructure):
         # @see eOesMarketIdT
         ('mktId', c_uint8),
         # 按64位对齐的填充数据
-        ('__filler', c_uint8 * 7),
+        ('_filler', c_uint8 * 7),
     ]
 
 
@@ -5745,7 +5745,7 @@ class OesQryOptionFilterT(PrintableStructure):
         # @see eOesMarketIdT
         ('mktId', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 7),
+        ('_filler', c_uint8 * 7),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -5790,7 +5790,7 @@ class OesQryOptHoldingFilterT(PrintableStructure):
         # 持仓类型 @see eOesOptPositionTypeT
         ('positionType', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 6),
+        ('_filler', c_uint8 * 6),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -5818,7 +5818,7 @@ class OesOptHoldingItemT(PrintableStructure):
         # 套保标志 (0 非套保, 1 套保)
         ('hedgeFlag', c_uint8),
         # 按64位对齐的填充域
-        ('__HOLD_BASE_filler', c_uint8),
+        ('_HOLD_BASE_filler', c_uint8),
         # 日初总持仓张数
         ('originalQty', c_int64),
         # 日初可用持仓
@@ -5850,7 +5850,7 @@ class OesOptHoldingItemT(PrintableStructure):
         # 义务仓占用保证金
         ('positionMargin', c_int64),
         # 预留的备用字段
-        ('__OPT_HOLDING_BASE_reserve', c_char * 32),
+        ('_OPT_HOLDING_BASE_reserve', c_char * 32),
         # 可平仓张数 (单位: 张)
         ('closeAvlQty', c_int64),
         # 可行权张数 (单位: 张)
@@ -5871,9 +5871,9 @@ class OesOptHoldingItemT(PrintableStructure):
         # 可用的单日买入开仓限额
         ('availableDailyBuyOpenLimit', c_int32),
         # 按64位对齐的填充域
-        ('__OPT_HOLDING_EXT_filler2', c_int32),
+        ('_OPT_HOLDING_EXT_filler2', c_int32),
         # 预留的备用字段
-        ('__OPT_HOLDING_EXT_reserve', c_char * 32),
+        ('_OPT_HOLDING_EXT_reserve', c_char * 32),
         # 交易所合约代码
         ('contractId', c_char * OES_CONTRACT_EXCH_ID_MAX_LEN),
         # 期权合约简称
@@ -5917,7 +5917,7 @@ class OesQryOptUnderlyingHoldingFilterT(PrintableStructure):
         # 证券类别  @see eOesSecurityTypeT
         ('underlyingSecurityType', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 6),
+        ('_filler', c_uint8 * 6),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -5957,7 +5957,7 @@ class OesQryOptPositionLimitFilterT(PrintableStructure):
         # 证券类别  @see eOesSecurityTypeT
         ('underlyingSecurityType', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 6),
+        ('_filler', c_uint8 * 6),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -5979,7 +5979,7 @@ class OesOptPositionLimitItemT(PrintableStructure):
         # 标的证券子类型 @see eOesSubSecurityTypeT
         ('underlyingSubSecurityType', c_uint8),
         # 按64位对齐的填充域
-        ('__filler1', c_uint8 * 4),
+        ('_filler1', c_uint8 * 4),
         # 权利仓限额
         ('longPositionLimit', c_int32),
         # 总持仓限额
@@ -5987,7 +5987,7 @@ class OesOptPositionLimitItemT(PrintableStructure):
         # 单日买入开仓限额
         ('dailyBuyOpenLimit', c_int32),
         # 按64位对齐的填充域
-        ('__filler2', c_int32),
+        ('_filler2', c_int32),
         # 日初权利仓持仓数量 (单位: 张)
         ('originalLongQty', c_int32),
         # 日初义务仓持仓数量 (单位: 张)
@@ -6001,7 +6001,7 @@ class OesOptPositionLimitItemT(PrintableStructure):
         # 未占用的单日买入开仓限额
         ('availableDailyBuyOpenLimit', c_int32),
         # 预留的备用字段
-        ('__reserve', c_char * 8),
+        ('_reserve', c_char * 8),
     ]
 
 
@@ -6036,7 +6036,7 @@ class OesQryOptPurchaseLimitFilterT(PrintableStructure):
         # @see eOesMarketIdT
         ('mktId', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 7),
+        ('_filler', c_uint8 * 7),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -6056,7 +6056,7 @@ class OesOptPurchaseLimitItemT(PrintableStructure):
         # 客户类别 @see eOesCustTypeT
         ('custType', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 6),
+        ('_filler', c_uint8 * 6),
         # 限购额度/套保额度
         ('purchaseLimit', c_int64),
         # 日初占用的期权限购额度
@@ -6106,7 +6106,7 @@ class OesQryOptExerciseAssignFilterT(PrintableStructure):
         # 持仓类型 @see eOesOptPositionTypeT
         ('positionType', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 6),
+        ('_filler', c_uint8 * 6),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -6145,7 +6145,7 @@ class OesReportSynchronizationReqT(PrintableStructure):
         # - 小于等于0, 不区分环境号, 订阅该客户下的所有回报数据
         ('subscribeEnvId', c_int8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 3),
+        ('_filler', c_uint8 * 3),
         # 待订阅的回报消息种类
         # - 0:      默认回报 (等价于: 0x01,0x02,0x04,0x08,0x10,0x20,0x40)
         # - 0x0001: OES业务拒绝 (未通过风控检查等)
@@ -6173,7 +6173,7 @@ class OesReportSynchronizationRspT(PrintableStructure):
         # - 小于等于0, 不区分环境号, 订阅该客户下的所有回报数据
         ('subscribeEnvId', c_int8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 3),
+        ('_filler', c_uint8 * 3),
         # 已订阅的回报消息种类
         ('subscribeRptTypes', c_int32),
     ]
@@ -6187,7 +6187,7 @@ class OesTestRequestReqT(PrintableStructure):
         # 发送时间 (timeval结构或形如'YYYYMMDD-HH:mm:SS.sss'的字符串)
         ('sendTime', c_char * OES_MAX_SENDING_TIME_LEN),
         # 按64位对齐的填充域
-        ('__filler', c_char * 2),
+        ('_filler', c_char * 2),
     ]
 
 
@@ -6199,17 +6199,17 @@ class OesTestRequestRspT(PrintableStructure):
         # 测试请求的原始发送时间 (timeval结构或形如'YYYYMMDD-HH:mm:SS.sss'的字符串)
         ('origSendTime', c_char * OES_MAX_SENDING_TIME_LEN),
         # 按64位对齐的填充域
-        ('__filler1', c_char * 2),
+        ('_filler1', c_char * 2),
         # 测试请求应答的发送时间 (timeval结构或形如'YYYYMMDD-HH:mm:SS.sss'的字符串)
         ('respTime', c_char * OES_MAX_SENDING_TIME_LEN),
         # 按64位对齐的填充域
-        ('__filler2', c_char * 2),
+        ('_filler2', c_char * 2),
         # 消息实际接收时间 (开始解码等处理之前的时间)
-        ('__recvTime', STimespec32T),
+        ('_recvTime', STimespec32T),
         # 消息采集处理完成时间
-        ('__collectedTime', STimespec32T),
+        ('_collectedTime', STimespec32T),
         # 消息推送时间 (写入推送缓存以后, 实际网络发送之前)
-        ('__pushingTime', STimespec32T),
+        ('_pushingTime', STimespec32T),
     ]
 
 
@@ -6219,7 +6219,7 @@ class OesBatchOrdersHeadT(PrintableStructure):
         # 本批次的委托请求数量
         ('itemCount', c_int32),
         # 按64位对齐的填充域
-        ('__filler', c_int32),
+        ('_filler', c_int32),
     ]
 
 
@@ -6240,7 +6240,7 @@ class OesChangePasswordReqT(PrintableStructure):
         # 加密方法
         ('encryptMethod', c_int32),
         # 按64位对齐的填充域
-        ('__filler', c_int32),
+        ('_filler', c_int32),
         # 登录用户名
         ('username', c_char * OES_CLIENT_NAME_MAX_LEN),
         # 用户私有信息 (由客户端自定义填充, 并在回报数据中原样返回)
@@ -6258,7 +6258,7 @@ class OesChangePasswordRspT(PrintableStructure):
         # 加密方法
         ('encryptMethod', c_int32),
         # 按64位对齐的填充域
-        ('__filler', c_int32),
+        ('_filler', c_int32),
         # 登录用户名
         ('username', c_char * OES_CLIENT_NAME_MAX_LEN),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
@@ -6268,7 +6268,7 @@ class OesChangePasswordRspT(PrintableStructure):
         # 客户端环境号
         ('clEnvId', c_int8),
         # 按64位对齐的填充域
-        ('__filler2', c_int8),
+        ('_filler2', c_int8),
         # 发生日期 (格式为 YYYYMMDD, 形如 20160830)
         ('transDate', c_int32),
         # 发生时间 (格式为 HHMMSSsss, 形如 141205000)

@@ -73,9 +73,9 @@ class eMdsExchangeIdT(Enum):
     MDS_EXCH_UNDEFINE = 0  # 未定义的交易所代码
     MDS_EXCH_SSE = 1  # 交易所-上交所
     MDS_EXCH_SZSE = 2  # 交易所-深交所
-    __MAX_MDS_EXCH = 3
-    __MAX_MDS_EXCH_ALIGNED4 = 4  # 交易所代码最大值 (按4字节对齐的大小)
-    __MAX_MDS_EXCH_ALIGNED8 = 8  # 交易所代码最大值 (按8字节对齐的大小)
+    _MAX_MDS_EXCH = 3
+    _MAX_MDS_EXCH_ALIGNED4 = 4  # 交易所代码最大值 (按4字节对齐的大小)
+    _MAX_MDS_EXCH_ALIGNED8 = 8  # 交易所代码最大值 (按8字节对齐的大小)
 
 
 # 消息来源
@@ -96,7 +96,7 @@ class eMdsMsgSourceT(Enum):
     MDS_MSGSRC_FILE_MKTDT = 90  # 消息来源-文件(mktdt, 实盘下不会出现)
     MDS_MSGSRC_MDS_TCP = 91  # 消息来源-MDS(TCP, 仅内部测试使用, 实盘下不会出现)
     MDS_MSGSRC_MDS_UDP = 92  # 消息来源-MDS(UDP, 仅内部测试使用, 实盘下不会出现)
-    __MAX_MDS_MSGSRC = 93
+    _MAX_MDS_MSGSRC = 93
     # 消息来源-SZSE-MDGW-Binary @deprecated 已过时, 请使用 MDS_MSGSRC_SZSE_MDGW_BINARY
     MDS_MSGSRC_MDGW_BINARY = MDS_MSGSRC_SZSE_MDGW_BINARY
     # 消息来源-SZSE-MDGW-STEP @deprecated 已过时, 请使用 MDS_MSGSRC_SZSE_MDGW_STEP
@@ -109,14 +109,14 @@ class eMdsMdProductTypeT(Enum):
     MDS_MD_PRODUCT_TYPE_STOCK = 1  # 股票 (包含基金和债券)
     MDS_MD_PRODUCT_TYPE_INDEX = 2  # 指数
     MDS_MD_PRODUCT_TYPE_OPTION = 3  # 期权
-    __MAX_MDS_MD_PRODUCT_TYPE = 4
-    __MAX_MDS_MD_PRODUCT_TYPE_ALIGNED4 = 4  # 行情产品类型最大值 (按4字节对齐的大小)
-    __MAX_MDS_MD_PRODUCT_TYPE_ALIGNED8 = 8  # 行情产品类型最大值 (按8字节对齐的大小)
+    _MAX_MDS_MD_PRODUCT_TYPE = 4
+    _MAX_MDS_MD_PRODUCT_TYPE_ALIGNED4 = 4  # 行情产品类型最大值 (按4字节对齐的大小)
+    _MAX_MDS_MD_PRODUCT_TYPE_ALIGNED8 = 8  # 行情产品类型最大值 (按8字节对齐的大小)
     # @deprecated 以下定义已过时, 为保持兼容而暂时保留
     MDS_SECURITY_TYPE_STOCK = MDS_MD_PRODUCT_TYPE_STOCK
     MDS_SECURITY_TYPE_INDEX = MDS_MD_PRODUCT_TYPE_INDEX
     MDS_SECURITY_TYPE_OPTION = MDS_MD_PRODUCT_TYPE_OPTION
-    __MAX_MDS_SECURITY_TYPE = __MAX_MDS_MD_PRODUCT_TYPE
+    _MAX_MDS_SECURITY_TYPE = _MAX_MDS_MD_PRODUCT_TYPE
 
 
 # 行情数据类别
@@ -135,7 +135,7 @@ class eMdsSubStreamTypeT(Enum):
     MDS_SUB_STREAM_TYPE_INDEX = 90  # 指数
     MDS_SUB_STREAM_TYPE_TRADE_STATS = 91  # 指数 - 成交量统计指标 (结构与指数行情相同, 仅适用于深交所)
     MDS_SUB_STREAM_TYPE_CN_INDEX = 92  # 指数 - 国证指数 (结构与指数快照相同, 仅适用于深交所)
-    __MAX_MDS_SUB_STREAM_TYPE = 93
+    _MAX_MDS_SUB_STREAM_TYPE = 93
 
 
 # 快照行情数据对应的消息类型 (@deprecated 已废弃, 请改为直接使用消息类型定义(eMdsMsgTypeT))
@@ -170,8 +170,8 @@ class eMdsMdStreamTypeT(Enum):
     MDS_MD_STREAM_TYPE_L2_BEST_ORDERS_INCREMENTAL = 25
     # Level2 市场总览消息 (仅适用于上交所) @deprecated 已废弃, 请改为使用 @see MDS_MSGTYPE_L2_MARKET_OVERVIEW
     MDS_MD_STREAM_TYPE_L2_MARKET_OVERVIEW = 26
-    # 最大的行情消息类型 @deprecated 已废弃, 请改为使用 @see __MDS_MSGTYPE_L2_MAX
-    __MAX_MDS_MD_STREAM_TYPE = 27
+    # 最大的行情消息类型 @deprecated 已废弃, 请改为使用 @see _MDS_MSGTYPE_L2_MAX
+    _MAX_MDS_MD_STREAM_TYPE = 27
     # @deprecated 以下定义已过时, 为保持兼容而暂时保留
     MDS_MD_STREAM_TYPE_BOND = MDS_MD_STREAM_TYPE_SSE_L1_BOND
     MDS_MD_STREAM_TYPE_FUND = MDS_MD_STREAM_TYPE_SSE_L1_FUND
@@ -183,7 +183,7 @@ class eMdsMdLevelT(Enum):
     MDS_MD_LEVEL_0 = 0  # 未设置
     MDS_MD_LEVEL_1 = 1  # Level-1 行情
     MDS_MD_LEVEL_2 = 2  # Level-2 行情
-    __MAX_MDS_MD_LEVEL = 3
+    _MAX_MDS_MD_LEVEL = 3
 
 
 # Level2增量更新消息的价位运算 (1=Add, 2=Update, 3=Delete)
@@ -191,7 +191,7 @@ class eMdsL2PriceLevelOperatorT(Enum):
     MDS_L2_PX_OPERATOR_ADD = 1  # L2价位运算 - Add
     MDS_L2_PX_OPERATOR_UPDATE = 2  # L2价位运算 - Update
     MDS_L2_PX_OPERATOR_DELETE = 3  # L2价位运算 - Delete
-    __MAX_MDS_L2_PX_OPERATOR = 4
+    _MAX_MDS_L2_PX_OPERATOR = 4
 
 
 # Level2逐笔成交的成交类别
@@ -262,7 +262,7 @@ class eMdsMsgTypeT(Enum):
     # 压缩的数据包 (6/0x06, 内部使用)
     MDS_MSGTYPE_COMPRESSED_PACKETS = 6
     # 最大的会话消息类型
-    __MDS_MSGTYPE_SESSION_MAX = 7
+    _MDS_MSGTYPE_SESSION_MAX = 7
     # Level1 行情消息
     # Level1 市场行情快照 (10/0x0A)
     MDS_MSGTYPE_MARKET_DATA_SNAPSHOT_FULL_REFRESH = 10
@@ -275,7 +275,7 @@ class eMdsMsgTypeT(Enum):
     # 证券状态消息 (14/0x0E, 仅适用于深交所)
     MDS_MSGTYPE_SECURITY_STATUS = 14
     # 最大的Level-1行情消息类型
-    __MDS_MSGTYPE_L1_MAX = 15
+    _MDS_MSGTYPE_L1_MAX = 15
     # Level2 行情消息
     # Level2 市场行情快照 (20/0x14)
     MDS_MSGTYPE_L2_MARKET_DATA_SNAPSHOT = 20
@@ -296,12 +296,12 @@ class eMdsMsgTypeT(Enum):
     # Level2 虚拟集合竞价消息 (27/0x1B, 仅适用于上交所, @deprecated 已废弃)
     MDS_MSGTYPE_L2_VIRTUAL_AUCTION_PRICE = 27
     # 最大的Level-2行情消息类型
-    __MDS_MSGTYPE_L2_MAX = 28
+    _MDS_MSGTYPE_L2_MAX = 28
     # 指令类消息
     # 修改客户端登录密码 (60/0x3C)
     MDS_MSGTYPE_CMD_CHANGE_PASSWORD = 60
     # 最大的指令消息类型
-    __MDS_MSGTYPE_CMD_MAX = 61
+    _MDS_MSGTYPE_CMD_MAX = 61
     # 查询类消息
     # 查询证券行情 (80/0x50)
     MDS_MSGTYPE_QRY_MARKET_DATA_SNAPSHOT = 80
@@ -320,7 +320,7 @@ class eMdsMsgTypeT(Enum):
     # 批量查询期权静态信息列表 (90/0x5A)
     MDS_MSGTYPE_QRY_OPTION_STATIC_INFO_LIST = 90
     # 最大的查询消息类型
-    __MDS_MSGTYPE_QRY_MAX = 91
+    _MDS_MSGTYPE_QRY_MAX = 91
 
 
 # 订阅模式 (SubMode) 定义
@@ -344,7 +344,7 @@ class eMdsSubscribeModeT(Enum):
     MDS_SUB_MODE_APPEND = 1
     # 删除订阅, 删除订阅列表中的股票
     MDS_SUB_MODE_DELETE = 2
-    __MAX_MDS_SUB_MODE_NONBATCH = 3
+    _MAX_MDS_SUB_MODE_NONBATCH = 3
     # 批量订阅-开始订阅, 开始一轮新的批量订阅
     # (之前的订阅参数将被清空, 行情推送也将暂停直到批量订阅结束)
     MDS_SUB_MODE_BATCH_BEGIN = 10
@@ -354,7 +354,7 @@ class eMdsSubscribeModeT(Enum):
     MDS_SUB_MODE_BATCH_DELETE = 12
     # 批量订阅-结束订阅, 结束本轮的批量订阅, 提交和启用本轮的订阅参数
     MDS_SUB_MODE_BATCH_END = 13
-    __MAX_MDS_SUB_MODE = 14
+    _MAX_MDS_SUB_MODE = 14
 
 
 # 市场-产品类型订阅标志 (SubFlag) 定义
@@ -368,7 +368,7 @@ class eMdsMktSubscribeFlagT(Enum):
     MDS_MKT_SUB_FLAG_ALL = 1
     # 禁用该市场下的所有产品行情
     MDS_MKT_SUB_FLAG_DISABLE = 2
-    __MAX_MDS_MKT_SUB_FLAG = 3
+    _MAX_MDS_MKT_SUB_FLAG = 3
 
 
 # 数据模式 (TickType) 定义 (仅对快照行情生效, 用于标识订阅最新的行情快照还是所有时点的行情快照)
@@ -413,7 +413,7 @@ class eMdsSubscribedTickTypeT(Enum):
     MDS_TICK_TYPE_LATEST_TIMELY = 1
     # 订阅所有时点的行情快照数据 (包括Level2增量更新消息)
     MDS_TICK_TYPE_ALL_INCREMENTS = 2
-    __MAX_MDS_TICK_TYPE = 3
+    _MAX_MDS_TICK_TYPE = 3
 
 
 # 逐笔数据的过期时间定义 (仅对逐笔数据生效)
@@ -427,7 +427,7 @@ class eMdsSubscribedTickExpireTypeT(Enum):
     MDS_TICK_EXPIRE_TYPE_TIMELY = 2
     # 超时过期 (30秒, 如果逐笔数据时间落后于最新快照时间30秒, 则视为过期并跳过该逐笔数据)
     MDS_TICK_EXPIRE_TYPE_TIMEOUT = 3
-    __MAX_MDS_TICK_EXPIRE_TYPE = 4
+    _MAX_MDS_TICK_EXPIRE_TYPE = 4
 
 
 # 逐笔数据的数据重建标识定义 (标识是否订阅重建到的逐笔数据, 仅对逐笔数据生效)
@@ -439,7 +439,7 @@ class eMdsSubscribedTickRebuildFlagT(Enum):
     # 只订阅重建到的逐笔数据 (仅重建数据)
     # @note    仅订阅重建数据需要通过压缩行情端口进行订阅, 普通的非压缩行情端口不支持该选项
     MDS_TICK_REBUILD_FLAG_ONLY_REBUILDED = 2
-    __MAX_MDS_TICK_REBUILD_FLAG = 3
+    _MAX_MDS_TICK_REBUILD_FLAG = 3
 
 
 # 可订阅的数据种类 (DataType) 定义
@@ -485,7 +485,7 @@ class eMdsSubscribeDataTypeT(Enum):
     MDS_SUB_DATA_TYPE_NONE = 0x8000
     # 所有数据种类
     MDS_SUB_DATA_TYPE_ALL = 0xFFFF
-    __MAX_MDS_SUB_DATA_TYPE = 0x7FFFFFFF
+    _MAX_MDS_SUB_DATA_TYPE = 0x7FFFFFFF
 
 
 # 可订阅的内部数据频道定义 (供内部使用, 尚未对外开放)
@@ -562,12 +562,12 @@ class MdsTradingSessionStatusMsgT(PrintableStructure):
     _fields_ = [
         ('exchId', c_uint8),  # 交易所代码(沪/深) @see eMdsExchangeIdT
         ('mdProductType', c_uint8),  # 行情产品类型 (股票/指数/期权) @see eMdsMdProductTypeT
-        ('__isRepeated', c_int8),  # 是否是重复的行情 (供内部使用, 小于0 表示数据倒流)
-        ('__origMdSource', c_uint8),  # 原始行情数据来源 @see eMdsMsgSourceT
+        ('_isRepeated', c_int8),  # 是否是重复的行情 (供内部使用, 小于0 表示数据倒流)
+        ('_origMdSource', c_uint8),  # 原始行情数据来源 @see eMdsMsgSourceT
         ('tradeDate', c_int32),  # 交易日期 (YYYYMMDD, 通过拆解SendingTime得到, 并非官方数据)
         ('updateTime', c_int32),  # 行情时间 (HHMMSSsss, 交易所时间, 通过拆解SendingTime得到, 并非官方数据)
-        ('__exchSendingTime', c_int32),  # 交易所发送时间 (HHMMSSsss)
-        ('__mdsRecvTime', c_int32),  # MDS接收到时间 (HHMMSSsss)
+        ('_exchSendingTime', c_int32),  # 交易所发送时间 (HHMMSSsss)
+        ('_mdsRecvTime', c_int32),  # MDS接收到时间 (HHMMSSsss)
         ('TotNoRelatedSym', c_int32),  # 最大产品数目 (包括指数)
         # 全市场行情状态 (*C8)
         # 该字段为 8 位字符串,左起每位表示特定的含义,无定义则填空格。
@@ -575,20 +575,20 @@ class MdsTradingSessionStatusMsgT(PrintableStructure):
         # 第 1 位: ‘1’表示开盘集合竞价结束标志, 未结束取‘0’。
         # 第 2 位: ‘1’表示市场行情闭市标志, 未闭市取‘0’。
         ('TradingSessionID', c_char * MDS_MAX_TRADING_SESSION_ID_LEN),
-        ('__filler3', c_uint8 * 3),  # 按64位对齐的填充域
-        ('__dataVersion', c_uint16),  # 行情数据的更新版本号 (当__isRepeated!=0时, 该值仅作为参考值)
-        ('__filler', c_uint16),  # 按64位对齐的填充域
-        ('__origTickSeq', c_uint64),  # 对应的原始行情的序列号(供内部使用)
+        ('_filler3', c_uint8 * 3),  # 按64位对齐的填充域
+        ('_dataVersion', c_uint16),  # 行情数据的更新版本号 (当_isRepeated!=0时, 该值仅作为参考值)
+        ('_filler', c_uint16),  # 按64位对齐的填充域
+        ('_origTickSeq', c_uint64),  # 对应的原始行情的序列号(供内部使用)
         # 消息原始接收时间 (从网络接收到数据的最初时间)
-        ('__origNetTime', STimespec32T),
+        ('_origNetTime', STimespec32T),
         # 消息实际接收时间 (开始解码等处理之前的时间)
-        ('__recvTime', STimespec32T),
+        ('_recvTime', STimespec32T),
         # 消息采集处理完成时间
-        ('__collectedTime', STimespec32T),
+        ('_collectedTime', STimespec32T),
         # 消息加工处理完成时间
-        ('__processedTime', STimespec32T),
+        ('_processedTime', STimespec32T),
         # 消息推送时间 (写入推送缓存以后, 实际网络发送之前)
-        ('__pushingTime', STimespec32T),
+        ('_pushingTime', STimespec32T),
     ]
 
 
@@ -606,12 +606,12 @@ class MdsSecurityStatusMsgT(PrintableStructure):
     _fields_ = [
         ('exchId', c_uint8),  # 交易所代码(沪/深) @see eMdsExchangeIdT
         ('mdProductType', c_uint8),  # 行情产品类型 (股票(包含基金和债券)/期权) @see eMdsMdProductTypeT
-        ('__isRepeated', c_int8),  # 是否是重复的行情 (供内部使用, 小于0 表示数据倒流)
-        ('__origMdSource', c_uint8),  # 原始行情数据来源 @see eMdsMsgSourceT
+        ('_isRepeated', c_int8),  # 是否是重复的行情 (供内部使用, 小于0 表示数据倒流)
+        ('_origMdSource', c_uint8),  # 原始行情数据来源 @see eMdsMsgSourceT
         ('tradeDate', c_int32),  # 交易日期 (YYYYMMDD, 通过拆解数据生成时间OrigTime得到)
         ('updateTime', c_int32),  # 行情时间 (HHMMSSsss, 交易所时间, 通过拆解数据生成时间OrigTime得到)
-        ('__exchSendingTime', c_int32),  # 交易所发送时间 (HHMMSSsss, 目前获取不到深交所的发送时间, 固定为 0)
-        ('__mdsRecvTime', c_int32),  # MDS接收到时间 (HHMMSSsss)
+        ('_exchSendingTime', c_int32),  # 交易所发送时间 (HHMMSSsss, 目前获取不到深交所的发送时间, 固定为 0)
+        ('_mdsRecvTime', c_int32),  # MDS接收到时间 (HHMMSSsss)
         ('instrId', c_int32),  # 证券代码 (转换为整数类型的证券代码)
         # 证券代码 C6 / C8 (如: '000001' 等)
         ('SecurityID', c_char * MDS_MAX_INSTR_CODE_LEN),
@@ -619,12 +619,12 @@ class MdsSecurityStatusMsgT(PrintableStructure):
         # A=上市公司早间披露提示
         # B=上市公司午间披露提示
         ('FinancialStatus', c_char * MDS_MAX_FINANCIAL_STATUS_LEN),
-        ('__filler2', c_uint8 * 2),  # 按64位对齐的填充域
-        ('__dataVersion', c_uint16),  # 行情数据的更新版本号 (当__isRepeated!=0时, 该值仅作为参考值)
-        ('__filler', c_uint16),  # 按64位对齐的填充域
-        ('__origTickSeq', c_uint64),  # 对应的原始行情的序列号(供内部使用)
+        ('_filler2', c_uint8 * 2),  # 按64位对齐的填充域
+        ('_dataVersion', c_uint16),  # 行情数据的更新版本号 (当_isRepeated!=0时, 该值仅作为参考值)
+        ('_filler', c_uint16),  # 按64位对齐的填充域
+        ('_origTickSeq', c_uint64),  # 对应的原始行情的序列号(供内部使用)
         ('NoSwitch', c_int32),  # 开关个数
-        ('__filler4', c_int32),  # 按64位对齐的填充域
+        ('_filler4', c_int32),  # 按64位对齐的填充域
         # 证券业务开关列表
         # 业务开关列表为定长数组, 数组的下标位置对应于各个业务开关, 业务开关说明如下:
         # -  1: 融资买入, 适用于融资标的证券
@@ -659,15 +659,15 @@ class MdsSecurityStatusMsgT(PrintableStructure):
         # - 33: 期权备兑转普通仓
         ('switches', _MdsSwitch * MDS_MAX_SECURITY_SWITCH_CNT),
         # 消息原始接收时间 (从网络接收到数据的最初时间)
-        ('__origNetTime', STimespec32T),
+        ('_origNetTime', STimespec32T),
         # 消息实际接收时间 (开始解码等处理之前的时间)
-        ('__recvTime', STimespec32T),
+        ('_recvTime', STimespec32T),
         # 消息采集处理完成时间
-        ('__collectedTime', STimespec32T),
+        ('_collectedTime', STimespec32T),
         # 消息加工处理完成时间
-        ('__processedTime', STimespec32T),
+        ('_processedTime', STimespec32T),
         # 消息推送时间 (写入推送缓存以后, 实际网络发送之前)
-        ('__pushingTime', STimespec32T),
+        ('_pushingTime', STimespec32T),
     ]
 
 
@@ -685,28 +685,28 @@ class MdsMktDataSnapshotHeadT(PrintableStructure):
     _fields_ = [
         ('exchId', c_uint8),  # 交易所代码(沪/深) @see eMdsExchangeIdT
         ('mdProductType', c_uint8),  # 行情产品类型 (股票/指数/期权) @see eMdsMdProductTypeT
-        ('__isRepeated', c_int8),  # 是否是重复的行情 (内部使用, 小于0表示数据倒流)
-        ('__origMdSource', c_uint8),  # 原始行情数据来源 @see eMdsMsgSourceT
+        ('_isRepeated', c_int8),  # 是否是重复的行情 (内部使用, 小于0表示数据倒流)
+        ('_origMdSource', c_uint8),  # 原始行情数据来源 @see eMdsMsgSourceT
         ('tradeDate', c_int32),  # 交易日期 (YYYYMMDD, 8位整型数值)
         ('updateTime', c_int32),  # 行情时间 (HHMMSSsss, 交易所时间)
         ('instrId', c_int32),  # 证券代码 (转换为整数类型的证券代码)
         ('bodyLength', c_int16),  # 实际数据长度
         ('bodyType', c_uint8),  # 快照数据对应的消息类型 @see eMdsMsgTypeT
         ('subStreamType', c_uint8),  # 行情数据类别 @see eMdsSubStreamTypeT
-        ('__channelNo', c_uint16),  # 频道代码 (仅适用于深交所, 对于上交所快照该字段无意义, 取值范围[0..9999])
-        ('__dataVersion', c_uint16),  # 行情数据的更新版本号
-        ('__origTickSeq', c_uint32),  # 对应的原始行情的序列号 (供内部使用)
-        ('__directSourceId', c_uint32),  # 内部数据来源标识 (仅内部使用)
+        ('_channelNo', c_uint16),  # 频道代码 (仅适用于深交所, 对于上交所快照该字段无意义, 取值范围[0..9999])
+        ('_dataVersion', c_uint16),  # 行情数据的更新版本号
+        ('_origTickSeq', c_uint32),  # 对应的原始行情的序列号 (供内部使用)
+        ('_directSourceId', c_uint32),  # 内部数据来源标识 (仅内部使用)
         # 消息原始接收时间 (从网络接收到数据的最初时间)
-        ('__origNetTime', STimespec32T),
+        ('_origNetTime', STimespec32T),
         # 消息实际接收时间 (开始解码等处理之前的时间)
-        ('__recvTime', STimespec32T),
+        ('_recvTime', STimespec32T),
         # 消息采集处理完成时间
-        ('__collectedTime', STimespec32T),
+        ('_collectedTime', STimespec32T),
         # 消息加工处理完成时间
-        ('__processedTime', STimespec32T),
+        ('_processedTime', STimespec32T),
         # 消息推送时间 (写入推送缓存以后, 实际网络发送之前)
-        ('__pushingTime', STimespec32T),
+        ('_pushingTime', STimespec32T),
     ]
 
 
@@ -718,7 +718,7 @@ class MdsIndexSnapshotBodyT(PrintableStructure):
         # 产品实时阶段及标志 C8 (对于指数行情该字段为预留字段)
         # @see MdsStockSnapshotBodyT.TradingPhaseCode
         ('TradingPhaseCode', c_char * MDS_MAX_TRADING_PHASE_CODE_LEN),
-        ('__filler', c_char * 6),  # 按64位对齐的填充域
+        ('_filler', c_char * 6),  # 按64位对齐的填充域
         ('NumTrades', c_uint64),  # 成交笔数 (仅适用于深交所, 上交所指数行情中没有成交笔数信息)
         ('TotalVolumeTraded', c_uint64),  # 成交总量 (@note 上交所指数的成交量单位是手, 深交所指数的成交量单位是股)
         ('TotalValueTraded', c_int64),  # 成交总金额 (金额单位精确到元后四位, 即: 1元=10000)
@@ -729,7 +729,7 @@ class MdsIndexSnapshotBodyT(PrintableStructure):
         ('LastIdx', c_int64),  # 最新指数
         ('CloseIdx', c_int64),  # 今收盘指数
         ('StockNum', c_int32),  # 统计量指标样本个数 (用于深交所成交量统计指标)
-        ('__filler1', c_int32),  # 按64位对齐的填充域
+        ('_filler1', c_int32),  # 按64位对齐的填充域
     ]
 
 
@@ -786,7 +786,7 @@ class MdsStockSnapshotBodyT(PrintableStructure):
         # - 0=正常状态
         # - 1=全天停牌
         ('TradingPhaseCode', c_char * MDS_MAX_TRADING_PHASE_CODE_LEN),
-        ('__filler', c_char * 6),  # 按64位对齐的填充域
+        ('_filler', c_char * 6),  # 按64位对齐的填充域
         ('NumTrades', c_uint64),  # 成交笔数
         ('TotalVolumeTraded', c_uint64),  # 成交总量 (上交所债券的数量单位为手)
         ('TotalValueTraded', c_int64),  # 成交总金额 (金额单位精确到元后四位, 即: 1元=10000)
@@ -916,7 +916,7 @@ class MdsL2StockSnapshotBodyT(PrintableStructure):
         # - 0=正常状态
         # - 1=全天停牌
         ('TradingPhaseCode', c_char * MDS_MAX_TRADING_PHASE_CODE_LEN),
-        ('__filler', c_char * 6),  # 按64位对齐的填充域
+        ('_filler', c_char * 6),  # 按64位对齐的填充域
         ('NumTrades', c_uint64),  # 成交笔数
         ('TotalVolumeTraded', c_uint64),  # 成交总量 (上交所债券的数量单位为手)
         ('TotalValueTraded', c_int64),  # 成交总金额 (金额单位精确到元后四位, 即: 1元=10000)
@@ -977,9 +977,9 @@ class MdsL2StockSnapshotIncrementalT(PrintableStructure):
         # 买盘价位数量 (不包括已删除且大于最优申买价的价位)
         ('NoBidLevel', c_uint8),
         # 买盘价位列表中是否有从队列尾部删除的价位
-        ('__hasDeletedAtBidTail', c_uint8),
+        ('_hasDeletedAtBidTail', c_uint8),
         # 按64位对齐的填充域
-        ('__filler1', c_uint8),
+        ('_filler1', c_uint8),
         # 最优申卖价
         ('BestOfferPrice', c_int32),
         # 增量更新消息中是否已经包含了最优申买价位
@@ -987,9 +987,9 @@ class MdsL2StockSnapshotIncrementalT(PrintableStructure):
         # 卖盘价位数量 (不包括已删除且小于最优申卖价的价位)
         ('NoOfferLevel', c_uint8),
         # 卖盘价位列表中是否有从队列尾部删除的价位
-        ('__hasDeletedAtOfferTail', c_uint8),
+        ('_hasDeletedAtOfferTail', c_uint8),
         # 按64位对齐的填充域
-        ('__filler2', c_uint8),
+        ('_filler2', c_uint8),
         # (发生变更的价位列表中) 各个价位的运算操作
         # - 1 = Add
         # - 2 = Update
@@ -1006,7 +1006,7 @@ class MdsL2BestOrdersSnapshotBodyT(PrintableStructure):
     _fields_ = [
         # 证券代码 C6 / C8 (如: '600000' 等)
         ('SecurityID', c_char * MDS_MAX_INSTR_CODE_LEN),
-        ('__filler', c_uint8 * 5),  # 按64位对齐的填充域
+        ('_filler', c_uint8 * 5),  # 按64位对齐的填充域
         ('NoBidOrders', c_uint8),  # 买一价位的揭示委托笔数
         ('NoOfferOrders', c_uint8),  # 卖一价位的揭示委托笔数
         ('TotalVolumeTraded', c_uint64),  # 成交总量 (来自快照行情的冗余字段)
@@ -1033,7 +1033,7 @@ class MdsL2BestOrdersSnapshotIncrementalT(PrintableStructure):
         # 买盘需要更新的笔数 (不包括被连续删除掉的订单)
         ('NoBidOrders', c_uint8),
         # 按64位对齐的填充域
-        ('__filler1', c_uint8),
+        ('_filler1', c_uint8),
         # 最优申卖价
         ('BestOfferPrice', c_int32),
         # 增量更新消息中是否已经包含了最优申买价位
@@ -1043,7 +1043,7 @@ class MdsL2BestOrdersSnapshotIncrementalT(PrintableStructure):
         # 卖盘需要更新的笔数 (不包括被连续删除掉的订单)
         ('NoOfferOrders', c_uint8),
         # 按64位对齐的填充域
-        ('__filler2', c_uint8),
+        ('_filler2', c_uint8),
         # (发生变更的委托明细中) 待更新或删除的订单位置 (即需要删除和更新的上一次订单的位置)
         # - 订单位置从 0 开始
         # - 小于0, 表示删除该位置的订单
@@ -1060,8 +1060,8 @@ class MdsL2MarketOverviewT(PrintableStructure):
     _fields_ = [
         ('OrigDate', c_int32),  # 市场日期 (YYYYMMDD)
         ('OrigTime', c_int32),  # 市场时间 (HHMMSSss0, 实际精度为百分之一秒(HHMMSSss))
-        ('__exchSendingTime', c_int32),  # 交易所发送时间 (HHMMSS000, 实际精度为秒(HHMMSS))
-        ('__mdsRecvTime', c_int32),  # MDS接收到时间 (HHMMSSsss)
+        ('_exchSendingTime', c_int32),  # 交易所发送时间 (HHMMSS000, 实际精度为秒(HHMMSS))
+        ('_mdsRecvTime', c_int32),  # MDS接收到时间 (HHMMSSsss)
     ]
 
 
@@ -1100,13 +1100,13 @@ class MdsL2TradeT(PrintableStructure):
     _fields_ = [
         ('exchId', c_uint8),  # 交易所代码(沪/深) @see eMdsExchangeIdT
         ('mdProductType', c_uint8),  # 行情产品类型 (股票) @see eMdsMdProductTypeT
-        ('__isRepeated', c_int8),  # 是否是重复的行情 (内部使用, 小于0表示回补的逐笔重建数据)
-        ('__origMdSource', c_uint8),  # 原始行情数据来源 @see eMdsMsgSourceT
+        ('_isRepeated', c_int8),  # 是否是重复的行情 (内部使用, 小于0表示回补的逐笔重建数据)
+        ('_origMdSource', c_uint8),  # 原始行情数据来源 @see eMdsMsgSourceT
         ('tradeDate', c_int32),  # 交易日期 (YYYYMMDD, 非官方数据)
         ('TransactTime', c_int32),  # 成交时间 (HHMMSSsss)
         ('instrId', c_int32),  # 证券代码 (转换为整数类型的证券代码)
         ('ChannelNo', c_uint16),  # 频道代码 [0..9999]
-        ('__reserve', c_uint16),  # 按64位对齐的保留字段
+        ('_reserve', c_uint16),  # 按64位对齐的保留字段
         # 深交所消息记录号/上交所成交序号 (从1开始, 按频道连续)
         # - 深交所为逐笔成交+逐笔委托统一编号
         # - 上交所新债券行情为逐笔成交+逐笔委托统一编号 (TickIndex)
@@ -1132,7 +1132,7 @@ class MdsL2TradeT(PrintableStructure):
         # - 对于上交所新债券行情, 该字段的取值将与 ApplSeqNum 相同
         ('SseBizIndex', c_uint32),
         # 为保持协议兼容而定义的填充域
-        ('__filler', c_uint64),
+        ('_filler', c_uint64),
         # 成交价格 (价格单位精确到元后四位, 即: 1元=10000)
         ('TradePrice', c_int32),
         # 成交数量 (仅上交所债券的数量单位为手, 其它均为股或张)
@@ -1148,15 +1148,15 @@ class MdsL2TradeT(PrintableStructure):
         # - 对于上交所, 该字段对应于卖方逐笔委托的 SseOrderNo 字段
         ('OfferApplSeqNum', c_int64),
         # 消息原始接收时间 (从网络接收到数据的最初时间)
-        ('__origNetTime', STimespec32T),
+        ('_origNetTime', STimespec32T),
         # 消息实际接收时间 (开始解码等处理之前的时间)
-        ('__recvTime', STimespec32T),
+        ('_recvTime', STimespec32T),
         # 消息采集处理完成时间
-        ('__collectedTime', STimespec32T),
+        ('_collectedTime', STimespec32T),
         # 消息加工处理完成时间
-        ('__processedTime', STimespec32T),
+        ('_processedTime', STimespec32T),
         # 消息推送时间 (写入推送缓存以后, 实际网络发送之前)
-        ('__pushingTime', STimespec32T),
+        ('_pushingTime', STimespec32T),
     ]
 
 
@@ -1165,13 +1165,13 @@ class MdsL2OrderT(PrintableStructure):
     _fields_ = [
         ('exchId', c_uint8),  # 交易所代码(沪/深) @see eMdsExchangeIdT
         ('mdProductType', c_uint8),  # 行情产品类型 (股票) @see eMdsMdProductTypeT
-        ('__isRepeated', c_int8),  # 是否是重复的行情 (内部使用, 小于0表示回补的逐笔重建数据)
-        ('__origMdSource', c_uint8),  # 原始行情数据来源 @see eMdsMsgSourceT
+        ('_isRepeated', c_int8),  # 是否是重复的行情 (内部使用, 小于0表示回补的逐笔重建数据)
+        ('_origMdSource', c_uint8),  # 原始行情数据来源 @see eMdsMsgSourceT
         ('tradeDate', c_int32),  # 交易日期 YYYYMMDD (自然日)
         ('TransactTime', c_int32),  # 委托时间 HHMMSSsss
         ('instrId', c_int32),  # 证券代码 (转换为整数类型的证券代码)
         ('ChannelNo', c_uint16),  # 频道代码 [0..9999]
-        ('__reserve', c_uint16),  # 按64位对齐的保留字段
+        ('_reserve', c_uint16),  # 按64位对齐的保留字段
         # 深交所消息记录号/上交所委托序号 (从1开始, 按频道连续)
         # - 深交所为逐笔成交+逐笔委托统一编号
         # - 上交所新债券行情为逐笔成交+逐笔委托统一编号 (TickIndex)
@@ -1207,15 +1207,15 @@ class MdsL2OrderT(PrintableStructure):
         # - @note 对于上交所新债券行情, 该字段的含义为原始委托数量
         ('OrderQty', c_int32),
         # 消息原始接收时间 (从网络接收到数据的最初时间)
-        ('__origNetTime', STimespec32T),
+        ('_origNetTime', STimespec32T),
         # 消息实际接收时间 (开始解码等处理之前的时间)
-        ('__recvTime', STimespec32T),
+        ('_recvTime', STimespec32T),
         # 消息采集处理完成时间
-        ('__collectedTime', STimespec32T),
+        ('_collectedTime', STimespec32T),
         # 消息加工处理完成时间
-        ('__processedTime', STimespec32T),
+        ('_processedTime', STimespec32T),
         # 消息推送时间 (写入推送缓存以后, 实际网络发送之前)
-        ('__pushingTime', STimespec32T),
+        ('_pushingTime', STimespec32T),
     ]
 
 
@@ -1230,7 +1230,7 @@ class MdsStockStaticInfoT(PrintableStructure):
         ('subSecurityType', c_uint8),  # 证券子类型 @see eOesSubSecurityTypeT
         ('currType', c_uint8),  # 币种 @see eOesCurrTypeT
         ('qualificationClass', c_uint8),  # 投资者适当性管理分类 @see eOesQualificationClassT
-        ('__filler1', c_uint8 * 5),  # 按64位对齐的填充域
+        ('_filler1', c_uint8 * 5),  # 按64位对齐的填充域
         ('instrId', c_int32),  # 证券代码 (转换为整数类型的证券代码)
         ('securityStatus', c_uint32),  # 证券状态 @see eOesSecurityStatusT
         ('securityAttribute', c_uint32),  # 证券属性 @see eOesSecurityAttributeT
@@ -1246,7 +1246,7 @@ class MdsStockStaticInfoT(PrintableStructure):
         ('isWeightedVotingRights', c_uint8),  # 是否存在投票权差异 (0 无差异, 1 存在差异 (仅适用于科创板和创业板产品))
         ('isVie', c_uint8),  # 是否具有协议控制框架 (0 没有, 1 有 (仅适用于创业板产品))
         ('pricingMethod', c_uint8),  # 计价方式 (仅适用于债券 @see eOesPricingMethodT)
-        ('__filler2', c_uint8 * 6),  # 按64位对齐的填充域
+        ('_filler2', c_uint8 * 6),  # 按64位对齐的填充域
         ('upperLimitPrice', c_int32),  # 涨停价 (单位精确到元后四位, 即: 1元=10000)
         ('lowerLimitPrice', c_int32),  # 跌停价 (单位精确到元后四位, 即: 1元=10000)
         ('priceTick', c_int32),  # 价格档位 (价格单位精确到元后四位, 即: 1元=10000)
@@ -1267,7 +1267,7 @@ class MdsStockStaticInfoT(PrintableStructure):
         ('parValue', c_int64),  # 面值 (价格单位精确到元后四位, 即: 1元=10000)
         ('auctionLimitType', c_uint8),  # 连续交易时段的有效竞价范围限制类型 @see eOesAuctionLimitTypeT
         ('auctionReferPriceType', c_uint8),  # 连续交易时段的有效竞价范围基准价类型 @see eOesAuctionReferPriceTypeT
-        ('__filler3', c_uint8 * 2),  # 按64位对齐的填充域
+        ('_filler3', c_uint8 * 2),  # 按64位对齐的填充域
         ('auctionUpDownRange', c_int32),  # 连续交易时段的有效竞价范围涨跌幅度 (百分比或绝对价格, 取决于'有效竞价范围限制类型')
         ('listDate', c_int32),  # 上市日期
         ('maturityDate', c_int32),  # 到期日期 (仅适用于债券等有发行期限的产品)
@@ -1276,7 +1276,7 @@ class MdsStockStaticInfoT(PrintableStructure):
         # 基础证券代码 (标的产品代码)
         ('underlyingSecurityId', c_char * MDS_MAX_INSTR_CODE_LEN),
         # 按64位对齐的填充域
-        ('__filler4', c_uint8 * 7),
+        ('_filler4', c_uint8 * 7),
         # 证券名称 (UTF-8 编码)
         ('securityName', c_char * MDS_MAX_SECURITY_NAME_LEN),
         # 证券长名称 (UTF-8 编码)
@@ -1286,9 +1286,9 @@ class MdsStockStaticInfoT(PrintableStructure):
         # ISIN代码
         ('securityIsinCode', c_char * MDS_MAX_SECURITY_ISIN_CODE_LEN),
         # 预留的备用字段1
-        ('__reserve1', c_char * 24),
+        ('_reserve1', c_char * 24),
         # 预留的备用字段2
-        ('__reserve2', c_char * 64),
+        ('_reserve2', c_char * 64),
     ]
 
 
@@ -1304,7 +1304,7 @@ class MdsOptionStaticInfoT(PrintableStructure):
         ('contractType', c_uint8),  # 合约类型 (认购/认沽) @see eOesOptContractTypeT
         ('exerciseType', c_uint8),  # 行权方式 @see eOesOptExerciseTypeT
         ('deliveryType', c_uint8),  # 交割方式 @see eOesOptDeliveryTypeT
-        ('__filler1', c_uint8 * 4),  # 按64位对齐的填充域
+        ('_filler1', c_uint8 * 4),  # 按64位对齐的填充域
         ('instrId', c_int32),  # 证券代码 (转换为整数类型的期权合约代码)
         ('contractUnit', c_int32),  # 合约单位 (经过除权除息调整后的单位)
         ('exercisePrice', c_int32),  # 期权行权价 (经过除权除息调整后的价格, 单位精确到元后四位, 即: 1元=10000)
@@ -1338,8 +1338,8 @@ class MdsOptionStaticInfoT(PrintableStructure):
         # 标的证券代码
         ('underlyingSecurityId', c_char * MDS_MAX_INSTR_CODE_LEN),
         # 按64位对齐的填充域
-        ('__filler2', c_uint8 * 7),
-        ('__reserve', c_char * 32),  # 预留的备用字段
+        ('_filler2', c_uint8 * 7),
+        ('_reserve', c_char * 32),  # 预留的备用字段
     ]
 
 
@@ -1404,7 +1404,7 @@ class MdsQryMktDataSnapshotReqT(PrintableStructure):
     _fields_ = [
         ('exchId', c_uint8),  # 交易所代码 @see eMdsExchangeIdT
         ('mdProductType', c_uint8),  # 行情产品类型 (股票/指数/期权) @see eMdsMdProductTypeT
-        ('__filler', c_uint8 * 2),  # 按64位对齐的填充域
+        ('_filler', c_uint8 * 2),  # 按64位对齐的填充域
         ('instrId', c_int32),  # 证券代码 (转换为整数类型的证券代码)
     ]
 
@@ -1414,7 +1414,7 @@ class MdsQryTrdSessionStatusReqT(PrintableStructure):
     _fields_ = [
         ('exchId', c_uint8),  # 交易所代码 @see eMdsExchangeIdT
         ('mdProductType', c_uint8),  # 行情产品类型 (股票/指数/期权) @see eMdsMdProductTypeT
-        ('__filler', c_uint8 * 6),  # 按64位对齐的填充域
+        ('_filler', c_uint8 * 6),  # 按64位对齐的填充域
     ]
 
 
@@ -1432,7 +1432,7 @@ class MdsQryRspHeadT(PrintableStructure):
         ('itemCount', c_int32),  # 查询到的信息条目数
         ('lastPosition', c_int32),  # 查询到的最后一条信息的位置
         ('isEnd', c_int8),  # 是否是当前查询最后一个包
-        ('__filler', c_uint8 * 7),  # 按64位对齐的填充域
+        ('_filler', c_uint8 * 7),  # 按64位对齐的填充域
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -1446,7 +1446,7 @@ class MdsQryCursorT(PrintableStructure):
         # 是否是当前最后一个包
         ('isEnd', c_int8),
         # 按64位对齐的填充域
-        ('__filler', c_int8 * 3),
+        ('_filler', c_int8 * 3),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -1458,7 +1458,7 @@ class MdsQrySecurityCodeEntryT(PrintableStructure):
         ('instrId', c_int32),  # 证券代码 (转换为整数类型的证券代码)
         ('exchId', c_uint8),  # 交易所代码 @see eMdsExchangeIdT
         ('mdProductType', c_uint8),  # 行情产品类型 (股票/期权/指数) @see eMdsMdProductTypeT
-        ('__filler', c_uint8 * 2),  # 按64位对齐的填充域
+        ('_filler', c_uint8 * 2),  # 按64位对齐的填充域
     ]
 
 
@@ -1470,7 +1470,7 @@ class MdsQryStockStaticInfoFilterT(PrintableStructure):
         ('exchId', c_uint8),  # 交易所代码 @see eMdsExchangeIdT
         ('oesSecurityType', c_uint8),  # 证券类型 (股票/债券/基金/...) @see eOesSecurityTypeT
         ('subSecurityType', c_uint8),  # 证券子类型 @see eOesSubSecurityTypeT
-        ('__filler', c_uint8 * 5),  # 按64位对齐的填充域
+        ('_filler', c_uint8 * 5),  # 按64位对齐的填充域
         ('instrId', c_int32),  # 证券代码 (转换为整数类型的证券代码) 如果同时指定 securityId, 则优先使用 securityId
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
@@ -1505,7 +1505,7 @@ class MdsQryOptionStaticInfoFilterT(PrintableStructure):
         ('exchId', c_uint8),  # 交易所代码 @see eMdsExchangeIdT
         ('oesSecurityType', c_uint8),  # 证券类型 (股票/债券/基金/...) @see eOesSecurityTypeT
         ('subSecurityType', c_uint8),  # 证券子类型 @see eOesSubSecurityTypeT
-        ('__filler', c_uint8 * 5),  # 按64位对齐的填充域
+        ('_filler', c_uint8 * 5),  # 按64位对齐的填充域
         ('instrId', c_int32),  # 证券代码 (转换为整数类型的期权合约代码) 如果同时指定 securityId, 则优先使用 securityId
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
@@ -1538,7 +1538,7 @@ class MdsQryStockStaticInfoListFilterT(PrintableStructure):
         ('exchId', c_uint8),  # 交易所代码 @see eMdsExchangeIdT
         ('oesSecurityType', c_uint8),  # 证券类型 (股票/债券/基金/...) @see eOesSecurityTypeT
         ('subSecurityType', c_uint8),  # 证券子类型 @see eOesSubSecurityTypeT
-        ('__filler', c_uint8 * 5),  # 按64位对齐的填充域
+        ('_filler', c_uint8 * 5),  # 按64位对齐的填充域
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -1554,7 +1554,7 @@ class MdsQryStockStaticInfoListReqT(PrintableStructure):
         # 待查询的证券代码数量
         ('securityCodeCnt', c_int32),
         # 按64位对齐的填充域
-        ('__filler', c_int32),
+        ('_filler', c_int32),
         # 待查询的证券代码列表 (最大大小为 MDS_QRYRSP_MAX_STOCK_CNT)
         ('securityCodeList', MdsQrySecurityCodeEntryT * 1),
     ]
@@ -1588,7 +1588,7 @@ class MdsQrySnapshotListFilterT(PrintableStructure):
         ('oesSecurityType', c_uint8),  # 证券类型 (股票/债券/基金/...) @see eOesSecurityTypeT
         ('subSecurityType', c_uint8),  # 证券子类型 @see eOesSubSecurityTypeT
         ('mdLevel', c_uint8),  # 行情数据级别 (Level1 / Level2) @see eMdsMdLevelT
-        ('__filler', c_uint8 * 11),  # 按64位对齐的填充域
+        ('_filler', c_uint8 * 11),  # 按64位对齐的填充域
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', c_int64),
     ]
@@ -1604,7 +1604,7 @@ class MdsQrySnapshotListReqT(PrintableStructure):
         # 待查询的证券代码数量
         ('securityCodeCnt', c_int32),
         # 按64位对齐的填充域
-        ('__filler', c_int32),
+        ('_filler', c_int32),
         # 待查询的证券代码列表 (最大大小为 MDS_QRYRSP_MAX_STOCK_CNT)
         ('securityCodeList', MdsQrySecurityCodeEntryT * 1),
     ]
@@ -1634,7 +1634,7 @@ class MdsApplUpgradeSourceT(PrintableStructure):
         # 登录密码的加密方法
         ('encryptMethod', c_int32),
         # 按64位对齐的填充域
-        ('__filler', c_int32),
+        ('_filler', c_int32),
         # 根目录地址
         ('homePath', c_char * SPK_MAX_PATH_LEN),
         # 文件名称
@@ -1692,7 +1692,7 @@ class MdsMktDataRequestEntryT(PrintableStructure):
     _fields_ = [
         ('exchId', c_uint8),  # 交易所代码 @see eMdsExchangeIdT
         ('mdProductType', c_uint8),  # 证券类型 @see eMdsMdProductTypeT
-        ('__filler', c_uint8 * 2),  # 按64位对齐的填充域
+        ('_filler', c_uint8 * 2),  # 按64位对齐的填充域
         ('instrId', c_int32),  # 证券代码 (转换为整数类型的证券代码)
     ]
 
@@ -1780,7 +1780,7 @@ class MdsMktDataRequestReqT(PrintableStructure):
         # isRequireInitialMktData、beginTime 这两个订阅参数
         ('isRequireInitialMktData', c_uint8),
         # 待订阅的内部频道号 (供内部使用, 尚未对外开放)
-        ('__channelNos', c_uint8),
+        ('_channelNos', c_uint8),
         # 逐笔数据的过期时间类型
         # -  0: 不过期
         # -  1: 立即过期 (1秒, 若落后于快照1秒则视为过期)
@@ -1890,7 +1890,7 @@ class MdsMktDataRequestRspT(PrintableStructure):
         # isRequireInitialMktData、beginTime 这两个订阅参数
         ('isRequireInitialMktData', c_uint8),
         # 订阅的内部频道号 (供内部使用, 尚未对外开放)
-        ('__channelNos', c_uint8),
+        ('_channelNos', c_uint8),
         # 逐笔数据的过期时间类型
         # -  0: 不过期
         # -  1: 立即过期 (1秒, 若落后于快照1秒则视为过期)
@@ -1908,7 +1908,7 @@ class MdsMktDataRequestRspT(PrintableStructure):
         # @see     eMdsSubscribedTickRebuildFlagT
         ('tickRebuildFlag', c_uint8),
         # 按64位对齐的填充域
-        ('__filler', c_uint8 * 2),
+        ('_filler', c_uint8 * 2),
         # 订阅的数据种类
         # - 0:      默认数据种类 (所有)
         # - 0x0001: L1快照/指数/期权
@@ -1977,7 +1977,7 @@ class MdsTestRequestReqT(PrintableStructure):
         # 发送时间 (timeval结构或形如'YYYYMMDD-HH:mm:SS.sss'的字符串)
         ('sendTime', c_char * MDS_MAX_SENDING_TIME_LEN),
         # 按64位对齐的填充域
-        ('__filler', c_char * 2),
+        ('_filler', c_char * 2),
     ]
 
 
@@ -1989,17 +1989,17 @@ class MdsTestRequestRspT(PrintableStructure):
         # 测试请求的原始发送时间 (timeval结构或形如'YYYYMMDD-HH:mm:SS.sss'的字符串)
         ('origSendTime', c_char * MDS_MAX_SENDING_TIME_LEN),
         # 按64位对齐的填充域
-        ('__filler1', c_char * 2),
+        ('_filler1', c_char * 2),
         # 测试请求应答的发送时间 (timeval结构或形如'YYYYMMDD-HH:mm:SS.sss'的字符串)
         ('respTime', c_char * MDS_MAX_SENDING_TIME_LEN),
         # 按64位对齐的填充域
-        ('__filler2', c_char * 2),
+        ('_filler2', c_char * 2),
         # 消息实际接收时间 (开始解码等处理之前的时间)
-        ('__recvTime', STimespec32T),
+        ('_recvTime', STimespec32T),
         # 消息采集处理完成时间
-        ('__collectedTime', STimespec32T),
+        ('_collectedTime', STimespec32T),
         # 消息推送时间 (写入推送缓存以后, 实际网络发送之前)
-        ('__pushingTime', STimespec32T),
+        ('_pushingTime', STimespec32T),
     ]
 
 
@@ -2009,7 +2009,7 @@ class MdsChangePasswordReqT(PrintableStructure):
         # 加密方法
         ('encryptMethod', c_int32),
         # 按64位对齐的填充域
-        ('__filler', c_int32),
+        ('_filler', c_int32),
         # 登录用户名
         ('username', c_char * MDS_MAX_USERNAME_LEN),
         # 用户私有信息 (由客户端自定义填充, 并在回报数据中原样返回)
@@ -2027,13 +2027,13 @@ class MdsChangePasswordRspT(PrintableStructure):
         # 加密方法
         ('encryptMethod', c_int32),
         # 按64位对齐的填充域
-        ('__filler', c_int32),
+        ('_filler', c_int32),
         # 登录用户名
         ('username', c_char * MDS_MAX_USERNAME_LEN),
         # 用户私有信息 (由客户端自定义填充, 并在应答数据中原样返回)
         ('userInfo', UserInfo),
         # 按64位对齐的填充域
-        ('__filler2', c_int32),
+        ('_filler2', c_int32),
         # 发生日期 (格式为 YYYYMMDD, 形如 20160830)
         ('transDate', c_int32),
         # 发生时间 (格式为 HHMMSSsss, 形如 141205000)

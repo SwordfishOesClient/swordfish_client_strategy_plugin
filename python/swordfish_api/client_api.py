@@ -2,7 +2,8 @@
 from enum import Enum
 from ctypes import CDLL, CFUNCTYPE, POINTER, byref, Structure, Union
 from ctypes import c_bool, c_char, c_char_p, c_uint8, c_int32, c_uint32, c_int64, c_void_p
-from .oes_struct import OES_INV_ACCT_ID_MAX_LEN, OES_SECURITY_ID_MAX_LEN, OesRptMsgT
+from .oes_struct import OES_INV_ACCT_ID_MAX_LEN, OES_SECURITY_ID_MAX_LEN
+from .oes_struct import OesRptMsgT, OesOrdItemT, OesTrdItemT, OesCashAssetItemT, OesStockItemT, OesStkHoldingItemT
 from .mds_struct import MdsMktDataSnapshotT, MdsL2TradeT, MdsL2OrderT
 
 
@@ -24,38 +25,43 @@ CLIENT_API_NOTIFY_LEVEL_URGENT = 4     # 紧急
 
 # 通信消息的消息类型定义
 class ClientApiMsgTypeT(Enum):
-    CLIENTMSG_MIN = 0
-    CLIENT_API_MSG_BASE_COUNTER_START = 0x00010000
-    CLIENT_API_MSG_BASE_COUNTER_END = CLIENT_API_MSG_BASE_COUNTER_START + 0x1000
-    CLIENT_API_MSG_BASE_MDS_START = CLIENT_API_MSG_BASE_COUNTER_END + 1
-    CLIENT_API_MSG_BASE_MDS_END = CLIENT_API_MSG_BASE_MDS_START + 0x1000
-    CLIENT_API_MSG_BASE_COUNTER_FINISHED_START = CLIENT_API_MSG_BASE_MDS_END + 1
-    CLIENT_API_MSG_BASE_COUNTER_FINISHED_END = CLIENT_API_MSG_BASE_COUNTER_FINISHED_START + 0x1000
+    CLIENTMSG_MIN = 0  # 0
+    CLIENT_API_MSG_BASE_COUNTER_START = 0x00010000  # 65536
+    CLIENT_API_MSG_BASE_COUNTER_END = CLIENT_API_MSG_BASE_COUNTER_START + 0x1000  # 69632
+    CLIENT_API_MSG_BASE_MDS_START = CLIENT_API_MSG_BASE_COUNTER_END + 1  # 69633
+    CLIENT_API_MSG_BASE_MDS_END = CLIENT_API_MSG_BASE_MDS_START + 0x1000  # 73729
+    CLIENT_API_MSG_BASE_COUNTER_FINISHED_START = CLIENT_API_MSG_BASE_MDS_END + 1  # 73730
+    CLIENT_API_MSG_BASE_COUNTER_FINISHED_END = CLIENT_API_MSG_BASE_COUNTER_FINISHED_START + 0x1000  # 77826
 
-    CLIENT_API_MSG_BASE_MDS_FINISHED_START = CLIENT_API_MSG_BASE_COUNTER_FINISHED_END + 1
-    CLIENT_API_MSG_BASE_MDS_FINISHED_END = CLIENT_API_MSG_BASE_MDS_FINISHED_START + 0x1000
+    CLIENT_API_MSG_BASE_MDS_FINISHED_START = CLIENT_API_MSG_BASE_COUNTER_FINISHED_END + 1  # 77827
+    CLIENT_API_MSG_BASE_MDS_FINISHED_END = CLIENT_API_MSG_BASE_MDS_FINISHED_START + 0x1000  # 81923
 
-    CLIENT_API_MSG_MERGE_MAX = CLIENT_API_MSG_BASE_MDS_FINISHED_END + 1
+    CLIENT_API_MSG_MERGE_MAX = CLIENT_API_MSG_BASE_MDS_FINISHED_END + 1  # 81924
+
+    # 添加策略
+    CLIENT_API_MSG_STRATEGY_ADD = CLIENT_API_MSG_MERGE_MAX + 1  # 81925
     # 策略心跳
-    CLIENT_API_MSG_STRATEGY_EXE_LIVING = CLIENT_API_MSG_MERGE_MAX + 1
+    CLIENT_API_MSG_STRATEGY_EXE_LIVING = CLIENT_API_MSG_STRATEGY_ADD + 1  # 81926
     # 策略被动退出
-    CLIENT_API_MSG_STRATEGY_EXE_SHUTDOWN = CLIENT_API_MSG_STRATEGY_EXE_LIVING + 1
+    CLIENT_API_MSG_STRATEGY_EXE_SHUTDOWN = CLIENT_API_MSG_STRATEGY_EXE_LIVING + 1  # 81927
     # 策略主动退出
-    CLIENT_API_MSG_STRATEGY_EXE_QUITTED = CLIENT_API_MSG_STRATEGY_EXE_SHUTDOWN + 1
+    CLIENT_API_MSG_STRATEGY_EXE_QUITTED = CLIENT_API_MSG_STRATEGY_EXE_SHUTDOWN + 1  # 81928
     # 客户端退出
-    CLIENT_API_MSG_CLIENT_QUIT = CLIENT_API_MSG_STRATEGY_EXE_QUITTED + 1
+    CLIENT_API_MSG_CLIENT_QUIT = CLIENT_API_MSG_STRATEGY_EXE_QUITTED + 1  # 81929
 
     # 策略通知
-    CLIENT_API_MSG_STRATEGY_NOTIFY = CLIENT_API_MSG_CLIENT_QUIT + 1
+    CLIENT_API_MSG_STRATEGY_NOTIFY = CLIENT_API_MSG_CLIENT_QUIT + 1  # 81930
     # 策略委托
-    CLIENT_API_MSG_STRATEGY_ORDER = CLIENT_API_MSG_STRATEGY_NOTIFY + 1
+    CLIENT_API_MSG_STRATEGY_ORDER = CLIENT_API_MSG_STRATEGY_NOTIFY + 1  # 81931
 
-    CLIENT_API_MSG_QRY_ASSET = CLIENT_API_MSG_STRATEGY_ORDER + 1
-    CLIENT_API_MSG_QRY_HOLD = CLIENT_API_MSG_QRY_ASSET + 1
-    CLIENT_API_MSG_QRY_ORD = CLIENT_API_MSG_QRY_HOLD + 1
-    CLIENT_API_MSG_QRY_TRD = CLIENT_API_MSG_QRY_ORD + 1
+    CLIENT_API_MSG_QRY_ASSET = CLIENT_API_MSG_STRATEGY_ORDER + 1  # 81932
+    CLIENT_API_MSG_QRY_HOLD = CLIENT_API_MSG_QRY_ASSET + 1  # 81933
+    CLIENT_API_MSG_QRY_ORD = CLIENT_API_MSG_QRY_HOLD + 1  # 81934
+    CLIENT_API_MSG_QRY_TRD = CLIENT_API_MSG_QRY_ORD + 1  # 81935
+    CLIENT_API_MSG_QRY_STOCK = CLIENT_API_MSG_QRY_TRD + 1  # 81936
+    CLIENT_API_MSG_QRY_FINISHED = CLIENT_API_MSG_QRY_STOCK + 1  # 81937
 
-    CLIENT_API_MSG_MAX = CLIENT_API_MSG_QRY_TRD + 1
+    CLIENT_API_MSG_MAX = CLIENT_API_MSG_QRY_FINISHED + 1  # 81938
 
 
 CLIENT_STRATEGY_INFO_NAME_MAX_LEN = 64
@@ -73,6 +79,21 @@ class ClientApiMsgHeadT(Structure):
         ('msg_size', c_uint32),  # 消息大小
         ('msg_id', c_int32),  # 消息代码
         ('msg_seq_num', c_int32),  # 消息序号
+    ]
+
+
+class ClientStrategyInfoItemT(Structure):
+    _fields_ = [
+        ('name', c_char * CLIENT_STRATEGY_INFO_NAME_MAX_LEN),
+        ('path', c_char * CLIENT_STRATEGY_INFO_PATH_MAX_LEN),
+        ('notifymsg', c_char * CLIENT_STRATEGY_NOTIFY_MSG_MAX_LEN),
+        ('execSts', c_uint8),
+        ('isSelect', c_uint8),
+        ('disuse', c_uint8),
+        ('__fillter', c_uint8),
+        ('timestampId', c_int32),  # 精确到毫秒的时间戳,添加的时候获取,作为主键,用于交易数据匹配
+        ('pid', c_int64),
+        ('lastLiveTime', c_int64),
     ]
 
 
@@ -149,6 +170,14 @@ class ClientApiMsgBodyT(Union):
         ('mkt_data_snapshot', MdsMktDataSnapshotT),
         ('trade', MdsL2TradeT),
         ('md_order', MdsL2OrderT),
+
+        ('ordRsp', OesOrdItemT),  # 查询委托信息应答
+        ('trdRsp', OesTrdItemT),  # 查询成交信息应答
+        ('cashAssetRsp', OesCashAssetItemT),  # 查询客户资金信息应答
+        ('stockRsp', OesStockItemT),  # 查询现货产品信息应答
+        ('stkHoldingRsp', OesStkHoldingItemT),  # 查询股票持仓信息应答
+
+        ('_strategyItem', ClientStrategyInfoItemT),
         ('__data', c_char * 1),
     ]
 
@@ -170,7 +199,7 @@ class ClientAPI(object):
 
         self._ClientAsyncApi_Init = self.dll.ClientAsyncApi_Init
         self._ClientAsyncApi_Init.restype = c_void_p
-        self._ClientAsyncApi_Init.argtypes = [c_char_p, c_char_p, c_char_p, c_char_p,
+        self._ClientAsyncApi_Init.argtypes = [c_char_p, c_char_p, c_char_p, c_char_p, c_char_p,
                                               c_int32, c_int32, c_int32, c_int32, c_int32,
                                               self._F_CLIENTAPI_ON_STREAM_MSG_T,
                                               self._F_CLIENTAPI_ON_STREAM_MSG_T,
@@ -209,12 +238,17 @@ class ClientAPI(object):
         self._ClientAsyncApi_IsOwnedByStrategy.restype = c_bool
         self._ClientAsyncApi_IsOwnedByStrategy.argtypes = [c_int64, c_int32]
 
-    def client_async_api_init(self, trd_stream, mkt_stream, req_stream, strategy_name, strategy_id, strategy_ord_id,
-                              timeout_ms, heart_bt_int, level=CLIENT_API_LOG_LEVEL_DEBUG):
+        self._ClientAsyncApi_AddStrategy = self.dll.ClientAsyncApi_AddStrategy
+        self._ClientAsyncApi_AddStrategy.restype = c_int32
+        self._ClientAsyncApi_AddStrategy.argtypes = [c_void_p]
+
+    def client_async_api_init(self, trd_stream, mkt_stream, req_stream, strategy_name, strategy_path, strategy_id,
+                              strategy_ord_id, timeout_ms, heart_bt_int, level=CLIENT_API_LOG_LEVEL_DEBUG):
         self.async_ctx = self._ClientAsyncApi_Init(c_char_p(trd_stream.encode()),
                                                    c_char_p(mkt_stream.encode()),
                                                    c_char_p(req_stream.encode()),
                                                    c_char_p(strategy_name.encode()),
+                                                   c_char_p(strategy_path.encode()),
                                                    c_int32(strategy_id),
                                                    c_int32(strategy_ord_id),
                                                    c_int32(timeout_ms),
@@ -255,4 +289,14 @@ class ClientAPI(object):
 
     def client_is_owned_by_strategy(self, user_info, strategy_id):
         return self._ClientAsyncApi_IsOwnedByStrategy(c_int64(user_info), c_int32(strategy_id))
+
+    def client_async_api_add_strategy(self):
+        return self._ClientAsyncApi_AddStrategy(self.async_ctx)
+
+
+def debug():
+    for i in ClientApiMsgTypeT.__dict__:
+        # print(i)
+        if i.startswith("CLIENT"):
+            print(i, getattr(ClientApiMsgTypeT, i).value)
 
